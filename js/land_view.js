@@ -3,7 +3,6 @@
   var View = window.View;
 
   function LandView(position, size, type) {
-    debugger;
     this.type = type;
     View.call(this, position, size);
   }
