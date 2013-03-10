@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pripub</title>
+  <style>
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } /* HTML5 display-role reset for older browsers */ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0; }
+
+    body, html {
+      height: 100%;
+    }
+    #world_view {
+      height: 100%;
+      width: 100%;
+      background: #88f;
+    }
+    .person {
+    }
+
+  </style>
+  <script type="text/javascript">
+    // constants
+    var unit = 48;
+    var player = {
+      stats: {
+        strength: 1,
+        dexterity: 1,
+        wizdom: 1
+      },
+      position: {
+        x: 6,
+        y: 6
+      },
+      size: {
+        width: 1,
+        height: 1
+      },
+      view: null,
+      move: function(key) {
+      }
+    };
+
+    // ====================== VIEW STUFF =========================
+    var views = [];
+    function renderWorld() {
+      for (var i = 0; i < views.length; i++) {
+        var element = views[i].getElement();
+        if (worldView.contains(element)) {
+          // position it.. probably only if it has changed
+        } else {
+          worldView.appendChild(element);
+        }
+      }
+    }
+
+    function View(position, size) {
+      this.position = position;
+      this.size = size;
+      this.createElement();
+    }
+    View.prototype.getElement = function() {
+      return this.element;
+    }
+    View.prototype.move = function(position) {
+      this.element.style.left = position.x;
+      this.element.style.top = position.y;
+    };
+    View.prototype.createElement = function() {
+      var div = document.createElement('div');
+      div.style.position = "absolute";
+      div.style.width = dimension(this.size.width);
+      div.style.height = dimension(this.size.height);
+      div.style.left = dimension(this.position.x);
+      div.style.top = dimension(this.position.y);
+      this.element = div;
+    };
+    function PlayerView(position, size) {
+      View.call(this, position, size);
+    }
+
+    // inherit
+    PlayerView.prototype = View.prototype;
+
+    // utility
+    function dimension(dimension) {
+      return (dimension * unit) + "px";
+    }
+
+    var worldView;
+    window.onload = function() {
+      console.log('loaded...');
+      player.view = new View(player.position, player.size);
+      views.push(player.view);
+      worldView = document.getElementById("world_view");
+      renderWorld();
+    }
+
+    var key = {
+      up: 38,
+      down: 40,
+      left: 37,
+      right: 39
+    };
+    document.onkeydown = function(e) {
+      var keyCode = e.keyCode;
+      switch (keyCode) {
+        case key.up:
+        case key.down:
+        case key.left:
+        case key.right:
+          playerMove(keyCode);
+          break;
+        default:
+          console.log("Key pressed:", e.keyCode, e.keyIdentifier);
+          break;
+      }
+    };
+  </script>
+</head>
+<body>
+  <div id="world_view">
+  </div>
+</body>
+</html>
