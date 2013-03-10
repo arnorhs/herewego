@@ -175,7 +175,14 @@
     left: 37,
     right: 39
   };
+  // bad horrible attempt at limiting movement speed
+  var lastAction = new Date(),
+      interval = 100;
   document.onkeydown = function(e) {
+    var now = new Date();
+    if (now - lastAction < interval) {
+      return;
+    }
     var keyCode = e.keyCode;
     switch (keyCode) {
       case key.up:
@@ -192,8 +199,11 @@
         break;
       default:
         console.log("Key pressed:", e.keyCode, e.keyIdentifier);
-        break;
+        // return so we won't set the lastAction date again
+        // maybe it would be better to know if the game time had changed
+        return;
     }
+    lastAction = now;
   };
 
 
