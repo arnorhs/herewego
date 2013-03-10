@@ -7,10 +7,20 @@ body, html {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background: #88f;
+  background: #000;
   position: relative;
 }
 .player {
   background: transparent url(img/player.png) no-repeat;
+}
+
+.land_g {
+  background: transparent url(img/land_grass.png) no-repeat;
+}
+.land_t {
+  background: transparent url(img/land_trees.png) no-repeat;
+}
+.land_w {
+  background: transparent url(img/land_water.png) no-repeat;
 }
 
