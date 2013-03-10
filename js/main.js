@@ -19,6 +19,16 @@
       player.position.x += offset.x,
       player.position.y += offset.y,
       player.view.move(player.position)
+      // figure out the x/y of the screen
+      // css territory
+      // TODO: fix this ugliness?
+      var px = parseInt(player.view.element.style.left);
+      var py = parseInt(player.view.element.style.top);
+      var boundingRect = worldView.getBoundingClientRect();
+      var windowWidth = boundingRect.right - boundingRect.left;
+      var windowHeight = boundingRect.bottom - boundingRect.top;
+      worldView.scrollLeft = (px - (windowWidth/2));
+      worldView.scrollTop = (py - (windowHeight/2));
     }
   };
 
