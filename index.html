@@ -11,15 +11,20 @@
     #world_view {
       height: 100%;
       width: 100%;
+      overflow: hidden;
       background: #88f;
+      position: relative;
     }
-    .person {
+    .player {
+      background: transparent url(img/player.png) no-repeat;
     }
 
   </style>
-  <script type="text/javascript">
-    // constants
-    var unit = 48;
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/view.js"></script>
+  <script src="js/player_view.js"></script>
+  <script>
     var player = {
       stats: {
         strength: 1,
@@ -35,7 +40,10 @@
         height: 1
       },
       view: null,
-      move: function(key) {
+      move: function(offset) {
+        player.position.x += offset.x,
+        player.position.y += offset.y,
+        player.view.move(player.position)
       }
     };
 
@@ -44,51 +52,16 @@
     function renderWorld() {
       for (var i = 0; i < views.length; i++) {
         var element = views[i].getElement();
-        if (worldView.contains(element)) {
-          // position it.. probably only if it has changed
-        } else {
+        if (!worldView.contains(element)) {
           worldView.appendChild(element);
         }
       }
     }
 
-    function View(position, size) {
-      this.position = position;
-      this.size = size;
-      this.createElement();
-    }
-    View.prototype.getElement = function() {
-      return this.element;
-    }
-    View.prototype.move = function(position) {
-      this.element.style.left = position.x;
-      this.element.style.top = position.y;
-    };
-    View.prototype.createElement = function() {
-      var div = document.createElement('div');
-      div.style.position = "absolute";
-      div.style.width = dimension(this.size.width);
-      div.style.height = dimension(this.size.height);
-      div.style.left = dimension(this.position.x);
-      div.style.top = dimension(this.position.y);
-      this.element = div;
-    };
-    function PlayerView(position, size) {
-      View.call(this, position, size);
-    }
-
-    // inherit
-    PlayerView.prototype = View.prototype;
-
-    // utility
-    function dimension(dimension) {
-      return (dimension * unit) + "px";
-    }
-
     var worldView;
     window.onload = function() {
       console.log('loaded...');
-      player.view = new View(player.position, player.size);
+      player.view = new PlayerView(player.position, player.size);
       views.push(player.view);
       worldView = document.getElementById("world_view");
       renderWorld();
@@ -104,10 +77,16 @@
       var keyCode = e.keyCode;
       switch (keyCode) {
         case key.up:
+          player.move({x:0,y:-1});
+          break;
         case key.down:
+          player.move({x:0,y:1});
+          break;
         case key.left:
+          player.move({x:-1,y:0});
+          break;
         case key.right:
-          playerMove(keyCode);
+          player.move({x:1,y:0});
           break;
         default:
           console.log("Key pressed:", e.keyCode, e.keyIdentifier);
