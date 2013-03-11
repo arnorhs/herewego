@@ -3,6 +3,7 @@
  Some weirdo old school type of game I'm having fun with.
 
 ### Next up todo:
+- Add a module library so I don't have to put every fucking thing on the window object
 - Move mapping definitions etc into its own file
 - Fix the view scrolling to move views instead of using the screen scroll
 - Add some kind of management for game objects besides just views
