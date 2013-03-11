@@ -153,9 +153,7 @@
     for (var y = 0; y < yl; y++) {
       var xl = worldMap[y].length
       for (var x = 0; x < xl; x++) {
-        var str = worldMap[y][x];
-        var land = new LandView({x: x, y: y}, landSize, str);
-        views.push(land);
+        views.push(new View({x: x, y: y}, landSize, "land_" + worldMap[y][x]));
       }
     }
   }
@@ -163,7 +161,7 @@
   var worldView;
   window.onload = function() {
     createLand();
-    player.view = new PlayerView(player.position, player.size);
+    player.view = new View(player.position, player.size, "player");
     views.push(player.view);
     worldView = document.getElementById("world_view");
     renderWorld();
@@ -201,9 +199,10 @@
         console.log("Key pressed:", e.keyCode, e.keyIdentifier);
         // return so we won't set the lastAction date again
         // maybe it would be better to know if the game time had changed
-        return;
+        return false;
     }
     lastAction = now;
+    return false;
   };
 
 

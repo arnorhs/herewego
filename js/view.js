@@ -1,8 +1,9 @@
 (function() {
 
-  function View(position, size) {
+  function View(position, size, type) {
     this.position = position;
     this.size = size;
+    this.type = type;
     this.createElement();
   }
   View.prototype.getElement = function() {
@@ -19,6 +20,7 @@
     div.style.height = dimension(this.size.height);
     div.style.left = dimension(this.position.x);
     div.style.top = dimension(this.position.y);
+    div.className = this.type;
     this.element = div;
   };
 
