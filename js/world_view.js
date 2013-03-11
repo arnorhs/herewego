@@ -3,37 +3,6 @@
   var views = [],
       rootView;
 
-  var worldHash = (function() {
-    var hash = {};
-    var key = function(x, y) {
-      return x + "x" + y;
-    };
-    var get = function(x, y) {
-      var thiskey = key(x, y);
-      var entities = hash[thiskey];
-      if (!entities) {
-        entities = [];
-        hash[thiskey] = entities;
-      }
-      return entities;
-    };
-    return {
-      add: function(x, y, entity) {
-        get(x, y).entities.push(entity);
-      },
-      remove: function(x, y, object) {
-        var entities = get(x, y);
-        var i = entities.indexOf(object);
-        if (i >= 0) {
-          entities[i] = null;
-        }
-      },
-      entitiesAt: function(x, y) {
-        return get(x,y);
-      }
-    };
-  })();
-
   function renderWorld() {
     for (var i = 0; i < views.length; i++) {
       var element = views[i].getElement();
