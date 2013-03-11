@@ -1,6 +1,8 @@
 # Here we go
 
- Some weirdo old school type of game I'm having fun with.
+Some weirdo old school type of game I'm having fun with.
+
+![Screenshot](http://f.cl.ly/items/0E0z2o2Z2O2h1L0C3o3M/Screen%20Shot%202013-03-11%20at%202.05.20%20AM.png)
 
 ### Next up todo:
 - Add a module library so I don't have to put every fucking thing on the window object
