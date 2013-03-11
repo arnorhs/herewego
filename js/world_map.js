@@ -85,7 +85,6 @@
     }
   }
 
-
   window.WorldMap = {
     // expects a callback
     create: function(callback) {
