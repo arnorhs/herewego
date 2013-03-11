@@ -19,16 +19,7 @@
       player.position.x += offset.x,
       player.position.y += offset.y,
       player.view.move(player.position)
-      // figure out the x/y of the screen
-      // css territory
-      // TODO: fix this ugliness?
-      var px = parseInt(player.view.element.style.left);
-      var py = parseInt(player.view.element.style.top);
-      var boundingRect = worldView.getBoundingClientRect();
-      var windowWidth = boundingRect.right - boundingRect.left;
-      var windowHeight = boundingRect.bottom - boundingRect.top;
-      worldView.scrollLeft = (px - (windowWidth/2));
-      worldView.scrollTop = (py - (windowHeight/2));
+      WorldView.centerWorldOnView(player.view);
     }
   };
 
@@ -106,46 +97,6 @@
                   ];
 
   // ====================== VIEW STUFF =========================
-  var views = [];
-  function renderWorld() {
-    for (var i = 0; i < views.length; i++) {
-      var element = views[i].getElement();
-      if (!worldView.contains(element)) {
-        worldView.appendChild(element);
-      }
-    }
-  }
-
-  var worldHash = (function() {
-    var hash = {};
-    var key = function(x, y) {
-      return x + "x" + y;
-    };
-    var get = function(x, y) {
-      var thiskey = key(x, y);
-      var entities = hash[thiskey];
-      if (!entities) {
-        entities = [];
-        hash[thiskey] = entities;
-      }
-      return entities;
-    };
-    return {
-      add: function(x, y, entity) {
-        get(x, y).entities.push(entity);
-      },
-      remove: function(x, y, object) {
-        var entities = get(x, y);
-        var i = entities.indexOf(object);
-        if (i >= 0) {
-          entities[i] = null;
-        }
-      },
-      entitiesAt: function(x, y) {
-        return get(x,y);
-      }
-    };
-  })();
 
   function createLand() {
     var landSize = {width: 1, height: 1};
@@ -153,18 +104,16 @@
     for (var y = 0; y < yl; y++) {
       var xl = worldMap[y].length
       for (var x = 0; x < xl; x++) {
-        views.push(new View({x: x, y: y}, landSize, "land_" + worldMap[y][x]));
+        WorldView.addView(new View({x: x, y: y}, landSize, "land_" + worldMap[y][x]));
       }
     }
   }
 
-  var worldView;
   window.onload = function() {
     createLand();
     player.view = new View(player.position, player.size, "player");
-    views.push(player.view);
-    worldView = document.getElementById("world_view");
-    renderWorld();
+    WorldView.addView(player.view);
+    WorldView.init();
   }
 
   var key = {
