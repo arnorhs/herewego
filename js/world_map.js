@@ -5,6 +5,8 @@
   // g: grass
   // t: trees
   // w: water
+  // b: vertical bridge
+  // B: horizontal bridge
   var worldMap = ["ggttttgggggggwwwwwwwwwwwwgggggggggggggggggggggggtttttttttgggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
                   "ggtttttgggggggggggwwwwwwwwwwwwwgggggggggggggggggtttttttttgggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
                   "gggttttttggggggttttttttttttwwwggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
@@ -13,26 +15,26 @@
                   "wgggggggggggggggggggggggggggggggggggggttttggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
                   "wgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwgggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
                   "wwwgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwgggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-                  "wwwwggggggggttttttttttggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwgggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+                  "wwwwggggggggttttttttttggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggBBBBBBBBBBBgggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
                   "wwwwgggggggttttttttttttgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwgggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-                  "wwwwgggggggttttttttttttgggtggggggggggggggggggttttttgggggggggggggggggggggggggggggggggggwwwwwwwwwwwgggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-                  "gwwggggggggttttttttttttttttgggggggggggggggggtttttttwwwwwwwwwwwggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+                  "wwwwwwbwwwwttttttttttttgggtggggggggggggggggggttttttgggggggggggggggggggggggggggggggggggwwwwwwwwwwwgggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+                  "gwwggggggwwttttttttttttttttgggggggggggggggggtttttttwwwwwwwwwwwggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
                   "ggwwggggggggttttttttttttttttggggggggggggggggttttttwwwwwwwwwgggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
                   "ggggggggggggggggggggttttttttggggggggggggggggttttttwwwwwwgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgg",
                   "tgggggggggggggggggggtttttttgggggggggggggggggggwwwwwwwwwwwwwwgggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgg",
-                  "tgggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwggg",
-                  "ttgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwggg",
-                  "ttttgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwgggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgggg",
-                  "ttttttgggggggggggggggggggggggggggggttttgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwgggwwgggg",
-                  "tttttttttggggggggggggggggggggggggggttttggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwgggwggggg",
-                  "ttttttttttttggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggttttttttgggggggggggggggggggggggggggggggggggggggggggggggggggg",
-                  "ttttttttgggggggggggggggggggggggggggggggggtttggggggggggggggggggggggggggggggggggggggggggggggggggggttttttttttgggggggggggggggggggggggggggggggggggggggggggggggggg",
-                  "ttttttggggggggggggggggggggggggggggggggggttttttggggggggggggggggggggggggggggggggggggggggggggggggggggttttttttgggggggggggggggggggggggggggggggggggggggggggggggggg",
-                  "tttttttttgggggggggggggttggggggggggggggggttttttgggggggggggggggggggttggggggggggggggggggggggggggggggggggttttttggggggggggggggggggggggggggggggggggggggggggggggggg",
-                  "tttttttgggggggggggggggttggggggggggggggggttttttgggggggggggggggggttttggggggggggggggggggggggggggggggggggttttttggggggggggggggggggggggggggggggggggggggggggggggggg",
-                  "ttttttggggggggggggggggttgggggggggggggggggggggggggggggggggggggggttttggggggggggggggggggggggggggggggggggtttttttgggggggggggggggggggggggggggggggggggggggggggggggg",
-                  "ttttttttttttgggggggggggggggggggggggggggggggggggggggggggggggggggttggggggggggggggggggggggggggggggggggttttttggggggggggggggggggggggggggggggggggggggggggggggggggg",
-                  "ttttttttttttttttggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggtttttttttggggggggggggggggggggggggggggggggggggggggggggggggggg",
+                  "tgggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwggg",
+                  "ttggggggggggggggggggggggggggggggggggggggggwwwwgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwggg",
+                  "ttttggggggggggggggggggggggggggggggggggggwwwwwwgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwgggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgggg",
+                  "ttttttgggggggggggggggggggggggggggggttttwwwwwggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwgggwwgggg",
+                  "tttttttttggggggggggggggggggggggggggttttwwwgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwgggwggggg",
+                  "ttttttttttttggggggggggggggggggggggggwwwwwwggggggggggggggggggggggggggggggggggggggggggggggggggggggttttttttgggggggggggggggggggggggggggggggggggggggggggggggggggg",
+                  "ttttttttgggggggggggggggggggggggwwwwwwwwggtttggggggggggggggggggggggggggggggggggggggggggggggggggggttttttttttgggggggggggggggggggggggggggggggggggggggggggggggggg",
+                  "ttttttgggggggggggggggggggggggwwwwwwwwgggttttttggggggggggggggggggggggggggggggggggggggggggggggggggggttttttttgggggggggggggggggggggggggggggggggggggggggggggggggg",
+                  "tttttttttgggggggggggggttggwbwwwwwgggggggttttttgggggggggggggggggggttggggggggggggggggggggggggggggggggggttttttggggggggggggggggggggggggggggggggggggggggggggggggg",
+                  "tttttttggggggggwwwwwwwwwwwwbwwggggggggggttttttgggggggggggggggggttttggggggggggggggggggggggggggggggggggttttttggggggggggggggggggggggggggggggggggggggggggggggggg",
+                  "ttttwwwwwwwwwwwwwwwwwwwwwwgggggggggggggggggggggggggggggggggggggttttggggggggggggggggggggggggggggggggggtttttttgggggggggggggggggggggggggggggggggggggggggggggggg",
+                  "wwwwwwwwwwwwwwwwwwgggggggggggggggggggggggggggggggggggggggggggggttggggggggggggggggggggggggggggggggggttttttggggggggggggggggggggggggggggggggggggggggggggggggggg",
+                  "wwwwwwwwwtttttttggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggtttttttttggggggggggggggggggggggggggggggggggggggggggggggggggg",
                   "ttttttttttttttttttggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwggggggggggggggggggggggggggttttggggggggggggggggggggggggggggggggggggggggggggggggggggg",
                   "tttttttttttttttttttttttttgggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
                   "tttttttttttttttttttttttttttgggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
@@ -75,12 +77,22 @@
 
   // ====================== VIEW STUFF =========================
 
+  var hash = {
+    g: 'land_grass',
+    t: 'land_tree',
+    w: 'land_water',
+    b: 'land_bridge_v',
+    B: 'land_bridge_h'
+  };
+  function squareToName(square) {
+    return hash[square];
+  }
   function readMapDefinition(worldMap, callback) {
     var yl = worldMap.length;
     for (var y = 0; y < yl; y++) {
       var xl = worldMap[y].length
       for (var x = 0; x < xl; x++) {
-        callback({x: x, y: y}, "land_" + worldMap[y][x]);
+        callback({x: x, y: y}, squareToName(worldMap[y][x]));
       }
     }
   }

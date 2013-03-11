@@ -11,7 +11,7 @@
 
 ### Features to add soon:
 - Collision detection (Prevent player from entering water, forests, map edge)
-- Add more types of land (Roads, Bridges, rock, etc)
+- Add more types of land (Roads, rock, etc)
 - Add some more entities. People to talk to, enemies to fight or something.
 - Save player position
 - Come up with game mechanics that make the game really unique and fun (jk)

@@ -14,13 +14,19 @@ body, html {
   background: transparent url(img/player.png) no-repeat;
 }
 
-.land_g {
+.land_grass {
   background: transparent url(img/land_grass.png) no-repeat;
 }
-.land_t {
+.land_tree {
   background: transparent url(img/land_trees.png) no-repeat;
 }
-.land_w {
+.land_water {
   background: transparent url(img/land_water.png) no-repeat;
+}
+.land_bridge_v {
+  background: transparent url(img/land_bridge_vertical.png) no-repeat;
+}
+.land_bridge_h {
+  background: transparent url(img/land_bridge_horizontal.png) no-repeat;
 }
 
