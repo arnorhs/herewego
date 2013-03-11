@@ -19,7 +19,7 @@
       player.position.x += offset.x,
       player.position.y += offset.y,
       player.view.move(player.position)
-      WorldView.centerWorldOnView(player.view);
+      WorldView.centerOnView(player.view);
     }
   };
 
@@ -128,7 +128,7 @@
   document.onkeydown = function(e) {
     var now = new Date();
     if (now - lastAction < interval) {
-      return;
+      return false;
     }
     var keyCode = e.keyCode;
     switch (keyCode) {
@@ -148,7 +148,7 @@
         console.log("Key pressed:", e.keyCode, e.keyIdentifier);
         // return so we won't set the lastAction date again
         // maybe it would be better to know if the game time had changed
-        return false;
+        return true;
     }
     lastAction = now;
     return false;
