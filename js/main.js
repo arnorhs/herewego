@@ -1,11 +1,6 @@
 (function() {
 
   var player = {
-    stats: {
-      strength: 1,
-      dexterity: 1,
-      wizdom: 1
-    },
     position: {
       x: 6,
       y: 6
