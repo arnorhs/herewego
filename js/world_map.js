@@ -77,8 +77,6 @@
                   "mmmmmmmmmmmmmmmmmmgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggtttttttttttttttttttttttttttttttgtgg",
     ]};
 
-  // ====================== VIEW STUFF =========================
-
   var types = {
     g: 'land_grass',
     t: 'land_tree',
