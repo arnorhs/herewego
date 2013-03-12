@@ -1,5 +1,14 @@
 (function() {
 
+  var classes = {};
+  classes[PLAYER] = 'player';
+  classes[GRASS] = 'land_grass';
+  classes[TREE] = 'land_tree';
+  classes[WATER] = 'land_water';
+  classes[BRIDGE_V] = 'land_bridge_v';
+  classes[BRIDGE_H] = 'land_bridge_h';
+  classes[MOUNTAIN] = 'land_mountain';
+
   function View(position, size, type) {
     this.position = position;
     this.size = size;
@@ -20,7 +29,7 @@
     div.style.height = dimension(this.size.height);
     div.style.left = dimension(this.position.x);
     div.style.top = dimension(this.position.y);
-    div.className = this.type;
+    div.className = classes[this.type];
     this.element = div;
   };
 

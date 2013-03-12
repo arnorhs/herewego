@@ -7,12 +7,11 @@ Some weirdo old school type of game I'm having fun with.
 ### Next up todo:
 - Add a module library so I don't have to put every fucking thing on the window object
 - Move player object into its own file
+- Move the game entitiy stuff into its own file
 - Fix the view scrolling to move views instead of using the screen scroll
-- Add some kind of management for game objects besides just views
 - Make a better map - should it be like something?
 
 ### Features to add soon:
-- Collision detection (Prevent player from entering water, forests, mountains)
 - Add more types of land/terrain (Roads, etc)
 - Add some more entities. People to talk to, enemies to fight or something.
 - Save player position

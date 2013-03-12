@@ -78,14 +78,14 @@
     ]};
 
   var types = {
-    g: 'land_grass',
-    t: 'land_tree',
-    w: 'land_water',
-    b: 'land_bridge_v',
-    B: 'land_bridge_h',
-    m: 'land_mountain'
+    g: GRASS,
+    t: TREE,
+    w: WATER,
+    b: BRIDGE_V,
+    B: BRIDGE_H,
+    m: MOUNTAIN
   };
-  function squareToName(square) {
+  function squareToType(square) {
     return types[square];
   }
 
@@ -107,7 +107,7 @@
     // loop through each tile
     for (var y = 0; y < yl; y++) {
       for (var x = 0; x < xl; x++) {
-        callback({x: x, y: y}, squareToName(worldMap[y][x]));
+        callback({x: x, y: y}, squareToType(worldMap[y][x]));
       }
     }
   };
