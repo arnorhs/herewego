@@ -12,7 +12,7 @@ Some weirdo old school type of game I'm having fun with.
 - Make a better map - should it be like something?
 
 ### Features to add soon:
-- Collision detection (Prevent player from entering water, forests, map edge)
+- Collision detection (Prevent player from entering water, forests, mountains)
 - Add more types of land/terrain (Roads, etc)
 - Add some more entities. People to talk to, enemies to fight or something.
 - Save player position
