@@ -8,7 +8,8 @@
   // b: vertical bridge
   // B: horizontal bridge
   // m: mountain
-  var worldMap = ["ggttttmmmmgggwwwwwwwwwwwwgggggggggggggggggggggggtttttttttggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwgggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+  var mapDefinitions = {
+    start:       ["ggttttmmmmgggwwwwwwwwwwwwgggggggggggggggggggggggtttttttttggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwgggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
                   "ggtttttmmmggggggggwwwwwwwwwwwwwgggggggggggggggggtttttttttggggggggggggggggggggggggggggwwwwwwwwwwwwwwgggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
                   "gggttttttggggggttttttttttttwwwgggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwwwwwgggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
                   "ggttttggggggggggggtttttttwwwwggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwwwwwwgggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
@@ -74,11 +75,11 @@
                   "mmmmmmmmmmmgggmmggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwwwggggggggggggtgtgtgtgggggggggggggtgtgtttttgtgtgg",
                   "mmmmmmmmmmmmmmmmmggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggtgggtggggttttttttttgggtgggggggtgtgg",
                   "mmmmmmmmmmmmmmmmmmgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggtttttttttttttttttttttttttttttttgtgg",
-                  ];
+    ]};
 
   // ====================== VIEW STUFF =========================
 
-  var hash = {
+  var types = {
     g: 'land_grass',
     t: 'land_tree',
     w: 'land_water',
@@ -87,20 +88,42 @@
     m: 'land_mountain'
   };
   function squareToName(square) {
-    return hash[square];
+    return types[square];
   }
-  function readMapDefinition(worldMap, callback) {
+
+  // Eventually the map will probably also be managed somewhere else in the
+  // game engine - especially if it will become mutable
+  function WorldMap(name) {
+    this.name = name;
+    this.size = {};
+  }
+
+  WorldMap.prototype.getViews = function(callback) {
+    var worldMap = mapDefinitions[this.name];
     var yl = worldMap.length;
+    var xl = worldMap[0].length; // assuming each row is equally long for now
+
+    // grab size of map from height and first column width
+    this.size = {x: xl, y: yl};
+
+    // loop through each tile
     for (var y = 0; y < yl; y++) {
-      var xl = worldMap[y].length
       for (var x = 0; x < xl; x++) {
         callback({x: x, y: y}, squareToName(worldMap[y][x]));
       }
     }
-  }
+  };
 
+  WorldMap.prototype.inBounds = function(position) {
+    return position.x >= 0 && position.x < this.size.x && position.y >= 0 && position.y < this.size.y;
+  };
+
+  // note: WorldMap on window is not the same as the WorldMap function class
   window.WorldMap = {
     // expects a callback
+    getMap: function(name) {
+      return new WorldMap(name);
+    },
     create: function(callback) {
       readMapDefinition(worldMap, callback);
     }

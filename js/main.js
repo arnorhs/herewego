@@ -16,17 +16,23 @@
     },
     view: null,
     move: function(offset) {
-      player.position.x += offset.x,
-      player.position.y += offset.y,
-      player.view.move(player.position)
-      WorldView.centerOnView(player.view);
+      var targetPlayerPosition = {x: player.position.x + offset.x, y: player.position.y + offset.y};
+
+      if (currentMap.inBounds(targetPlayerPosition)) {
+        // successful player movement
+        player.position = targetPlayerPosition;
+        player.view.move(player.position)
+        WorldView.centerOnView(player.view);
+      }
     }
   };
 
+  var currentMap;
   window.onload = function() {
     // create map
     var landSize = {width: 1, height: 1};
-    WorldMap.create(function(position, type) {
+    currentMap = WorldMap.getMap("start");
+    currentMap.getViews(function(position, type) {
       WorldView.addView(new View(position, landSize, type));
     });
 
