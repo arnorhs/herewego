@@ -29,4 +29,7 @@ body, html {
 .land_bridge_h {
   background: transparent url(img/land_bridge_horizontal.png) no-repeat;
 }
+.land_mountain {
+  background: transparent url(img/land_mountain.png?2) no-repeat;
+}
 
