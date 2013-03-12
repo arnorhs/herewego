@@ -17,6 +17,11 @@ Some weirdo old school type of game I'm having fun with.
 - Save player position
 - Come up with game mechanics that make the game really unique and fun (jk)
 
+### Installation:
+
+It's actually just plain html + js so far, so you can just run it from the file
+system. http server not even required.
+
 ---
 
 ### License:
