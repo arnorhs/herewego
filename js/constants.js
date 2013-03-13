@@ -12,4 +12,5 @@
   window.BRIDGE_V = i++;
   window.BRIDGE_H = i++;
   window.MOUNTAIN = i++;
+  window.ROAD = i++;
 })();

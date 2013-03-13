@@ -8,6 +8,7 @@
   classes[BRIDGE_V] = 'land_bridge_v';
   classes[BRIDGE_H] = 'land_bridge_h';
   classes[MOUNTAIN] = 'land_mountain';
+  classes[ROAD] = 'land_road';
 
   function View(position, size, type) {
     this.position = position;
