@@ -10,7 +10,6 @@ Some weirdo old school type of game I'm having fun with.
 - Make a better map - should it be like something?
 
 ### Features to add soon:
-- Add more types of land/terrain (Roads, etc)
 - Add some more entities. People to talk to, enemies to fight or something.
 - Save player position
 - Come up with game mechanics that make the game really unique and fun (jk)
