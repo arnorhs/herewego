@@ -2,8 +2,8 @@
 
   var player = {
     position: {
-      x: 6,
-      y: 6
+      x: 73,
+      y: 33
     },
     size: {
       width: 1,
@@ -114,6 +114,8 @@
 
     // initializing the world basically adds all the stuff to the main div
     WorldView.init();
+
+    WorldView.centerOnView(player.view);
   }
 
   var key = {
