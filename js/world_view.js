@@ -3,8 +3,7 @@
   var views = [],
       rootView,
       viewportSize,
-      viewportOffset = {x: 0, y: 0},
-      centerPoint;
+      viewportOffset = {x: 0, y: 0};
 
   function recalculateViewportSize() {
     // pixel sizes
@@ -14,10 +13,6 @@
     viewportSize = {
       width: Math.ceil(windowWidth / UNIT),
       height: Math.ceil(windowHeight / UNIT)
-    };
-    centerPoint = {
-      x: Math.floor((windowWidth / 2) / UNIT),
-      y: Math.floor((windowHeight / 2) / UNIT)
     };
   }
 
@@ -68,15 +63,14 @@
     init: function() {
       rootView = document.getElementById("world_view");
       recalculateViewportSize();
-      rearrangeViews();
     },
     addView: function(view) {
       views.push(view);
     },
     centerOnView: function(view) {
       viewportOffset = {
-        x: view.position.x - centerPoint.x,
-        y: view.position.y - centerPoint.y
+        x: view.position.x - Math.floor(viewportSize.width / 2),
+        y: view.position.y - Math.floor(viewportSize.height / 2)
       };
       rearrangeViews();
     }
