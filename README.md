@@ -8,8 +8,8 @@ Some weirdo old school type of game I'm having fun with.
 - Add a module library so I don't have to put every fucking thing on the window object
 - Move player object into its own file
 - Move the game entitiy stuff into its own file
-- Fix the view scrolling to move views instead of using the screen scroll
 - Make a better map - should it be like something?
+- Prevent the view from scrolling outside of the map area
 
 ### Features to add soon:
 - Add more types of land/terrain (Roads, etc)
