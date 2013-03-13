@@ -33,6 +33,6 @@ body, html {
   background: transparent url(img/land_mountain.png) no-repeat;
 }
 .land_road {
-  background: transparent url(img/land_road.png?sd) no-repeat;
+  background: transparent url(img/land_road.png) no-repeat;
 }
 
