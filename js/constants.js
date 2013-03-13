@@ -1,5 +1,7 @@
 (function() {
   window.UNIT = 48;
+  // the delay that must pass between player movements
+  window.PLAYER_MOVEMENT_RATE = 140;
 
   // define entity types
   var i = 1;

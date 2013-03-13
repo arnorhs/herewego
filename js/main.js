@@ -125,14 +125,13 @@
     right: 39
   };
   // bad horrible attempt at limiting movement speed
-  var lastAction = new Date(),
-      interval = 100;
+  var lastAction = new Date();
   document.onkeydown = function(e) {
     var now = new Date(),
         keyCode = e.keyCode,
         playerMoveSuccessful = false;
 
-    if (now - lastAction < interval) {
+    if (now - lastAction < PLAYER_MOVEMENT_RATE) {
       return false;
     }
 
