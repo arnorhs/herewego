@@ -38,6 +38,17 @@
       var entity = new GameEntity(type, view);
       WorldView.addView(view);
       entities.add(position, entity);
+
+      // figure out if we should show an alien here
+      if (entity.canPassThrough()) {
+        var rand = Math.floor(Math.random() * 100);
+        if (rand < 1) {
+          var alienView = new View(position, {width: 1, height: 1}, ALIEN);
+          var alien = new GameEntity(ALIEN, alienView);
+          WorldView.addView(alienView);
+          entities.add(position, entity);
+        }
+      }
     });
 
     // makes it so the viewport can't be scrolled past these limits

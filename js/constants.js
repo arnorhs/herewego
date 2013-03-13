@@ -6,6 +6,7 @@
   // define entity types
   var i = 1;
   window.PLAYER = i++;
+  window.ALIEN = i++;
   window.GRASS = i++;
   window.TREE = i++;
   window.WATER = i++;

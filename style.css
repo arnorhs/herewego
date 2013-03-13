@@ -14,6 +14,10 @@ body, html {
   background: transparent url(img/player.png) no-repeat;
 }
 
+.enemy_alien {
+  background: transparent url(img/alien.png) no-repeat;
+}
+
 .land_grass {
   background: transparent url(img/land_grass.png) no-repeat;
 }
