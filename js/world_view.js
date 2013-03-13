@@ -3,7 +3,8 @@
   var views = [],
       rootView,
       viewportSize,
-      viewportOffset = {x: 0, y: 0};
+      viewportOffset = {x: 0, y: 0},
+      currentMapRect;
 
   function recalculateViewportSize() {
     // pixel sizes
@@ -64,13 +65,21 @@
       rootView = document.getElementById("world_view");
       recalculateViewportSize();
     },
+    setViewportOffsetLimits: function(rect) {
+      currentMapRect = rect;
+    },
     addView: function(view) {
       views.push(view);
     },
     centerOnView: function(view) {
+      var x = view.position.x - Math.floor(viewportSize.width / 2),
+          y = view.position.y - Math.floor(viewportSize.height / 2);
+      // watch out not to scroll out of bounds. We add a unit in size from the map bounds
+      // because we render the last tile on x/y out of bounds of the viewport (see the
+      // Math.ceil() call in recalculateViewportSize()
       viewportOffset = {
-        x: view.position.x - Math.floor(viewportSize.width / 2),
-        y: view.position.y - Math.floor(viewportSize.height / 2)
+        x: Math.max(currentMapRect.x, Math.min(x, (currentMapRect.width + 1) - viewportSize.width)),
+        y: Math.max(currentMapRect.y, Math.min(y, (currentMapRect.height + 1) - viewportSize.height))
       };
       rearrangeViews();
     }

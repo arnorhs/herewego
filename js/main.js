@@ -40,6 +40,9 @@
       entities.add(position, entity);
     });
 
+    // makes it so the viewport can't be scrolled past these limits
+    WorldView.setViewportOffsetLimits(currentMap.getRect());
+
     // create the player view
     player.view = new View(player.position, player.size, PLAYER);
     WorldView.addView(player.view);

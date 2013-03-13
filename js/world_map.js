@@ -112,6 +112,15 @@
     }
   };
 
+  WorldMap.prototype.getRect = function() {
+    return {
+      x: 0,
+      y: 0,
+      width: this.size.x,
+      height: this.size.y
+    };
+  };
+
   WorldMap.prototype.inBounds = function(position) {
     return position.x >= 0 && position.x < this.size.x && position.y >= 0 && position.y < this.size.y;
   };
