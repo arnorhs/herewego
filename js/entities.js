@@ -42,20 +42,40 @@
     this._get(key).push(object);
   };
 
-  EntitiesHash.prototype.canPassThroughAll = function(position) {
-    var key = EntitiesHash.getKey(position);
-    var retval = true;
-    this._get(key).forEach(function(item) {
-      if (!item.canPassThrough()) {
-        retval = false;
+  EntitiesHash.prototype.getEnemy = function(position) {
+    var enemy = null;
+    this._get(EntitiesHash.getKey(position)).forEach(function(item) {
+      if (item.isEnemy()) {
+        enemy = item;
       }
     });
-    return retval;
+    return enemy;
+  };
+
+  EntitiesHash.prototype.canPassThroughAll = function(position) {
+    var can = true;
+    this._get(EntitiesHash.getKey(position)).forEach(function(item) {
+      if (!item.canPassThrough()) {
+        can = false;
+      }
+    });
+    return can;
   };
 
   function GameEntity(type, view) {
+    this.dead = false;
     this.type = type;
     this.view = view;
+    this._attr = defaultAttributesForType(type);
+  }
+
+  // used to get/set arbitrary attributes on entities
+  GameEntity.prototype.attr = function(key, value) {
+    if (value === undefined) {
+      return this._attr[key];
+    } else {
+      this._attr[key] = value;
+    }
   }
 
   GameEntity.prototype.canPassThrough = function() {
@@ -66,6 +86,25 @@
         return false;
     }
     return true;
+  }
+
+  GameEntity.prototype.isEnemy = function() {
+    switch (this.type) {
+      case ALIEN:
+        return true;
+    }
+    return false;
+  }
+
+  GameEntity.prototype.setDead = function() {
+    this.dead = true;
+    var newType;
+    switch (this.type) {
+      case ALIEN:
+        newType = DEAD_ALIEN;
+    }
+    this.view.changeType(newType);
+    this.type = newType;
   }
 
   window.EntitiesHash = EntitiesHash;

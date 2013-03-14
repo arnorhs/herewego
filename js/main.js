@@ -10,20 +10,77 @@
       height: 1
     },
     view: null,
+    entity: null,
     // returns true if the player managed to move, false otherwise
     move: function(offset) {
       var targetPlayerPosition = {x: player.position.x + offset.x, y: player.position.y + offset.y};
 
       if (currentMap.inBounds(targetPlayerPosition) && entities.canPassThroughAll(targetPlayerPosition)) {
-        // successful player movement
-        player.position = targetPlayerPosition;
-        player.view.move(player.position)
-        WorldView.centerOnView(player.view);
+        var enemy = entities.getEnemy(targetPlayerPosition);
+        if (enemy) {
+          var enemyType = enemy.type;
+          attack(player.entity, enemy);
+          if (!enemy.dead) {
+            attack(enemy, player.entity);
+            if (player.entity.dead) {
+              // game over
+            }
+          } else {
+            // enemy died, give exp
+            player.entity.attr('exp', player.entity.attr('exp') + experienceForKillingType(enemyType));
+          }
+          updatePlayerStats();
+        } else {
+          // successful player movement
+          player.position = targetPlayerPosition;
+          player.view.move(player.position)
+          WorldView.centerOnView(player.view);
+        }
         return true;
       }
       return false;
     }
   };
+
+  function updatePlayerStats() {
+    var playerStats = document.getElementById("player_stats");
+    var attributes = playerStats.childNodes[0];
+    var health = playerStats.childNodes[1];
+    var percentage = health.childNodes[0];
+
+    percentage.style.width = (player.entity.attr("health") * 100 / player.entity.attr("maxHealth")) + "%";
+    attributes.textContent = "Experience: " + formatStat(player.entity.attr("exp"));
+    playerStats.style.display = "block";
+  }
+
+  // probably should be a method on GameEntity
+  function attack(attacker, victim) {
+    // attacker
+    var strength = attacker.attr('strength');
+    var weaponDamage = attacker.attr('weapon').damage;
+    var maxDamage = (strength * 3) + weaponDamage;
+    // how much of the damage is random?
+    // 0-1
+    var accuracy = 0.5; // 0.5 is half
+    var fixedDamage = maxDamage * accuracy;
+    var randomDamage = Math.random() * maxDamage * (1 - accuracy);
+    var damage = fixedDamage + randomDamage;
+
+    // victim
+    var health = victim.attr('health');
+    var armor = victim.attr('armor');
+    if (armor) {
+      damage /= armor.strength;
+    }
+    health -= damage;
+    console.log("damage:", damage, "health:", health);
+
+    victim.attr('health', health);
+
+    if (health <= 0) {
+      victim.setDead();
+    }
+  }
 
   var currentMap, entities;
   window.onload = function() {
@@ -55,12 +112,15 @@
 
     // create the player view
     player.view = new View(player.position, player.size, PLAYER);
+    player.entity = new GameEntity(PLAYER, player.view);
     WorldView.addView(player.view);
+    entities.add(player.position, player.entity);
 
     // initializing the world basically adds all the stuff to the main div
     WorldView.init();
 
     WorldView.centerOnView(player.view);
+    updatePlayerStats();
   }
 
   var key = {

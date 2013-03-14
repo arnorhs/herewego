@@ -10,6 +10,7 @@
   classes[MOUNTAIN] = 'land_mountain';
   classes[ROAD] = 'land_road';
   classes[ALIEN] = 'enemy_alien';
+  classes[DEAD_ALIEN] = 'enemy_alien_dead';
 
   function View(position, size, type) {
     this.position = position;
@@ -19,6 +20,10 @@
   }
   View.prototype.move = function(position) {
     this.position = position;
+  };
+  View.prototype.changeType = function(type) {
+    this.type = type;
+    this.element.className = classes[type];
   };
   View.prototype.createElement = function() {
     var div = document.createElement('div');

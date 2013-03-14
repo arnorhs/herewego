@@ -2,6 +2,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 body, html {
   height: 100%;
+  font-family: sans-serif;
 }
 #world_view {
   height: 100%;
@@ -38,5 +39,33 @@ body, html {
 }
 .land_road {
   background: transparent url(img/land_road.png?sjkdfkjj882822k) no-repeat;
+}
+
+#player_stats {
+  background: rgba(0,0,0, 0.3);
+  border-radius: 3px;
+  color: #fff;
+  white-space: pre-line;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 144px;
+  height: 48px;
+  padding: 12px;
+  line-height: 1.5em;
+}
+#player_stats .health {
+  background: rgba(0,0,0, 0.3);
+  height: 24px;
+  border-radius: 3px;
+}
+#player_stats .health .percent {
+  background: rgba(255,0,0, 0.8);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0,0,0,0)), color-stop(0.5, rgba(0,0,0,0)), color-stop(0.5, rgba(0,0,0,0.06)), color-stop(1, rgba(0,0,0,0.1)));
+  box-shadow: 0px 1px 0px rgba(255,255,255, 0.3),
+              0px 1px 0px rgba(255,255,255, 0.3) inset;
+  border: 1px solid rgba(180,0,0, 0.8);
+  height: 22px;
+  border-radius: 3px;
 }
 
