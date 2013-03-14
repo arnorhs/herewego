@@ -26,8 +26,8 @@
   }
 
   function distanceFromCenter(position) {
-    var a = Math.pow(Math.abs(centerPosition.x - position.x), 2);
-    var b = Math.pow(Math.abs(centerPosition.y - position.y), 2);
+    var a = Math.pow(centerPosition.x - position.x, 2);
+    var b = Math.pow(centerPosition.y - position.y, 2);
     return Math.sqrt(a + b);
   }
 
