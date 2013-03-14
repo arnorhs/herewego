@@ -74,7 +74,6 @@
       damage /= armor.strength;
     }
     health -= damage;
-    console.log("damage:", damage, "health:", health);
 
     victim.attr('health', health);
 
