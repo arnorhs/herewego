@@ -8,6 +8,7 @@ Some weirdo old school type of game I'm having fun with.
 - Add a module library so I don't have to put every fucking thing on the window object
 - Move player object into its own file
 - Make a better map - should it be like something?
+- Make it so aliens cannot spawn on top of player
 
 ### Features to add soon:
 - Add some more entities. People to talk to, enemies to fight or something.

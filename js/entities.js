@@ -42,6 +42,16 @@
     this._get(key).push(object);
   };
 
+  EntitiesHash.prototype.getHouse = function(position) {
+    var house = null;
+    this._get(EntitiesHash.getKey(position)).forEach(function(item) {
+      if (item.isHouse()) {
+        house = item;
+      }
+    });
+    return house;
+  };
+
   EntitiesHash.prototype.getEnemy = function(position) {
     var enemy = null;
     this._get(EntitiesHash.getKey(position)).forEach(function(item) {
@@ -86,6 +96,14 @@
         return false;
     }
     return true;
+  }
+
+  GameEntity.prototype.isHouse = function() {
+    switch (this.type) {
+      case HOUSE:
+        return true;
+    }
+    return false;
   }
 
   GameEntity.prototype.isEnemy = function() {

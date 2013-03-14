@@ -13,9 +13,10 @@
     entity: null,
     // returns true if the player managed to move, false otherwise
     move: function(offset) {
-      var targetPlayerPosition = {x: player.position.x + offset.x, y: player.position.y + offset.y};
+      var targetPlayerPosition = {x: player.position.x + offset.x, y: player.position.y + offset.y},
+          successfulMovement = false;
 
-      if (currentMap.inBounds(targetPlayerPosition) && entities.canPassThroughAll(targetPlayerPosition)) {
+      if (!player.entity.dead && currentMap.inBounds(targetPlayerPosition) && entities.canPassThroughAll(targetPlayerPosition)) {
         var enemy = entities.getEnemy(targetPlayerPosition);
         if (enemy) {
           var enemyType = enemy.type;
@@ -35,10 +36,17 @@
           player.view.move(player.position)
           WorldView.centerOnView(player.view);
         }
+
+        // give him more health if he touches a building
+        var house = entities.getHouse(targetPlayerPosition);
+        if (house) {
+          player.entity.attr('health', player.entity.attr('maxHealth'));
+        }
+
         updatePlayerStats();
-        return true;
+        successfulMovement = true;
       }
-      return false;
+      return successfulMovement;
     }
   };
 
@@ -97,7 +105,7 @@
       entities.add(position, entity);
 
       // figure out if we should show an alien here
-      if (Math.floor(Math.random() * 250) < 1) {
+      if (Math.floor(Math.random() * 150) < 1) {
         if (entity.canPassThrough()) {
           var alienView = new View(position, {width: 1, height: 1}, ALIEN);
           var alien = new GameEntity(ALIEN, alienView);
