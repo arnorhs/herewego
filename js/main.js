@@ -45,7 +45,7 @@
           var alienView = new View(position, {width: 1, height: 1}, ALIEN);
           var alien = new GameEntity(ALIEN, alienView);
           WorldView.addView(alienView);
-          entities.add(position, entity);
+          entities.add(position, alien);
         }
       }
     });
