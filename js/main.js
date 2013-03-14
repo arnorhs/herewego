@@ -97,7 +97,7 @@
       entities.add(position, entity);
 
       // figure out if we should show an alien here
-      if (Math.floor(Math.random() * 1000) < 1) {
+      if (Math.floor(Math.random() * 250) < 1) {
         if (entity.canPassThrough()) {
           var alienView = new View(position, {width: 1, height: 1}, ALIEN);
           var alien = new GameEntity(ALIEN, alienView);

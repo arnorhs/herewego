@@ -2,7 +2,7 @@
 
 Some weirdo old school type of game I'm having fun with.
 
-![Screenshot](http://cl.ly/image/3d2u2o210D2s/Screen%20Shot%202013-03-13%20at%202.15.43%20AM.png)
+![Screenshot](http://f.cl.ly/items/0N3c03442t00303X1w2s/Screen%20Shot%202013-03-14%20at%201.17.28%20AM.png)
 
 ### Next up todo:
 - Add a module library so I don't have to put every fucking thing on the window object
