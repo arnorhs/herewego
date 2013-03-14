@@ -1,5 +1,22 @@
 (function() {
 
+  var world = {
+    time: 0
+  };
+  function initWorldTime() {
+    setInterval(function() {
+      // skip a beat if the player is moving
+      if (player.isMoving) {
+        return;
+      }
+
+      world.time += 1;
+      updatePlayerStats();
+
+    }, 1000);
+  }
+  window.debug = function() { debugger; };
+
   var player = {
     position: {
       x: 73,
@@ -9,10 +26,12 @@
       width: 1,
       height: 1
     },
+    isMoving: false,
     view: null,
     entity: null,
     // returns true if the player managed to move, false otherwise
     move: function(offset) {
+      player.isMoving = true;
       var targetPlayerPosition = {x: player.position.x + offset.x, y: player.position.y + offset.y},
           successfulMovement = false;
 
@@ -46,6 +65,7 @@
         updatePlayerStats();
         successfulMovement = true;
       }
+      player.isMoving = false;
       return successfulMovement;
     }
   };
@@ -56,9 +76,16 @@
     var health = playerStats.childNodes[1];
     var percentage = health.childNodes[0];
 
+    var hours = Math.floor(world.time / 60) % (60*24),
+        minutes = "" + (world.time % 60);
+    if (minutes.length == 1) {
+      minutes = "0" + minutes;
+    }
+
     percentage.style.width = (player.entity.attr("health") * 100 / player.entity.attr("maxHealth")) + "%";
     attributes.textContent = "Experience: " + formatStat(player.entity.attr("exp")) + "\n" +
-                             "pos: " + player.view.position.x + ", " + player.view.position.y;
+                             "pos: " + player.view.position.x + ", " + player.view.position.y + "\n" +
+                             "Time: " + hours + ":" + minutes;
     playerStats.style.display = "block";
   }
 
@@ -137,6 +164,8 @@
 
     WorldView.centerOnView(player.view);
     updatePlayerStats();
+
+    initWorldTime();
   }
 
   var key = {
