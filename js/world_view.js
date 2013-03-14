@@ -4,7 +4,8 @@
       rootView,
       viewportSize,
       viewportOffset = {x: 0, y: 0},
-      currentMapRect;
+      currentMapRect,
+      centerPosition;
 
   function recalculateViewportSize() {
     // pixel sizes
@@ -24,9 +25,17 @@
            position.y < viewportOffset.y + viewportSize.height;
   }
 
+  function distanceFromCenter(position) {
+    var a = Math.pow(Math.abs(centerPosition.x - position.x), 2);
+    var b = Math.pow(Math.abs(centerPosition.y - position.y), 2);
+    return Math.sqrt(a + b);
+  }
+
   function rearrangeViews() {
     var vl = views.length;
     var viewsToShow = [];
+    var farthest = Math.ceil(viewportSize.width / 2);
+    var completelyVisible = 4;
     for (var i = 0; i < vl; i++) {
       var view = views[i];
       if (isInViewport(view.position)) {
@@ -35,6 +44,10 @@
         if (!rootView.contains(view.element)) {
           rootView.appendChild(view.element);
         }
+        // set the opacity based on the distance to the player
+        var distanceRatio = Math.min(Math.max(distanceFromCenter(view.position), completelyVisible), farthest);
+        view.element.style.opacity = 1 - ((distanceRatio - completelyVisible) / (farthest - completelyVisible));
+
         viewsToShow.push(view);
       } else {
         if (rootView.contains(view.element)) {
@@ -74,6 +87,7 @@
     centerOnView: function(view) {
       var x = view.position.x - Math.floor(viewportSize.width / 2),
           y = view.position.y - Math.floor(viewportSize.height / 2);
+      centerPosition = {x: view.position.x, y: view.position.y};
       // watch out not to scroll out of bounds. We add a unit in size from the map bounds
       // because we render the last tile on x/y out of bounds of the viewport (see the
       // Math.ceil() call in recalculateViewportSize()
