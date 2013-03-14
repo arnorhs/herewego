@@ -38,7 +38,7 @@ body, html {
   background: transparent url(img/land_mountain.png) no-repeat;
 }
 .land_road {
-  background: transparent url(img/land_road.png?sjkdfkjj882822k) no-repeat;
+  background: transparent url(img/land_road.png) no-repeat;
 }
 
 #player_stats {
