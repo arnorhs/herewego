@@ -13,6 +13,9 @@ Some weirdo old school type of game I'm having fun with.
 - Add some more entities. People to talk to, enemies to fight or something.
 - Save player position
 - Come up with game mechanics that make the game really unique and fun (jk)
+- Maybe limit the player's line of sight? color the quares black if the player
+  is far away etc
+- maybe use something else than drawings for each of the characters?
 
 ### Installation:
 
