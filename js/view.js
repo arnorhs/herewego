@@ -11,6 +11,7 @@
   classes[ROAD] = 'land_road';
   classes[ALIEN] = 'enemy_alien';
   classes[DEAD_ALIEN] = 'enemy_alien_dead';
+  classes[HOUSE] = 'house';
 
   function View(position, size, type) {
     this.position = position;

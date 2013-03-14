@@ -41,6 +41,10 @@ body, html {
   background: transparent url(img/land_road.png) no-repeat;
 }
 
+.house {
+  background: transparent url(img/house.png) no-repeat;
+}
+
 #player_stats {
   background: rgba(0,0,0, 0.3);
   border-radius: 3px;
@@ -50,11 +54,12 @@ body, html {
   bottom: 12px;
   right: 12px;
   width: 144px;
-  height: 48px;
+  height: auto;
   padding: 12px;
   line-height: 1.5em;
 }
 #player_stats .health {
+  margin-top: 10px;
   background: rgba(0,0,0, 0.3);
   height: 24px;
   border-radius: 3px;

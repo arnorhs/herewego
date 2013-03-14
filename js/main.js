@@ -29,13 +29,13 @@
             // enemy died, give exp
             player.entity.attr('exp', player.entity.attr('exp') + experienceForKillingType(enemyType));
           }
-          updatePlayerStats();
         } else {
           // successful player movement
           player.position = targetPlayerPosition;
           player.view.move(player.position)
           WorldView.centerOnView(player.view);
         }
+        updatePlayerStats();
         return true;
       }
       return false;
@@ -49,7 +49,8 @@
     var percentage = health.childNodes[0];
 
     percentage.style.width = (player.entity.attr("health") * 100 / player.entity.attr("maxHealth")) + "%";
-    attributes.textContent = "Experience: " + formatStat(player.entity.attr("exp"));
+    attributes.textContent = "Experience: " + formatStat(player.entity.attr("exp")) + "\n" +
+                             "pos: " + player.view.position.x + ", " + player.view.position.y;
     playerStats.style.display = "block";
   }
 
@@ -115,6 +116,14 @@
     player.entity = new GameEntity(PLAYER, player.view);
     WorldView.addView(player.view);
     entities.add(player.position, player.entity);
+
+    // make all buildings
+    [{x: 6, y: 5}, {x: 63, y: 31}, {x: 41, y: 41}, {x: 38, y: 56}, {x: 76, y: 15}].forEach(function(housePosition) {
+      var houseView = new View(housePosition, {width: 1, height: 1}, HOUSE);
+      var house = new GameEntity(HOUSE, houseView);
+      WorldView.addView(houseView);
+      entities.add(housePosition, house);
+    });
 
     // initializing the world basically adds all the stuff to the main div
     WorldView.init();

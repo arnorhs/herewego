@@ -8,6 +8,7 @@
   window.PLAYER = i++;
   window.ALIEN = i++;
   window.DEAD_ALIEN = i++;
+  window.HOUSE = i++;
   window.GRASS = i++;
   window.TREE = i++;
   window.WATER = i++;
