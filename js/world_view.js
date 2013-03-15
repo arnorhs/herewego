@@ -25,17 +25,23 @@
            position.y < viewportOffset.y + viewportSize.height;
   }
 
-  function distanceFromCenter(position) {
-    var a = Math.pow(centerPosition.x - position.x, 2);
-    var b = Math.pow(centerPosition.y - position.y, 2);
-    return Math.sqrt(a + b);
+  function LightSource(position, fillStrength, range) {
+    this.position = position
+    this.fillStrength = fillStrength;
+    this.range = range;
+  }
+
+  LightSource.prototype.calculateOpacity = function(position) {
+    var distance = Math.min(Math.max(distanceBetweenPoints(this.position, position), this.fillStrength), this.range);
+    return 1 - ((distance - this.fillStrength) / (this.range - this.fillStrength));
   }
 
   function rearrangeViews() {
+    var d = new Date();
     var vl = views.length;
     var viewsToShow = [];
-    var farthest = Math.ceil(viewportSize.width / 2);
-    var completelyVisible = 4;
+    var lightSource = new LightSource(centerPosition, 4, Math.ceil(viewportSize.width / 2));
+
     for (var i = 0; i < vl; i++) {
       var view = views[i];
       if (isInViewport(view.position)) {
@@ -45,8 +51,7 @@
           rootView.appendChild(view.element);
         }
         // set the opacity based on the distance to the player
-        var distanceRatio = Math.min(Math.max(distanceFromCenter(view.position), completelyVisible), farthest);
-        view.element.style.opacity = 1 - ((distanceRatio - completelyVisible) / (farthest - completelyVisible));
+        view.element.style.opacity = lightSource.calculateOpacity(view.position);
 
         viewsToShow.push(view);
       } else {
