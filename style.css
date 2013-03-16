@@ -74,3 +74,8 @@ body, html {
   border-radius: 3px;
 }
 
+#light_canvas {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
