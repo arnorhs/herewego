@@ -106,6 +106,8 @@
     if (health <= 0) {
       victim.setDead();
     }
+
+    WorldView.animateDamage(victim, damage);
   }
 
   var currentMap, entities;

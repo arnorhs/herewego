@@ -106,6 +106,19 @@
         y: Math.max(currentMapRect.y, Math.min(y, (currentMapRect.height + 1) - viewportSize.height))
       };
       rearrangeViews();
+    },
+    animateDamage: function(victim, damage) {
+      var position = victim.view.position;
+      var elem = document.createElement("div");
+      elem.className = "damage_animation";
+      elem.style.left = dimension(position.x - viewportOffset.x);
+      elem.style.top = dimension(position.y - viewportOffset.y);
+      elem.textContent = "-" + damage.toFixed(1);
+      // TODO it would probably be nicer to add this to some other view, but for now this is ok
+      rootView.appendChild(elem);
+      setTimeout(function() {
+        rootView.removeChild(elem);
+      }, 3000);
     }
   };
 })();
