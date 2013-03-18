@@ -3,6 +3,7 @@
   var world = {
     time: 0
   };
+
   function initWorldTime() {
     setInterval(function() {
       // skip a beat if the player is moving
@@ -142,11 +143,11 @@
     entities.add(player.position, player.entity);
 
     // make all buildings
-    [{x: 6, y: 5}, {x: 63, y: 31}, {x: 41, y: 41}, {x: 38, y: 56}, {x: 76, y: 15}].forEach(function(housePosition) {
-      var houseView = new View(housePosition, {width: 1, height: 1}, HOUSE);
-      var house = new GameEntity(HOUSE, houseView);
-      WorldView.addView(houseView);
-      entities.add(housePosition, house);
+    currentMap.getBuildings(function(buildingPosition) {
+      var buildingView = new View(buildingPosition, {width: 1, height: 1}, HOUSE);
+      var house = new GameEntity(HOUSE, buildingView);
+      WorldView.addView(buildingView);
+      entities.add(buildingPosition, house);
     });
 
     // initializing the world basically adds all the stuff to the main div

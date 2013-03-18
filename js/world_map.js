@@ -10,7 +10,8 @@
   // m: mountain
   // r: road
   var mapDefinitions = {
-    start:       ["..ttttmmmm...wwwwwwwwwwww.......................ttttttttt............................wwwwwwwwwwwwwwww...........wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+    start: {
+      map:       ["..ttttmmmm...wwwwwwwwwwww.......................ttttttttt............................wwwwwwwwwwwwwwww...........wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
                   "..tttttmmm........wwwwwwwwwwwww.................ttttttttt............................wwwwwwwwwwwwww.............wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
                   "...tttttt......ttttttttttttwww.......................................................wwwwwwwwwwww...............wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
                   "..tttt............tttttttwwww..........................................................wwwwwwww.................wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
@@ -75,8 +76,10 @@
                   "mmmmmmmmmmm.mm...........................................................wwwww............................www............t.t.t.t.ttttttttt.ttt.t.....t.t.t..",
                   "mmmmmmmmmmm...mm.........................................................wwwwwwwwwww......................www............t.t.t.t.............t.t.ttttt.t.t..",
                   "mmmmmmmmmmmmmmmmm.......................................................wwwwwwwww........................................t...t....tttttttttt...t.......t.t..",
-                  "mmmmmmmmmmmmmmmmmm........................................................wwwwwwwwww.....................................tttttttttt........ttttttttttttt....",
-    ]};
+                  "mmmmmmmmmmmmmmmmmm........................................................wwwwwwwwww.....................................tttttttttt........ttttttttttttt...."],
+        buildings: [{x: 6, y: 5}, {x: 63, y: 31}, {x: 41, y: 41}, {x: 38, y: 56}, {x: 76, y: 15}]
+      }
+    };
 
   var types = {
     ".": GRASS,
@@ -99,7 +102,7 @@
   }
 
   WorldMap.prototype.getViews = function(callback) {
-    var worldMap = mapDefinitions[this.name];
+    var worldMap = mapDefinitions[this.name].map;
     var yl = worldMap.length;
     var xl = worldMap[0].length; // assuming each row is equally long for now
 
@@ -111,6 +114,13 @@
       for (var x = 0; x < xl; x++) {
         callback({x: x, y: y}, squareToType(worldMap[y][x]));
       }
+    }
+  };
+
+  WorldMap.prototype.getBuildings = function(callback) {
+    var buildings = mapDefinitions[this.name].buildings;
+    for (var i = 0, bl = buildings.length; i < bl; i++) {
+      callback(buildings[i]);
     }
   };
 
