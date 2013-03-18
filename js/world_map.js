@@ -71,12 +71,12 @@
                   "mm..m.m.m.mmmm........tttttttttwwwtwwtttttttt........r............ttt...tt.wwww...ttttt..........r..........www..........t.t.t.t..t....t.t...t.t.t.ttttt.t..",
                   "mmmm..m....mmmm.......ttttttttttwtttttttttt......t...r................tttt.wwwww..ttttm...m......r.........wwww..........t.t.ttttttttt.t.t...t.........t.t..",
                   "mmm.....mm..m........t.....ttttttttttttttttt.........r................tttttwwwwtttttttt.mm.......r.........wwww..........t.t.......t...t.tttttttt.tttt.t.t..",
-                  "mmmmmmmmmm...m......t..tt.......ttt.....tttt.........rt........t...........wwwwww.....m.mmmm.....r.........ww............t.tttttt.tttt.t.....t.......t.t.t..",
-                  "mmmmmmmmmmmmm.........t...t.....................rrrrrrrrrrrrrrrrrrrrrrrrrrrBBBrrrrrrr..mmmmmm....r.........ww............t.t...t.........ttt.t.ttttt.t.t.t..",
-                  "mmmmmmmmmmmmmmmmmmmmtttttttttttttttttttttttttttttttttttttttttttttttttttttwwwww......r.m.mmmmm.m..r........www............t.t.t.t.ttttttttt.ttt.t.....t.t.t..",
-                  "mmmmmmmmmmm...mm.........t..............rrrrrrrrr...t....................wwwwwwww...r....mmm...m.r........www............t.t.t.t.............t.t.ttttt.t.t..",
-                  "mmmmmmmmmmmmmmmmm................t....................t.................wwwwwwwww...rrrrrrrrrrrrrr.......................t...t....tttttttttt...t.......t.t..",
-                  "mmmmmmmmmmmmmmmmmm.............................................t..........wwwwwwwwww.....................................tttttttttt........ttttttttttttt...."],
+                  "mmmmmmmmmm...m......t..tt.......ttt.....tttt.........rt........t...........wwwwww.....m.mmmm.....r.........ww......tt....t.tttttt.tttt.t.....t.......t.t.t..",
+                  "mmmmmmmmmmmmm.........t...t.....tt..............rrrrrrrrrrrrrrrrrrrrrrrrrrrBBBrrrrrrr..mmmmmm....r.........ww.....tttt...t.t...t.........ttt.t.ttttt.t.t.t..",
+                  "mmmmmmmmmmmmmmmmm...........t...tt..............r........................wwwww......r.m.mmmmm.m..r........www....tttt....t.t.t.t.ttttttttt.ttt.t.....t.t.t..",
+                  "mmmmmmmmmmm...mm.........t.t..t.......rrrrrrrrrrr...t....................wwwwwwww...r....mmm...m.r.....wwwwww..tttttt....t.t.t.t.............t.t.ttttt.t.t..",
+                  "mmmmmmmmmmmmmmmmm....tttttt...tt.t....................t.................wwwwwwwww...rrrrrrrrrrrrrr..wwwwwwww..tttttt.....t...t....tttttttttt...t.......t.t..",
+                  "mmmmmmmmmmmmmmmmmmttttttttttttttttttttttttttttttttttttttttttttttttttttwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwtttttttttttttttttttttttt........ttttttttttttt...."],
         buildings: [
           {x: 6, y: 5}, {x: 63, y: 31}, {x: 41, y: 41}, {x: 38, y: 56}, {x: 76, y: 15},
           // single house in the middle of large lake
