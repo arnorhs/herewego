@@ -2,7 +2,7 @@
 
 Some weirdo old school type of game I'm having fun with.
 
-![Screenshot](http://f.cl.ly/items/2a1O1U3n2J21020J083u/Screen%20Shot%202013-03-14%20at%201.43.00%20AM.png)
+![Screenshot](http://f.cl.ly/items/083a2J3c0l3o3n0w1D29/Screen%20Shot%202013-03-17%20at%2010.47.46%20PM.png)
 
 ### Next up todo:
 - Add a module library so I don't have to put every fucking thing on the window object
@@ -12,11 +12,15 @@ Some weirdo old school type of game I'm having fun with.
 
 ### Features to add soon:
 - Add some more entities. People to talk to, enemies to fight or something.
-- Save player position
+- Save player position, time of day, experience points
+- Allow the player to level up
+- add some animations or some visual indication that you're hitting an enemy
 - Come up with game mechanics that make the game really unique and fun (jk)
-- Maybe limit the player's line of sight? color the quares black if the player
-  is far away etc
 - maybe use something else than drawings for each of the characters?
+
+### Features to add one day, probably by somebody smarter than me
+- Make the lighting better, smarter - right now it's barely enough to make
+  night time a bit more interesting.
 
 ### Installation:
 
