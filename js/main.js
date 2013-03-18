@@ -123,7 +123,7 @@
 
       // figure out if we should show an alien here
       if (Math.floor(Math.random() * 150) < 1) {
-        if (entity.canPassThrough()) {
+        if (entity.canPassThrough() && !entity.isHouse()) {
           var alienView = new View(position, {width: 1, height: 1}, ALIEN);
           var alien = new GameEntity(ALIEN, alienView);
           WorldView.addView(alienView);
