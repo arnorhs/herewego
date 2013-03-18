@@ -15,7 +15,6 @@
 
     }, 1000);
   }
-  window.debug = function() { debugger; };
 
   var player = {
     position: {
