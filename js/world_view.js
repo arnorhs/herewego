@@ -130,6 +130,7 @@
     // we create 3 copies of the same light with a slight offset
     for (var i = -8; i <= 8; i += 8) {
       shadowCollection.forEach(function(shadowCaster) {
+        var avgEnd = [];
         ctx.beginPath();
         // move to the last point we'll be drawing to, which will be the first point
         // then go through the points and compute those that are the furthest away
@@ -141,11 +142,22 @@
           var x = (point.x > ls.position.x) ? rightBounds : leftBounds,
               y = ((x - ls.position.x) / ratio) + ls.position.y;
           ctx.lineTo(x, y);
+          avgEnd.push({x: x, y: y});
         });
         shadowCaster.points.reverse();
         shadowCaster.points.forEach(function(point) {
           ctx.lineTo(point.x, point.y);
         });
+        var gradEnd = avgEnd.reduce(function(prev, curr, i) {
+          prev.x += curr.x / avgEnd.length;
+          prev.y += curr.y / avgEnd.length;
+          return prev;
+        }, {x:0, y:0});
+        var gradient = ctx.createLinearGradient(ls.position.x, ls.position.y, gradEnd.x, gradEnd.y);
+        gradient.addColorStop(0, 'rgba(0,0,0,0.5)');
+        gradient.addColorStop(0.6, 'rgba(0,0,0,0)');
+        gradient.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = gradient;
         ctx.fill();
       });
     }
