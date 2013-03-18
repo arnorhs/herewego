@@ -72,6 +72,16 @@
     return can;
   };
 
+  EntitiesHash.prototype.enemyCanSpawn = function(position) {
+    var can = true;
+    this._get(EntitiesHash.getKey(position)).forEach(function(item) {
+      if (!item.enemyCanSpawn()) {
+        can = false;
+      }
+    });
+    return can;
+  };
+
   function GameEntity(type, view) {
     this.dead = false;
     this.type = type;
@@ -94,6 +104,22 @@
       case MOUNTAIN:
       case WATER:
         return false;
+    }
+    return true;
+  }
+
+  GameEntity.prototype.enemyCanSpawn = function() {
+    switch (this.type) {
+      case TREE:
+      case MOUNTAIN:
+      case WATER:
+      case HOUSE:
+        return false;
+      case PLAYER:
+      case ALIEN:
+        if (!this.dead) {
+          return false;
+        }
     }
     return true;
   }

@@ -11,6 +11,21 @@
         return;
       }
 
+      // figure out if we should spawn an alien
+      if (Math.random() > 0.7) {
+        var alienPosition = {
+          x: Math.floor(Math.random() * currentMap.getRect().width),
+          y: Math.floor(Math.random() * currentMap.getRect().height)
+        };
+        if (entities.enemyCanSpawn(alienPosition)) {
+          var alienView = new View(alienPosition, {width: 1, height: 1}, ALIEN);
+          var alien = new GameEntity(ALIEN, alienView);
+          WorldView.addView(alienView);
+          entities.add(alienPosition, alien);
+          console.log("added an alien: ", alienPosition.x + "," + alienPosition.y);
+        }
+      }
+
       world.time += 1;
       updatePlayerStats();
 
@@ -123,16 +138,6 @@
       var entity = new GameEntity(type, view);
       WorldView.addView(view);
       entities.add(position, entity);
-
-      // figure out if we should show an alien here
-      if (Math.floor(Math.random() * 150) < 1) {
-        if (entity.canPassThrough() && !entity.isHouse()) {
-          var alienView = new View(position, {width: 1, height: 1}, ALIEN);
-          var alien = new GameEntity(ALIEN, alienView);
-          WorldView.addView(alienView);
-          entities.add(position, alien);
-        }
-      }
     });
 
     // makes it so the viewport can't be scrolled past these limits
