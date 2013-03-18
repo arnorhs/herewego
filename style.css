@@ -49,22 +49,24 @@ body, html {
   background: rgba(0,0,0, 0.3);
   border-radius: 3px;
   color: #fff;
-  white-space: pre-line;
   position: absolute;
   bottom: 12px;
-  right: 12px;
-  width: 144px;
+  left: 50%;
+  margin-left: -90px;
+  width: 180px;
   height: auto;
   padding: 12px;
   line-height: 1.5em;
 }
-#player_stats .health {
-  margin-top: 10px;
+#health {
+  float: left;
+  width: 100px;
+  margin-right: 10px;
   background: rgba(0,0,0, 0.3);
   height: 24px;
   border-radius: 3px;
 }
-#player_stats .health .percent {
+#health .percent {
   background: rgba(255,0,0, 0.8);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0,0,0,0)), color-stop(0.5, rgba(0,0,0,0)), color-stop(0.5, rgba(0,0,0,0.06)), color-stop(1, rgba(0,0,0,0.1)));
   box-shadow: 0px 1px 0px rgba(255,255,255, 0.3),
@@ -78,4 +80,20 @@ body, html {
   position: absolute;
   left: 0px;
   top: 0px;
+}
+
+#coords, #time {
+  position: absolute;
+  top: 10px;
+  width: auto;
+  color: #fff;
+  text-shadow: 0px 1px 1px #000;
+}
+
+#coords {
+  left: 10px;
+}
+#time {
+  text-align: right;
+  right: 10px;
 }

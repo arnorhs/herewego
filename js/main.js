@@ -71,22 +71,27 @@
   };
 
   function updatePlayerStats() {
-    var playerStats = document.getElementById("player_stats");
-    var attributes = playerStats.childNodes[0];
-    var health = playerStats.childNodes[1];
-    var percentage = health.childNodes[0];
+    // Update player health
+    var percentage = document.getElementById("health").childNodes[0];
+    percentage.style.width = (player.entity.attr("health") * 100 / player.entity.attr("maxHealth")) + "%";
 
+    // attributes,.. currently just XP - will probably eventually just be XP and other things will
+    // have their own ID
+    var attributes = document.getElementById("attributes");
+    attributes.textContent = "xp: " + formatStat(player.entity.attr("exp"));
+
+    // Time
     var hours = Math.floor(world.time / 60) % (60*24),
         minutes = "" + (world.time % 60);
-    if (minutes.length == 1) {
+    if (minutes.length == 1) { // stupid padding
       minutes = "0" + minutes;
     }
+    var time = document.getElementById("time");
+    time.textContent = hours + ":" + minutes;
 
-    percentage.style.width = (player.entity.attr("health") * 100 / player.entity.attr("maxHealth")) + "%";
-    attributes.textContent = "Experience: " + formatStat(player.entity.attr("exp")) + "\n" +
-                             "pos: " + player.view.position.x + ", " + player.view.position.y + "\n" +
-                             "Time: " + hours + ":" + minutes;
-    playerStats.style.display = "block";
+    // Coordinates.. probably will disable once this is a proper game
+    var coords = document.getElementById("coords");
+    coords.textContent = player.view.position.x + ", " + player.view.position.y;
   }
 
   // probably should be a method on GameEntity
