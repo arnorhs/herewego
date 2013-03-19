@@ -78,7 +78,9 @@
                   "mmmmmmmmmmmmmmmmm....tttttt...tt.t..tttt.....ttt......t...ttttttt..tttttwwwwwwwwwww.rrrrrrrrrrrrrr.wwwwwwwww..tttttt.....t...t....tttttttttt...t.......t.t..",
                   "mmmmmmmmmmmmmmmmmmttttttttttttttttttttttttttttttttttttttttttttttttttttwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwtttttttttttttttttttttttt........ttttttttttttt...."],
         buildings: [
-          {x: 6, y: 5}, {x: 63, y: 31}, {x: 41, y: 41, type: RESTING_HOUSE}, {x: 38, y: 56}, {x: 76, y: 15},
+          {x: 6, y: 5}, {x: 63, y: 31}, {x: 38, y: 56}, {x: 76, y: 15},
+          // house on the side of the road
+          {x: 41, y: 41, type: RESTING_HOUSE},
           // single house in the middle of large lake
           {x: 134, y: 8},
           // town above maze
