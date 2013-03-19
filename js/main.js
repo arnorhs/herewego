@@ -41,18 +41,26 @@
       width: 1,
       height: 1
     },
-    isMoving: false,
+    state: S_IDLE,
+    movementRate: function() {
+      switch (player.state) {
+        case S_ATTACKING:
+          return 800;
+        case S_MOVING:
+          return 140;
+      }
+      return 0;
+    },
     view: null,
     entity: null,
     // returns true if the player managed to move, false otherwise
     move: function(offset) {
-      player.isMoving = true;
-      var targetPlayerPosition = {x: player.position.x + offset.x, y: player.position.y + offset.y},
-          successfulMovement = false;
+      var targetPlayerPosition = {x: player.position.x + offset.x, y: player.position.y + offset.y};
 
       if (!player.entity.dead && currentMap.inBounds(targetPlayerPosition) && entities.canPassThroughAll(targetPlayerPosition)) {
         var enemy = entities.getEnemy(targetPlayerPosition);
         if (enemy) {
+          player.state = S_ATTACKING;
           var enemyType = enemy.type;
           attack(player.entity, enemy);
           if (!enemy.dead) {
@@ -65,6 +73,7 @@
             player.entity.attr('exp', player.entity.attr('exp') + experienceForKillingType(enemyType));
           }
         } else {
+          player.state = S_MOVING;
           // successful player movement
           player.position = targetPlayerPosition;
           player.view.move(player.position)
@@ -82,10 +91,7 @@
         }
 
         updatePlayerStats();
-        successfulMovement = true;
       }
-      player.isMoving = false;
-      return successfulMovement;
     }
   };
 
@@ -183,22 +189,24 @@
         keyCode = e.keyCode,
         playerMoveSuccessful = false;
 
-    if (now - lastAction < PLAYER_MOVEMENT_RATE) {
+    if (now - lastAction < player.movementRate()) {
       return false;
     }
 
+    player.state = S_UNKNOWN;
+
     switch (keyCode) {
       case key.up:
-        playerMoveSuccessful = player.move({x:0,y:-1});
+        player.move({x:0,y:-1});
         break;
       case key.down:
-        playerMoveSuccessful = player.move({x:0,y:1});
+        player.move({x:0,y:1});
         break;
       case key.left:
-        playerMoveSuccessful = player.move({x:-1,y:0});
+        player.move({x:-1,y:0});
         break;
       case key.right:
-        playerMoveSuccessful = player.move({x:1,y:0});
+        player.move({x:1,y:0});
         break;
       default:
         console.log("Key pressed:", e.keyCode, e.keyIdentifier);
@@ -206,7 +214,7 @@
         // maybe it would be better to know if the game time had changed
         return true;
     }
-    if (playerMoveSuccessful) {
+    if (player.state == S_MOVING || player.state == S_ATTACKING) {
       lastAction = now;
     }
     return false;
