@@ -52,7 +52,7 @@
       return 0;
     },
     getDetailedStats: function() {
-      var keys = ["exp", "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
+      var keys = ["level", "exp", "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
       var stats = {};
       keys.forEach(function(key) {
         stats[key] = player.entity.attr(key);
@@ -81,7 +81,10 @@
             }
           } else {
             // enemy died, give exp
-            player.entity.attr('exp', player.entity.attr('exp') + experienceForKillingType(enemyType));
+            var newExp = player.entity.attr('exp') + experienceForKillingType(enemyType);
+            var newLevel = 1 + Math.floor(newExp / 10);
+            player.entity.attr('exp', newExp);
+            player.entity.attr('level', newLevel);
           }
         } else {
           player.state = S_MOVING;
@@ -124,7 +127,7 @@
     var maxDamage = (strength * 3) + weaponDamage;
     // how much of the damage is random?
     // 0-1
-    var accuracy = 0.5; // 0.5 is half
+    var accuracy = 0.4; // 0.5 is half
     var fixedDamage = maxDamage * accuracy;
     var randomDamage = Math.random() * maxDamage * (1 - accuracy);
     var damage = fixedDamage + randomDamage;

@@ -4,6 +4,7 @@
     switch (type) {
       case ALIEN:
         return {
+          level: 1,
           strength: 1,
           health: 10,
           weapon: new Weapon(2),
@@ -13,6 +14,7 @@
         break;
       case PLAYER:
         return {
+          level: 1,
           strength: 1,
           maxHealth: 20,
           health: 20,

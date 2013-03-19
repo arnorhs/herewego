@@ -50,7 +50,7 @@
 
     isShowingDetailedPlayerStats = true;
 
-    var modal = getModal(300,235);
+    var modal = getModal(300,265);
     var modalContainer = modal.childNodes[0];
     modalContainer.textContent = "";
 
