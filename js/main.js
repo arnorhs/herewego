@@ -198,8 +198,7 @@
   var lastAction = new Date();
   document.onkeydown = function(e) {
     var now = new Date(),
-        keyCode = e.keyCode,
-        playerMoveSuccessful = false;
+        keyCode = e.keyCode;
 
     if (now - lastAction < player.movementRate()) {
       return false;
