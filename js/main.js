@@ -51,6 +51,17 @@
       }
       return 0;
     },
+    getDetailedStats: function() {
+      var keys = ["exp", "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
+      var stats = {};
+      keys.forEach(function(key) {
+        stats[key] = player.entity.attr(key);
+        if (!stats[key]) {
+          stats[key] = 0;
+        }
+      });
+      return stats;
+    },
     view: null,
     entity: null,
     // returns true if the player managed to move, false otherwise
@@ -180,7 +191,8 @@
     up: 38,
     down: 40,
     left: 37,
-    right: 39
+    right: 39,
+    s: 83
   };
   // bad horrible attempt at limiting movement speed
   var lastAction = new Date();
@@ -207,6 +219,9 @@
         break;
       case key.right:
         player.move({x:1,y:0});
+        break;
+      case key.s:
+        HUD.toggleDetailedPlayerStats(player.getDetailedStats());
         break;
       default:
         console.log("Key pressed:", e.keyCode, e.keyIdentifier);
