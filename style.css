@@ -19,6 +19,10 @@ body, html {
   background: transparent url(img/alien.png) no-repeat;
 }
 
+.person_cowboy {
+  background: transparent url(img/person_cowboy.png) no-repeat;
+}
+
 .land_grass {
   background: transparent url(img/land_grass.png) no-repeat;
 }

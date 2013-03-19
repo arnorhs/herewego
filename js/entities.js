@@ -103,6 +103,7 @@
       case TREE:
       case MOUNTAIN:
       case WATER:
+      case PERSON_COWBOY:
         return false;
     }
     return true;
@@ -116,6 +117,7 @@
       case HEALING_HOUSE:
       case RESTING_HOUSE:
         return false;
+      case PERSON_COWBOY:
       case PLAYER:
       case ALIEN:
         if (!this.dead) {
@@ -142,6 +144,7 @@
     return false;
   }
 
+  // TODO this probably shouldn't change the type.. probably just set the dead property
   GameEntity.prototype.setDead = function() {
     this.dead = true;
     var newType;

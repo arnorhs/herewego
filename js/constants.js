@@ -7,6 +7,7 @@
   var i = 1;
   window.PLAYER = i++;
   window.ALIEN = i++;
+  window.PERSON_COWBOY = i++;
   window.DEAD_ALIEN = i++;
   window.HEALING_HOUSE = i++;
   window.RESTING_HOUSE = i++;

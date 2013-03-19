@@ -9,6 +9,7 @@
   classes[BRIDGE_H] = 'land_bridge_h';
   classes[MOUNTAIN] = 'land_mountain';
   classes[ROAD] = 'land_road';
+  classes[PERSON_COWBOY] = 'person_cowboy';
   classes[ALIEN] = 'enemy_alien';
   classes[DEAD_ALIEN] = 'enemy_alien_dead';
   classes[HEALING_HOUSE] = 'healing_house';

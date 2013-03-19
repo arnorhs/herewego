@@ -84,6 +84,10 @@
           // town above maze
           {x: 134, y: 26, type: RESTING_HOUSE}, {x: 134, y: 28}, {x: 139, y: 30},
           {x: 145, y: 28, type: RESTING_HOUSE}, {x: 142, y: 27, type: RESTING_HOUSE}, {x: 148, y: 26}
+        ],
+        people: [
+          // town above maze
+          {x: 136, y: 26}, {x: 139, y: 31}, {x: 146, y: 26},
         ]
       }
     };
@@ -124,10 +128,14 @@
     }
   };
 
-  WorldMap.prototype.getBuildings = function(callback) {
+  WorldMap.prototype.getEntities = function(callback) {
     var buildings = mapDefinitions[this.name].buildings;
+    var people = mapDefinitions[this.name].people;
     buildings.forEach(function(building) {
       callback(building, building.type ? building.type : HEALING_HOUSE);
+    });
+    people.forEach(function(person) {
+      callback(person, person.type ? person.type : PERSON_COWBOY);
     });
   };
 

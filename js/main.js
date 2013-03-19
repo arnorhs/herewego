@@ -154,12 +154,11 @@
     entities.add(player.position, player.entity);
 
     // make all buildings
-    currentMap.getBuildings(function(buildingPosition, type) {
-      console.log("Building a house", type, buildingPosition);
-      var buildingView = new View(buildingPosition, {width: 1, height: 1}, type);
-      var house = new GameEntity(type, buildingView);
-      WorldView.addView(buildingView);
-      entities.add(buildingPosition, house);
+    currentMap.getEntities(function(position, type) {
+      var view = new View(position, {width: 1, height: 1}, type);
+      var entity = new GameEntity(type, view);
+      WorldView.addView(view);
+      entities.add(position, entity);
     });
 
     // initializing the world basically adds all the stuff to the main div
