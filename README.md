@@ -16,6 +16,11 @@ Some weirdo old school type of game I'm having fun with.
 - Come up with game mechanics that make the game really unique and fun (jk)
 - maybe use something else than drawings for each of the characters?
 - Make player movement be more flexible.. possibly able to move at an angle
+- Make aliens move and attack the player and each other
+- Limit the rate of attack on an alien
+- Add more houses
+- And more types of people
+- More types of enemies.. possibly red aliens etc
 
 ### Features to add one day, probably by somebody smarter than me
 - Make the lighting better, smarter - right now it's barely enough to make
