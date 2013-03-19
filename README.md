@@ -7,8 +7,6 @@ Some weirdo old school type of game I'm having fun with.
 ### Next up todo:
 - Add a module library so I don't have to put every fucking thing on the window object
 - Move player object into its own file
-- Make a better map - should it be like something?
-- Make it so aliens cannot spawn on top of player
 
 ### Features to add soon:
 - Add some more entities. People to talk to, enemies to fight or something.
@@ -17,6 +15,7 @@ Some weirdo old school type of game I'm having fun with.
 - add some animations or some visual indication that you're hitting an enemy
 - Come up with game mechanics that make the game really unique and fun (jk)
 - maybe use something else than drawings for each of the characters?
+- Make player movement be more flexible.. possibly able to move at an angle
 
 ### Features to add one day, probably by somebody smarter than me
 - Make the lighting better, smarter - right now it's barely enough to make
@@ -26,6 +25,9 @@ Some weirdo old school type of game I'm having fun with.
 
 It's actually just plain html + js so far, so you can just run it from the file
 system. http server not even required.
+
+However: currently the game is 100% chrome only. There are plans to support
+firefox as well, but that will probably not be very soon
 
 ---
 
