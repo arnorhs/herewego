@@ -74,7 +74,11 @@
         // give him more health if he touches a building
         var house = entities.getHouse(targetPlayerPosition);
         if (house) {
-          player.entity.attr('health', player.entity.attr('maxHealth'));
+          if (house.type == HEALING_HOUSE) {
+            player.entity.attr('health', player.entity.attr('maxHealth'));
+          } else if (house.type == RESTING_HOUSE) {
+            // rest or something
+          }
         }
 
         updatePlayerStats();
@@ -150,9 +154,10 @@
     entities.add(player.position, player.entity);
 
     // make all buildings
-    currentMap.getBuildings(function(buildingPosition) {
-      var buildingView = new View(buildingPosition, {width: 1, height: 1}, HOUSE);
-      var house = new GameEntity(HOUSE, buildingView);
+    currentMap.getBuildings(function(buildingPosition, type) {
+      console.log("Building a house", type, buildingPosition);
+      var buildingView = new View(buildingPosition, {width: 1, height: 1}, type);
+      var house = new GameEntity(type, buildingView);
       WorldView.addView(buildingView);
       entities.add(buildingPosition, house);
     });

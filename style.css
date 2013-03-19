@@ -41,8 +41,11 @@ body, html {
   background: transparent url(img/land_road.png) no-repeat;
 }
 
-.house {
-  background: transparent url(img/house.png) no-repeat;
+.healing_house {
+  background: transparent url(img/healing_house.png) no-repeat;
+}
+.resting_house {
+  background: transparent url(img/resting_house.png?iiiiiiiiiiiiiiiiiiiiiiiiiiiiii) no-repeat;
 }
 
 #player_stats {

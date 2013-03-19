@@ -113,7 +113,8 @@
       case TREE:
       case MOUNTAIN:
       case WATER:
-      case HOUSE:
+      case HEALING_HOUSE:
+      case RESTING_HOUSE:
         return false;
       case PLAYER:
       case ALIEN:
@@ -126,7 +127,8 @@
 
   GameEntity.prototype.isHouse = function() {
     switch (this.type) {
-      case HOUSE:
+      case HEALING_HOUSE:
+      case RESTING_HOUSE:
         return true;
     }
     return false;

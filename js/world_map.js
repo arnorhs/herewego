@@ -36,11 +36,11 @@
                   "tttttt.................rr....wwwwwwww...tttttt..............................r....wwww.............tttttttt....................................r.............",
                   "ttttttttt.........www.trr.wwwwwww.......tttttt...................tt.........r....www.................tttttt...................................r....ttt......",
                   "ttttttt........wwwwwwwwbbwwwww..........tttttt.................tttt.........r....wwww................tttttt.........tttt............rrrrrrrrrrrrrrrrrrr.....",
-                  "ttttwwwwwwwwwwwwwwwwwwwbbw.....................................tttt.........r.....ww.................ttttttt.......tttt..t..........r.........r.......r.....",
-                  "wwwwwwwwwwwwwwwwww.....rr......................................tt...........r.....ww...............tttttt..........t.tttt...........r.........r.......rt..t.",
-                  "wwwwwwwwwttttttt.......rrrrrrrrrrrrrrrrr........................ww.www......rrrrrrBBrrrrrrrrr...ttttttttt........t....t....t........r.................rtt.t.",
+                  "ttttwwwwwwwwwwwwwwwwwwwbbw.....................................tttt.........r.....ww.................ttttttt.......tttt..t..........r.........r..r..r.r.....",
+                  "wwwwwwwwwwwwwwwwww.....rr......................................tt...........r.....ww...............tttttt..........t.tttt...........rr....ww..r..r....rt..t.",
+                  "wwwwwwwwwttttttt.......rrrrrrrrrrrrrrrrr........................ww.www......rrrrrrBBrrrrrrrrr...ttttttttt........t....t....t........r.....ww.....r....rtt.t.",
                   "tttttttttttttttttt.....................r..............wwwwwww.wwwwwwwwwwww..r.....ww........r......tttt..rrrrrrrrrrrrrrrrrrrrrrrrrrrr.................rtttt.",
-                  "ttttttttttttttttttttttttt..............r......wwwwwwwwwwwwwwwwwwwwwwwww.w...r...wwww........r............r.........t.....ttt.t......r.................rtttt.",
+                  "ttttttttttttttttttttttttt..............r......wwwwwwwwwwwwwwwwwwwwwwwww.w...r...wwww........r............r.........t.....ttt.t......r.r...............rtttt.",
                   "ttttttttttttttttttttttttttt............r....wwwwwwwwwwww.www.wwttwwww.......r...wwwww.......r............r.......t..tttttt..........rrrrrrr...........rt.t..",
                   "tttttttttttttttttttttttttttt.tt........r....wwwwwwwwwwwww.w.....t.t.............w.wwww......r............r....tttttttt..............r.................r.....",
                   "ttttttttttttttttttttttttttttttttt......r....wwwwwwwww.........tt.....tt.....mmm..wwww.......rrrrrrrrrrrrrr...ttttttttt..............rrrrrrrrrrrrrrrrrrr.....",
@@ -78,11 +78,12 @@
                   "mmmmmmmmmmmmmmmmm....tttttt...tt.t..tttt.....ttt......t...ttttttt..tttttwwwwwwwwwww.rrrrrrrrrrrrrr.wwwwwwwww..tttttt.....t...t....tttttttttt...t.......t.t..",
                   "mmmmmmmmmmmmmmmmmmttttttttttttttttttttttttttttttttttttttttttttttttttttwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwtttttttttttttttttttttttt........ttttttttttttt...."],
         buildings: [
-          {x: 6, y: 5}, {x: 63, y: 31}, {x: 41, y: 41}, {x: 38, y: 56}, {x: 76, y: 15},
+          {x: 6, y: 5}, {x: 63, y: 31}, {x: 41, y: 41, type: RESTING_HOUSE}, {x: 38, y: 56}, {x: 76, y: 15},
           // single house in the middle of large lake
           {x: 134, y: 8},
           // town above maze
-          {x: 134, y: 26}, {x: 134, y: 28}, {x: 139, y: 30}, {x: 142, y: 27}, {x: 148, y: 26}
+          {x: 134, y: 26, type: RESTING_HOUSE}, {x: 134, y: 28}, {x: 139, y: 30},
+          {x: 145, y: 28, type: RESTING_HOUSE}, {x: 142, y: 27, type: RESTING_HOUSE}, {x: 148, y: 26}
         ]
       }
     };
@@ -125,9 +126,9 @@
 
   WorldMap.prototype.getBuildings = function(callback) {
     var buildings = mapDefinitions[this.name].buildings;
-    for (var i = 0, bl = buildings.length; i < bl; i++) {
-      callback(buildings[i]);
-    }
+    buildings.forEach(function(building) {
+      callback(building, building.type ? building.type : HEALING_HOUSE);
+    });
   };
 
   WorldMap.prototype.getRect = function() {
