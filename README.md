@@ -7,22 +7,26 @@ Some weirdo old school type of game I'm having fun with.
 ### Next up todo:
 - Move player object into its own file
 - Add a module library so I don't have to put every fucking thing on the window object
+- Probably make the GameEntity class make the view as well and store a position on the
+  entity. That would make the player a bit cleaner - i just haven't wanted to use the
+  view position for the model type of stuff for the player
+- Make time pass
+- Allow the player to distribute attribute points
 
 ### Features to add soon:
-- Add some more entities. People to talk to, enemies to fight or something.
 - Save player position, time of day, experience points
-- Allow the player to level up
-- add some animations or some visual indication that you're hitting an enemy
-- Make time pass
 - Come up with game mechanics that make the game really unique and fun (jk)
-- maybe use something else than drawings for each of the characters?
 - Make aliens move and attack the player and each other
+- Allow the player to talk to cowboy guys and other people
+
+### TODO on the content side:
+- maybe use something else than drawings for each of the characters?
 - Add more houses
 - And more types of people
 - More types of enemies.. possibly red aliens etc
 - Make the dead sprite for an alien
 
-### Features to add one day, probably by somebody smarter than me
+### Features to add one day, probably by somebody smarter than me:
 - Make the lighting better, smarter - right now it's barely enough to make
   night time a bit more interesting.
 - Make player movement be more flexible.. possibly able to move at an angle
