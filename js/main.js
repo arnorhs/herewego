@@ -61,7 +61,6 @@
     },
     view: null,
     entity: null,
-    // returns true if the player managed to move, false otherwise
     move: function(offset) {
       var targetPlayerPosition = {x: player.position.x + offset.x, y: player.position.y + offset.y};
 
@@ -88,14 +87,14 @@
             player.entity.attr('level', newLevel);
           }
         } else {
-          player.state = S_MOVING;
           // successful player movement
+          player.state = S_MOVING;
           player.position = targetPlayerPosition;
           player.view.move(player.position)
           WorldView.centerOnView(player.view);
         }
 
-        // give him more health if he touches a building
+        // give him more health if he touches a healing house
         var house = entities.getHouse(targetPlayerPosition);
         if (house) {
           if (house.type == HEALING_HOUSE) {
@@ -138,7 +137,7 @@
     // makes it so the viewport can't be scrolled past these limits
     WorldView.setViewportOffsetLimits(currentMap.getRect());
 
-    // create the player view
+    // create the player
     player.view = new View(player.position, player.size, PLAYER);
     player.entity = new GameEntity(PLAYER, player.view);
     WorldView.addView(player.view);
@@ -152,7 +151,7 @@
       entities.add(position, entity);
     });
 
-    // initializing the world basically adds all the stuff to the main div
+    // initializing the world view basically adds all the stuff to the main div
     WorldView.init();
 
     WorldView.centerOnView(player.view);
@@ -168,7 +167,7 @@
     right: 39,
     s: 83
   };
-  // bad horrible attempt at limiting movement speed
+
   var lastAction = new Date();
   document.onkeydown = function(e) {
     var now = new Date(),
@@ -198,8 +197,6 @@
         break;
       default:
         console.log("Key pressed:", e.keyCode, e.keyIdentifier);
-        // return so we won't set the lastAction date again
-        // maybe it would be better to know if the game time had changed
         return true;
     }
     if (player.state == S_MOVING || player.state == S_ATTACKING) {
