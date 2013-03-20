@@ -128,7 +128,7 @@
     WorldTime.init();
     WorldTime.addTickHandler(function() {
       // figure out if we should spawn an alien
-      if (Math.random() > 0.1) {
+      if (Math.random() > 0.7) {
         var alienPosition = {
           x: Math.floor(Math.random() * currentMap.getRect().width),
           y: Math.floor(Math.random() * currentMap.getRect().height)
