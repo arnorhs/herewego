@@ -11,7 +11,7 @@
   classes[ROAD] = 'land_road';
   classes[PERSON_COWBOY] = 'person_cowboy';
   classes[ALIEN] = 'enemy_alien';
-  classes[DEAD_ALIEN] = 'enemy_alien_dead';
+  classes[ALIEN_DEAD] = 'enemy_alien_dead';
   classes[HOUSE_HEALING] = 'house_healing';
   classes[HOUSE_RESTING] = 'house_resting';
   classes[HOUSE_SPACESHIP] = 'house_spaceship';

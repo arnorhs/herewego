@@ -21,6 +21,9 @@ body {
 .enemy_alien {
   background: transparent url(img/alien.png) no-repeat;
 }
+.enemy_alien_dead {
+  background: transparent url(img/alien_dead.png) no-repeat;
+}
 
 .person_cowboy {
   background: transparent url(img/person_cowboy.png) no-repeat;

@@ -136,9 +136,7 @@
       case PERSON_COWBOY:
       case PLAYER:
       case ALIEN:
-        if (!this.dead) {
-          return false;
-        }
+        return false;
     }
     return true;
   }
@@ -167,7 +165,7 @@
     var newType;
     switch (this.type) {
       case ALIEN:
-        newType = DEAD_ALIEN;
+        newType = ALIEN_DEAD;
     }
     this.view.changeType(newType);
     this.type = newType;

@@ -17,7 +17,7 @@
   window.PLAYER = i++;
   window.ALIEN = i++;
   window.PERSON_COWBOY = i++;
-  window.DEAD_ALIEN = i++;
+  window.ALIEN_DEAD = i++;
   window.HOUSE_HEALING = i++;
   window.HOUSE_RESTING = i++;
   window.HOUSE_SPACESHIP = i++;
