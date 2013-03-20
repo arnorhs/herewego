@@ -54,6 +54,9 @@ body {
 .resting_house {
   background: transparent url(img/resting_house.png?iiiiiiiiiiiiiiiiiiiiiiiiiiiiii) no-repeat;
 }
+.house_spaceship {
+  background: transparent url(img/house_spaceship.png) no-repeat;
+}
 
 #player_stats {
   background: rgba(0,0,0, 0.3);

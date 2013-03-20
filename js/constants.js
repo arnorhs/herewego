@@ -20,6 +20,7 @@
   window.DEAD_ALIEN = i++;
   window.HEALING_HOUSE = i++;
   window.RESTING_HOUSE = i++;
+  window.HOUSE_SPACESHIP = i++;
   window.GRASS = i++;
   window.TREE = i++;
   window.WATER = i++;

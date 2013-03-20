@@ -131,6 +131,7 @@
       case WATER:
       case HEALING_HOUSE:
       case RESTING_HOUSE:
+      case HOUSE_SPACESHIP:
         return false;
       case PERSON_COWBOY:
       case PLAYER:
@@ -146,6 +147,7 @@
     switch (this.type) {
       case HEALING_HOUSE:
       case RESTING_HOUSE:
+      case HOUSE_SPACESHIP:
         return true;
     }
     return false;

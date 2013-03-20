@@ -85,7 +85,10 @@
           {x: 134, y: 8},
           // town above maze
           {x: 134, y: 26, type: RESTING_HOUSE}, {x: 134, y: 28}, {x: 139, y: 30},
-          {x: 145, y: 28, type: RESTING_HOUSE}, {x: 142, y: 27, type: RESTING_HOUSE}, {x: 148, y: 26}
+          {x: 145, y: 28, type: RESTING_HOUSE}, {x: 142, y: 27, type: RESTING_HOUSE}, {x: 148, y: 26},
+          // space ships
+          {x: 2, y: 57, type: HOUSE_SPACESHIP}, {x: 71, y: 57, type: HOUSE_SPACESHIP}, {x: 101, y: 46, type: HOUSE_SPACESHIP},
+          {x: 122, y: 19, type: HOUSE_SPACESHIP}, {x: 44, y: 18, type: HOUSE_SPACESHIP}, {x: 17, y: 3, type: HOUSE_SPACESHIP}
         ],
         people: [
           // town above maze

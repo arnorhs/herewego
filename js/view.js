@@ -14,6 +14,7 @@
   classes[DEAD_ALIEN] = 'enemy_alien_dead';
   classes[HEALING_HOUSE] = 'healing_house';
   classes[RESTING_HOUSE] = 'resting_house';
+  classes[HOUSE_SPACESHIP] = 'house_spaceship';
 
   function View(position, size, type) {
     this.position = position;
