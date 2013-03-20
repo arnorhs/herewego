@@ -1,5 +1,6 @@
 (function() {
 
+  var currentMap, entities;
   var player = {
     position: {
       x: 73,
@@ -30,7 +31,6 @@
       });
       return stats;
     },
-    view: null,
     entity: null,
     move: function(offset) {
       var targetPlayerPosition = {x: player.position.x + offset.x, y: player.position.y + offset.y};
@@ -61,8 +61,8 @@
           // successful player movement
           player.state = S_MOVING;
           player.position = targetPlayerPosition;
-          player.view.move(player.position)
-          WorldView.centerOnView(player.view);
+          player.entity.view.move(player.position)
+          WorldView.centerOnView(player.entity.view);
         }
 
         // give him more health if he touches a healing house
@@ -90,7 +90,13 @@
     });
   }
 
-  var currentMap, entities;
+  function addEntity(type, position, size) {
+    var entity = new GameEntity(type, position, size);
+    WorldView.addView(entity.view);
+    entities.add(position, entity);
+    return entity;
+  }
+
   window.onload = function() {
 
     entities = new EntitiesHash();
@@ -99,33 +105,24 @@
     var landSize = {width: 1, height: 1};
     currentMap = WorldMap.getMap("start");
     currentMap.getViews(function(position, type) {
-      var view = new View(position, landSize, type);
-      var entity = new GameEntity(type, view);
-      WorldView.addView(view);
-      entities.add(position, entity);
+      addEntity(type, position, landSize);
     });
 
     // makes it so the viewport can't be scrolled past these limits
     WorldView.setViewportOffsetLimits(currentMap.getRect());
 
     // create the player
-    player.view = new View(player.position, player.size, PLAYER);
-    player.entity = new GameEntity(PLAYER, player.view);
-    WorldView.addView(player.view);
-    entities.add(player.position, player.entity);
+    player.entity = addEntity(PLAYER, player.position, player.size);
 
     // make all buildings
     currentMap.getEntities(function(position, type) {
-      var view = new View(position, {width: 1, height: 1}, type);
-      var entity = new GameEntity(type, view);
-      WorldView.addView(view);
-      entities.add(position, entity);
+      addEntity(type, position, {width: 1, height: 1});
     });
 
     // initializing the world view basically adds all the stuff to the main div
     WorldView.init();
 
-    WorldView.centerOnView(player.view);
+    WorldView.centerOnView(player.entity.view);
     updatePlayerStats();
 
     WorldTime.init();
@@ -137,10 +134,7 @@
           y: Math.floor(Math.random() * currentMap.getRect().height)
         };
         if (entities.enemyCanSpawn(alienPosition)) {
-          var alienView = new View(alienPosition, {width: 1, height: 1}, ALIEN);
-          var alien = new GameEntity(ALIEN, alienView);
-          WorldView.addView(alienView);
-          entities.add(alienPosition, alien);
+          addEntity(ALIEN, alienPosition, {width: 1, height: 1});
           console.log("added an alien: ", alienPosition.x + "," + alienPosition.y);
           WorldView.redraw();
         }

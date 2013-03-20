@@ -82,10 +82,12 @@
     return can;
   };
 
-  function GameEntity(type, view) {
-    this.dead = false;
+  function GameEntity(type, position, size) {
     this.type = type;
-    this.view = view;
+    this.position = position;
+    this.size = size;
+    this.view = new View(position, size, type);
+    this.dead = false;
     this._attr = defaultAttributesForType(type);
   }
 
