@@ -12,7 +12,7 @@
 
   function updatePlayerStats(playerStats) {
     // playerStats should include
-    // health, maxHealth, exp, time, position
+    // health, maxHealth, exp, worldTime, position
     if (!inited) {
       percentage = document.getElementById("health").childNodes[0];
       attributes = document.getElementById("attributes");
@@ -28,12 +28,7 @@
     attributes.textContent = "xp: " + formatStat(playerStats.exp);
 
     // Time
-    var hours = Math.floor(playerStats.time / 60) % (60*24),
-        minutes = "" + (playerStats.time % 60);
-    if (minutes.length == 1) { // stupid padding
-      minutes = "0" + minutes;
-    }
-    time.textContent = hours + ":" + minutes;
+    time.textContent = playerStats.worldTime;
 
     // Coordinates.. probably will disable once this is a proper game
     coords.textContent = playerStats.position.x + ", " + playerStats.position.y;

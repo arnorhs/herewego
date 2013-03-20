@@ -1,34 +1,5 @@
 (function() {
 
-  var world = {
-    time: 0
-  };
-
-  function initWorldTime() {
-    setInterval(function() {
-
-      // figure out if we should spawn an alien
-      if (Math.random() > 0.7) {
-        var alienPosition = {
-          x: Math.floor(Math.random() * currentMap.getRect().width),
-          y: Math.floor(Math.random() * currentMap.getRect().height)
-        };
-        if (entities.enemyCanSpawn(alienPosition)) {
-          var alienView = new View(alienPosition, {width: 1, height: 1}, ALIEN);
-          var alien = new GameEntity(ALIEN, alienView);
-          WorldView.addView(alienView);
-          entities.add(alienPosition, alien);
-          console.log("added an alien: ", alienPosition.x + "," + alienPosition.y);
-          WorldView.redraw();
-        }
-      }
-
-      world.time += 1;
-      updatePlayerStats();
-
-    }, 1000);
-  }
-
   var player = {
     position: {
       x: 73,
@@ -114,7 +85,7 @@
       health: player.entity.attr("health"),
       maxHealth: player.entity.attr("maxHealth"),
       exp: player.entity.attr("exp"),
-      time: world.time,
+      worldTime: WorldTime.formatTime(WorldTime.getCurrent()),
       position: player.position
     });
   }
@@ -157,7 +128,25 @@
     WorldView.centerOnView(player.view);
     updatePlayerStats();
 
-    initWorldTime();
+    WorldTime.init();
+    WorldTime.addTickHandler(function() {
+      // figure out if we should spawn an alien
+      if (Math.random() > 0.1) {
+        var alienPosition = {
+          x: Math.floor(Math.random() * currentMap.getRect().width),
+          y: Math.floor(Math.random() * currentMap.getRect().height)
+        };
+        if (entities.enemyCanSpawn(alienPosition)) {
+          var alienView = new View(alienPosition, {width: 1, height: 1}, ALIEN);
+          var alien = new GameEntity(ALIEN, alienView);
+          WorldView.addView(alienView);
+          entities.add(alienPosition, alien);
+          console.log("added an alien: ", alienPosition.x + "," + alienPosition.y);
+          WorldView.redraw();
+        }
+      }
+      updatePlayerStats();
+    });
   }
 
   var key = {
