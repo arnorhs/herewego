@@ -1,6 +1,7 @@
 (function() {
 
-  var currentMap, entities;
+  var currentMap,
+      entities = new EntitiesHash();
   var player = {
     state: S_IDLE,
     movementRate: function() {
@@ -99,8 +100,6 @@
   }
 
   window.onload = function() {
-
-    entities = new EntitiesHash();
 
     // create map
     var landSize = {width: 1, height: 1};
