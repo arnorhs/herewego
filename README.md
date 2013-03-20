@@ -5,16 +5,14 @@ Some weirdo old school type of game I'm having fun with.
 ![Screenshot](http://f.cl.ly/items/083a2J3c0l3o3n0w1D29/Screen%20Shot%202013-03-17%20at%2010.47.46%20PM.png)
 
 ### Next up todo:
-- Probably make the GameEntity class make the view as well and store a position on the
-  entity. That would make the player a bit cleaner - i just haven't wanted to use the
-  view position for the model type of stuff for the player
 - Move player object into its own file
-- Make time pass
+- Make day/night pass along with time
 - Allow the player to distribute attribute points
+- Find a way to centralize attribute calculations, possibly on the entity?
 
 ### Features to add soonish:
 - Add a module library so I don't have to put every fucking thing on the window object
-- Save player position, time of day, experience points
+- Save player position, time of day, experience points when you quit the tab
 - Come up with game mechanics that make the game really unique and fun (jk)
 - Make aliens move and attack the player and each other
 - Allow the player to talk to cowboy guys and other people
