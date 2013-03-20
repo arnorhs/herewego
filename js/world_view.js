@@ -28,7 +28,7 @@
            position.y < viewportOffset.y + viewportSize.height;
   }
 
-  function rearrangeViews() {
+  function redrawViews() {
     var d = new Date();
     var vl = views.length;
     var viewsToShow = [];
@@ -105,7 +105,7 @@
         x: Math.max(currentMapRect.x, Math.min(x, (currentMapRect.width + 1) - viewportSize.width)),
         y: Math.max(currentMapRect.y, Math.min(y, (currentMapRect.height + 1) - viewportSize.height))
       };
-      rearrangeViews();
+      redrawViews();
     },
     animateDamage: function(victim, damage) {
       var position = victim.view.position;
