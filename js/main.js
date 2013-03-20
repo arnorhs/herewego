@@ -7,7 +7,7 @@
   function initWorldTime() {
     setInterval(function() {
       // skip a beat if the player is moving
-      if (player.isMoving) {
+      if (player.state != S_IDLE) {
         return;
       }
 
