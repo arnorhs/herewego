@@ -80,12 +80,12 @@
         buildings: [
           {x: 6, y: 5}, {x: 63, y: 31}, {x: 38, y: 56}, {x: 76, y: 15},
           // house on the side of the road
-          {x: 41, y: 41, type: RESTING_HOUSE},
+          {x: 41, y: 41, type: HOUSE_RESTING},
           // single house in the middle of large lake
           {x: 134, y: 8},
           // town above maze
-          {x: 134, y: 26, type: RESTING_HOUSE}, {x: 134, y: 28}, {x: 139, y: 30},
-          {x: 145, y: 28, type: RESTING_HOUSE}, {x: 142, y: 27, type: RESTING_HOUSE}, {x: 148, y: 26},
+          {x: 134, y: 26, type: HOUSE_RESTING}, {x: 134, y: 28}, {x: 139, y: 30},
+          {x: 145, y: 28, type: HOUSE_RESTING}, {x: 142, y: 27, type: HOUSE_RESTING}, {x: 148, y: 26},
           // space ships
           {x: 2, y: 57, type: HOUSE_SPACESHIP}, {x: 71, y: 57, type: HOUSE_SPACESHIP}, {x: 101, y: 46, type: HOUSE_SPACESHIP},
           {x: 122, y: 19, type: HOUSE_SPACESHIP}, {x: 44, y: 18, type: HOUSE_SPACESHIP}, {x: 17, y: 3, type: HOUSE_SPACESHIP}
@@ -137,7 +137,7 @@
     var buildings = mapDefinitions[this.name].buildings;
     var people = mapDefinitions[this.name].people;
     buildings.forEach(function(building) {
-      callback(building, building.type ? building.type : HEALING_HOUSE);
+      callback(building, building.type ? building.type : HOUSE_HEALING);
     });
     people.forEach(function(person) {
       callback(person, person.type ? person.type : PERSON_COWBOY);

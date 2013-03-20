@@ -12,8 +12,8 @@
   classes[PERSON_COWBOY] = 'person_cowboy';
   classes[ALIEN] = 'enemy_alien';
   classes[DEAD_ALIEN] = 'enemy_alien_dead';
-  classes[HEALING_HOUSE] = 'healing_house';
-  classes[RESTING_HOUSE] = 'resting_house';
+  classes[HOUSE_HEALING] = 'house_healing';
+  classes[HOUSE_RESTING] = 'house_resting';
   classes[HOUSE_SPACESHIP] = 'house_spaceship';
 
   function View(position, size, type) {

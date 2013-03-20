@@ -129,8 +129,8 @@
       case TREE:
       case MOUNTAIN:
       case WATER:
-      case HEALING_HOUSE:
-      case RESTING_HOUSE:
+      case HOUSE_HEALING:
+      case HOUSE_RESTING:
       case HOUSE_SPACESHIP:
         return false;
       case PERSON_COWBOY:
@@ -145,8 +145,8 @@
 
   GameEntity.prototype.isHouse = function() {
     switch (this.type) {
-      case HEALING_HOUSE:
-      case RESTING_HOUSE:
+      case HOUSE_HEALING:
+      case HOUSE_RESTING:
       case HOUSE_SPACESHIP:
         return true;
     }

@@ -18,8 +18,8 @@
   window.ALIEN = i++;
   window.PERSON_COWBOY = i++;
   window.DEAD_ALIEN = i++;
-  window.HEALING_HOUSE = i++;
-  window.RESTING_HOUSE = i++;
+  window.HOUSE_HEALING = i++;
+  window.HOUSE_RESTING = i++;
   window.HOUSE_SPACESHIP = i++;
   window.GRASS = i++;
   window.TREE = i++;

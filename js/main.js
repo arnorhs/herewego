@@ -63,10 +63,8 @@
         // give him more health if he touches a healing house
         var house = entities.getHouse(targetPlayerPosition);
         if (house) {
-          if (house.type == HEALING_HOUSE) {
+          if (house.type == HOUSE_HEALING) {
             player.entity.attr('health', player.entity.attr('maxHealth'));
-          } else if (house.type == RESTING_HOUSE) {
-            // rest or something
           }
         }
         updatePlayerStats();

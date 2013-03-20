@@ -48,11 +48,11 @@ body {
   background: transparent url(img/land_road.png) no-repeat;
 }
 
-.healing_house {
-  background: transparent url(img/healing_house.png) no-repeat;
+.house_healing {
+  background: transparent url(img/house_healing.png) no-repeat;
 }
-.resting_house {
-  background: transparent url(img/resting_house.png?iiiiiiiiiiiiiiiiiiiiiiiiiiiiii) no-repeat;
+.house_resting {
+  background: transparent url(img/house_resting.png) no-repeat;
 }
 .house_spaceship {
   background: transparent url(img/house_spaceship.png) no-repeat;
