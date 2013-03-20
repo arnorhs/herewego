@@ -24,6 +24,18 @@
     return this.hash[key];
   };
 
+  // Moving in the hash will propogate into: removing and adding to hash, moving
+  // the entity and ultimately the view
+  EntitiesHash.prototype.move = function(entity, targetPosition) {
+    var oldPosition = entity.position;
+    this.remove(oldPosition, entity);
+    this.add(targetPosition, entity);
+    entity.move(targetPosition);
+    // TODO trigger callback or something that will let the controller know that
+    // the entity has moved, so the world view can be updated
+  };
+
+
   EntitiesHash.prototype.remove = function(position, object) {
     var key = EntitiesHash.getKey(position);
     var arr = this._get(key);

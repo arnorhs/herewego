@@ -56,7 +56,7 @@
         } else {
           // successful player movement
           player.state = S_MOVING;
-          player.entity.move(targetPlayerPosition);
+          entities.move(player.entity, targetPlayerPosition);
           WorldView.centerOnView(player.entity.view);
         }
 
@@ -73,14 +73,6 @@
       }
     }
   };
-
-  function moveEntity(entity, targetPosition) {
-    var oldPosition = entity.position;
-    // move in the hash
-    entities.remove(oldPosition, entity);
-    entities.add(targetPosition, entity);
-    entity.move(targetPosition);
-  }
 
   function updatePlayerStats() {
     HUD.updatePlayerStats({
