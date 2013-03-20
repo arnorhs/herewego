@@ -4,11 +4,7 @@
   //
   // It would be really inefficient to loop through the whole thing, but it's well
   // suited for looking up all the game objects in a specific square.
-  //
-  // Random idea: Make it so that each square has a specific land object or even
-  // defaulting that square to position 0 in the array
-  //
-  // TODO: This would be well suited in its own class
+
   function EntitiesHash() {
     this.hash = {};
   }
