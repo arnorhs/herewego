@@ -6,10 +6,6 @@
 
   function initWorldTime() {
     setInterval(function() {
-      // skip a beat if the player is moving
-      if (player.state != S_IDLE) {
-        return;
-      }
 
       // figure out if we should spawn an alien
       if (Math.random() > 0.7) {
