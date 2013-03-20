@@ -2,10 +2,6 @@
 
   var currentMap, entities;
   var player = {
-    size: {
-      width: 1,
-      height: 1
-    },
     state: S_IDLE,
     movementRate: function() {
       switch (player.state) {
@@ -72,7 +68,6 @@
             // rest or something
           }
         }
-
         updatePlayerStats();
       }
     }
@@ -118,7 +113,7 @@
     WorldView.setViewportOffsetLimits(currentMap.getRect());
 
     // create the player
-    player.entity = addEntity(PLAYER, INITIAL_PLAYER_POSITION, player.size);
+    player.entity = addEntity(PLAYER, INITIAL_PLAYER_POSITION, {width: 1, height: 1});
 
     // make all buildings
     currentMap.getEntities(function(position, type) {
