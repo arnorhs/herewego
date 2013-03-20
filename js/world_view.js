@@ -97,10 +97,10 @@
     addView: function(view) {
       views.push(view);
     },
-    centerOnView: function(view) {
-      var x = view.position.x - Math.floor(viewportSize.width / 2),
-          y = view.position.y - Math.floor(viewportSize.height / 2);
-      centerPosition = {x: view.position.x, y: view.position.y};
+    centerOnPosition: function(position) {
+      var x = position.x - Math.floor(viewportSize.width / 2),
+          y = position.y - Math.floor(viewportSize.height / 2);
+      centerPosition = {x: position.x, y: position.y};
       // watch out not to scroll out of bounds. We add a unit in size from the map bounds
       // because we render the last tile on x/y out of bounds of the viewport (see the
       // Math.ceil() call in recalculateViewportSize()

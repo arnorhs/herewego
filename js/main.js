@@ -57,7 +57,7 @@
           // successful player movement
           player.state = S_MOVING;
           entities.move(player.entity, targetPlayerPosition);
-          WorldView.centerOnView(player.entity.view);
+          WorldView.centerOnPosition(player.entity.position);
         }
 
         // give him more health if he touches a healing house
@@ -114,7 +114,7 @@
     // initializing the world view basically adds all the stuff to the main div
     WorldView.init();
 
-    WorldView.centerOnView(player.entity.view);
+    WorldView.centerOnPosition(player.entity.position);
     updatePlayerStats();
 
     WorldTime.init();
