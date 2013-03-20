@@ -2,10 +2,6 @@
 
   var currentMap, entities;
   var player = {
-    position: {
-      x: 73,
-      y: 33
-    },
     size: {
       width: 1,
       height: 1
@@ -33,7 +29,10 @@
     },
     entity: null,
     move: function(offset) {
-      var targetPlayerPosition = {x: player.position.x + offset.x, y: player.position.y + offset.y};
+      var targetPlayerPosition = {
+        x: player.entity.position.x + offset.x,
+        y: player.entity.position.y + offset.y
+      };
 
       if (!player.entity.dead && currentMap.inBounds(targetPlayerPosition) && entities.canPassThroughAll(targetPlayerPosition)) {
         var enemy = entities.getEnemy(targetPlayerPosition);
@@ -60,8 +59,7 @@
         } else {
           // successful player movement
           player.state = S_MOVING;
-          player.position = targetPlayerPosition;
-          player.entity.view.move(player.position)
+          player.entity.move(targetPlayerPosition);
           WorldView.centerOnView(player.entity.view);
         }
 
@@ -80,13 +78,21 @@
     }
   };
 
+  function moveEntity(entity, targetPosition) {
+    var oldPosition = entity.position;
+    // move in the hash
+    entities.remove(oldPosition, entity);
+    entities.add(targetPosition, entity);
+    entity.move(targetPosition);
+  }
+
   function updatePlayerStats() {
     HUD.updatePlayerStats({
       health: player.entity.attr("health"),
       maxHealth: player.entity.attr("maxHealth"),
       exp: player.entity.attr("exp"),
       worldTime: WorldTime.formatTime(WorldTime.getCurrent()),
-      position: player.position
+      position: player.entity.position
     });
   }
 
@@ -112,7 +118,7 @@
     WorldView.setViewportOffsetLimits(currentMap.getRect());
 
     // create the player
-    player.entity = addEntity(PLAYER, player.position, player.size);
+    player.entity = addEntity(PLAYER, INITIAL_PLAYER_POSITION, player.size);
 
     // make all buildings
     currentMap.getEntities(function(position, type) {

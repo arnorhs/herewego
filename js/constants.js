@@ -3,6 +3,8 @@
 
   window.UNIT = 48;
 
+  window.INITIAL_PLAYER_POSITION = { x: 73, y: 33 };
+
   // player states
   i = 1;
   window.S_IDLE = i++;

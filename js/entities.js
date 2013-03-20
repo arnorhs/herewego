@@ -91,6 +91,11 @@
     this._attr = defaultAttributesForType(type);
   }
 
+  GameEntity.prototype.move = function(targetPosition) {
+    this.position = targetPosition;
+    this.view.move(targetPosition);
+  };
+
   // used to get/set arbitrary attributes on entities
   GameEntity.prototype.attr = function(key, value) {
     if (value === undefined) {
@@ -98,7 +103,7 @@
     } else {
       this._attr[key] = value;
     }
-  }
+  };
 
   GameEntity.prototype.canPassThrough = function() {
     switch (this.type) {
