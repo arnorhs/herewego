@@ -74,9 +74,13 @@
         if (enemy) {
           player.state = S_ATTACKING;
           var enemyType = enemy.type;
-          attack(player.entity, enemy);
+
+          var enemyDamage = player.entity.attack(enemy);
+          WorldView.animateDamage(enemy, enemyDamage);
+
           if (!enemy.dead) {
-            attack(enemy, player.entity);
+            var playerDamage = enemy.attack(player.entity);
+            WorldView.animateDamage(player.entity, playerDamage);
             if (player.entity.dead) {
               // game over
             }
@@ -118,36 +122,6 @@
       time: world.time,
       position: player.position
     });
-  }
-
-  // probably should be a method on GameEntity
-  function attack(attacker, victim) {
-    // attacker
-    var strength = attacker.attr('strength');
-    var weaponDamage = attacker.attr('weapon').damage;
-    var maxDamage = (strength * 3) + weaponDamage;
-    // how much of the damage is random?
-    // 0-1
-    var accuracy = 0.4; // 0.5 is half
-    var fixedDamage = maxDamage * accuracy;
-    var randomDamage = Math.random() * maxDamage * (1 - accuracy);
-    var damage = fixedDamage + randomDamage;
-
-    // victim
-    var health = victim.attr('health');
-    var armor = victim.attr('armor');
-    if (armor) {
-      damage /= armor.strength;
-    }
-    health -= damage;
-
-    victim.attr('health', health);
-
-    if (health <= 0) {
-      victim.setDead();
-    }
-
-    WorldView.animateDamage(victim, damage);
   }
 
   var currentMap, entities;

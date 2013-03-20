@@ -156,6 +156,32 @@
     this.type = newType;
   }
 
+  // Expects a victim, and returns an object hash with the result of the fight
+  GameEntity.prototype.attack = function(victim) {
+    // attacker
+    var attacker = this,
+        strength = attacker.attr('strength'),
+        weaponDamage = attacker.attr('weapon').damage,
+        maxDamage = (strength * 3) + weaponDamage;
+
+    // how much of the damage is random? 0-1
+    var accuracy = 0.4,
+        fixedDamage = maxDamage * accuracy,
+        randomDamage = Math.random() * maxDamage * (1 - accuracy),
+        damage = fixedDamage + randomDamage;
+
+    // victim
+    var health = victim.attr('health') - damage;
+
+    victim.attr('health', health);
+
+    if (health <= 0) {
+      victim.setDead();
+    }
+
+    return damage;
+  };
+
   window.EntitiesHash = EntitiesHash;
   window.GameEntity = GameEntity;
 
