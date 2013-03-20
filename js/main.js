@@ -23,6 +23,7 @@
           WorldView.addView(alienView);
           entities.add(alienPosition, alien);
           console.log("added an alien: ", alienPosition.x + "," + alienPosition.y);
+          WorldView.redraw();
         }
       }
 

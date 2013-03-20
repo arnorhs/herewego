@@ -86,7 +86,10 @@
       rootView = document.getElementById("world_view");
       Light.init();
       recalculateViewportSize();
-      window.onresize = recalculateViewportSize;
+      window.onresize = function() {
+        recalculateViewportSize();
+        redrawViews();
+      };
     },
     setViewportOffsetLimits: function(rect) {
       currentMapRect = rect;
@@ -105,6 +108,9 @@
         x: Math.max(currentMapRect.x, Math.min(x, (currentMapRect.width + 1) - viewportSize.width)),
         y: Math.max(currentMapRect.y, Math.min(y, (currentMapRect.height + 1) - viewportSize.height))
       };
+      redrawViews();
+    },
+    redraw: function() {
       redrawViews();
     },
     animateDamage: function(victim, damage) {
