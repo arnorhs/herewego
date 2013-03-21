@@ -126,6 +126,7 @@ body {
   -webkit-animation-duration: 1.5s;
   -webkit-animation-name: damage;
   -webkit-animation-fill-mode: forwards;
+  z-index: 2;
 }
 @-webkit-keyframes damage {
   from {
