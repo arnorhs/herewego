@@ -69,8 +69,10 @@
   });
 
   Whisper.listen("entity_level_up", function(entity) {
-    var formatted = "Level up: " + entity.attr("level");
-    WorldView.animateTextPop(entity.view, "#c93", formatted);
+    setTimeout(function() {
+      var formatted = "Level up: " + entity.attr("level");
+      WorldView.animateTextPop(entity.view, "#c93", formatted);
+    }, 500);
   });
 
   function updatePlayerStats() {
