@@ -59,7 +59,7 @@
         var house = entities.getHouse(targetPlayerPosition);
         if (house) {
           if (house.type == HOUSE_HEALING) {
-            player.entity.attr('health', player.entity.attr('maxHealth'));
+            player.entity.setHealth(player.entity.attr('maxHealth'));
           }
         }
         updatePlayerStats();
@@ -67,9 +67,9 @@
     }
   };
 
-  Whisper.listen("entity_damage", function(entity, damage) {
-    var formatted = (damage > 0 ? "-" : "+") + damage.toFixed(1);
-    WorldView.animateTextPop(entity.view, damage > 0 ? "#f44" : "#4f4", formatted);
+  Whisper.listen("entity_health_change", function(entity, healthChange) {
+    var formatted = (healthChange < 0 ? "-" : "+") + healthChange.toFixed(1);
+    WorldView.animateTextPop(entity.view, healthChange < 0 ? "#f44" : "#4f4", formatted);
   });
 
   Whisper.listen("entity_level_up", function(entity) {

@@ -186,15 +186,17 @@
         damage = fixedDamage + randomDamage;
 
     // victim
-    var health = victim.attr('health') - damage;
+    victim.setHealth(victim.attr('health') - damage);
+  };
 
-    victim.attr('health', health);
-
-    if (health <= 0) {
-      victim.setDead();
+  GameEntity.prototype.setHealth = function(newHealth) {
+    var oldHealth = this.attr('health');
+    if (oldHealth == newHealth) return;
+    this.attr('health', newHealth);
+    if (newHealth <= 0) {
+      this.setDead();
     }
-
-    Whisper.say("entity_damage", victim, damage);
+    Whisper.say("entity_health_change", this, newHealth - oldHealth);
   };
 
   GameEntity.prototype.addExp = function(exp) {
