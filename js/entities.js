@@ -171,7 +171,7 @@
     this.type = newType;
   }
 
-  // Expects a victim, and returns an object hash with the result of the fight
+  // Expects a victim, and emits an event with the damage dealt
   GameEntity.prototype.attack = function(victim) {
     // attacker
     var attacker = this,
@@ -194,7 +194,7 @@
       victim.setDead();
     }
 
-    return damage;
+    Whisper.say("entity_damage", victim, damage);
   };
 
   window.EntitiesHash = EntitiesHash;

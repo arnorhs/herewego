@@ -37,12 +37,10 @@
           player.state = S_ATTACKING;
           var enemyType = enemy.type;
 
-          var enemyDamage = player.entity.attack(enemy);
-          WorldView.animateDamage(enemy, enemyDamage);
+          player.entity.attack(enemy);
 
           if (!enemy.dead) {
-            var playerDamage = enemy.attack(player.entity);
-            WorldView.animateDamage(player.entity, playerDamage);
+            enemy.attack(player.entity);
             if (player.entity.dead) {
               // game over
             }
@@ -71,6 +69,10 @@
       }
     }
   };
+
+  Whisper.listen("entity_damage", function(entity, damage) {
+    WorldView.animateDamage(entity, damage);
+  });
 
   function updatePlayerStats() {
     HUD.updatePlayerStats({
