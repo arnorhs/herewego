@@ -46,10 +46,7 @@
             }
           } else {
             // enemy died, give exp
-            var newExp = player.entity.attr('exp') + experienceForKillingType(enemyType);
-            var newLevel = 1 + Math.floor(newExp / 10);
-            player.entity.attr('exp', newExp);
-            player.entity.attr('level', newLevel);
+            player.entity.addExp(experienceForKillingType(enemyType));
           }
         } else {
           // successful player movement

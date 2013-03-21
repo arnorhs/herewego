@@ -197,6 +197,13 @@
     Whisper.say("entity_damage", victim, damage);
   };
 
+  GameEntity.prototype.addExp = function(exp) {
+    var newExp = this.attr('exp') + exp,
+        newLevel = 1 + Math.floor(newExp / 10);
+    this.attr('exp', newExp);
+    this.attr('level', newLevel);
+  };
+
   window.EntitiesHash = EntitiesHash;
   window.GameEntity = GameEntity;
 
