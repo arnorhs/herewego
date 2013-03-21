@@ -35,7 +35,6 @@
         var enemy = entities.getEnemy(targetPlayerPosition);
         if (enemy) {
           player.state = S_ATTACKING;
-          var enemyType = enemy.type;
 
           player.entity.attack(enemy);
 
@@ -44,9 +43,6 @@
             if (player.entity.dead) {
               // game over
             }
-          } else {
-            // enemy died, give exp
-            player.entity.addExp(experienceForKillingType(enemyType));
           }
         } else {
           // successful player movement

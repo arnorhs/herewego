@@ -187,6 +187,16 @@
 
     // victim
     victim.setHealth(victim.attr('health') - damage);
+
+    if (victim.dead) {
+      // give experience points to attacker
+      this.addExp(this.experienceForKilling(victim));
+    }
+  };
+
+  GameEntity.prototype.experienceForKilling = function(victim) {
+    // pretty simple right now.. i'm sure this can change later
+    return (victim.attr("level") || 1) / (this.attr("level") || 1);
   };
 
   GameEntity.prototype.setHealth = function(newHealth) {

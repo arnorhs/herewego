@@ -26,12 +26,4 @@
     return {};
   }
 
-  window.experienceForKillingType = function(type) {
-    switch (type) {
-      case ALIEN:
-        return 1;
-    }
-    return 0;
-  }
-
 })();

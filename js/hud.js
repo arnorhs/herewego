@@ -7,7 +7,7 @@
       coords;
 
   function formatStat(stat) {
-    return stat.toFixed(0);
+    return Math.floor(stat);
   };
 
   function updatePlayerStats(playerStats) {
@@ -64,7 +64,7 @@
         // the value field
         var value = document.createElement("div");
         value.className = "value";
-        value.textContent = stats[key];
+        value.textContent = formatStat(stats[key]);
         row.appendChild(value);
 
         // append the whole thing
