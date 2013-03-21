@@ -199,9 +199,13 @@
 
   GameEntity.prototype.addExp = function(exp) {
     var newExp = this.attr('exp') + exp,
+        oldLevel = this.attr('level'),
         newLevel = 1 + Math.floor(newExp / 10);
     this.attr('exp', newExp);
     this.attr('level', newLevel);
+    if (newLevel > oldLevel) {
+      Whisper.say("entity_level_up", this);
+    }
   };
 
   window.EntitiesHash = EntitiesHash;

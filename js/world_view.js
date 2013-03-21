@@ -113,13 +113,14 @@
     redraw: function() {
       redrawViews();
     },
-    animateDamage: function(victim, damage) {
-      var position = victim.view.position;
-      var elem = document.createElement("div");
-      elem.className = "damage_animation";
+    animateTextPop: function(view, color, text) {
+      var position = view.position,
+          elem = document.createElement("div");
+      elem.className = "text_pop";
       elem.style.left = dimension(position.x - viewportOffset.x);
       elem.style.top = dimension(position.y - viewportOffset.y);
-      elem.textContent = "-" + damage.toFixed(1);
+      elem.style.color = color;
+      elem.textContent = text;
       // TODO it would probably be nicer to add this to some other view, but for now this is ok
       rootView.appendChild(elem);
       setTimeout(function() {

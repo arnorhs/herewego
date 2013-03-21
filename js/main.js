@@ -68,7 +68,13 @@
   };
 
   Whisper.listen("entity_damage", function(entity, damage) {
-    WorldView.animateDamage(entity, damage);
+    var formatted = (damage > 0 ? "-" : "+") + damage.toFixed(1);
+    WorldView.animateTextPop(entity.view, damage > 0 ? "#f44" : "#4f4", formatted);
+  });
+
+  Whisper.listen("entity_level_up", function(entity) {
+    var formatted = "Level up: " + entity.attr("level");
+    WorldView.animateTextPop(entity.view, "#c93", formatted);
   });
 
   function updatePlayerStats() {

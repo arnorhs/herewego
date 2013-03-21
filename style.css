@@ -114,12 +114,15 @@ body {
   right: 10px;
 }
 
-.damage_animation {
+.text_pop {
   color: #fff;
-  text-shadow: 0px 1px 0px rgba(0,0,0, 0.5);
+  font-weight: bold;
+  text-shadow: 0px 1px 1px rgba(0,0,0,0.8);
   position: absolute;
   text-align: center;
-  width: 48px;
+  margin-left: -48px;
+  margin-top: -24px;
+  width: 96px;
   height: 48px;
   -webkit-animation-duration: 1.5s;
   -webkit-animation-name: damage;
