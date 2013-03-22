@@ -148,28 +148,30 @@
   }
 
   var key = {
-    up: 38,
-    down: 40,
-    left: 37,
-    right: 39,
-    s: 83
+    up: 38, down: 40, left: 37, right: 39,
+    w: 87, a: 65, s: 83, d: 68,
+    tab: 9
   };
 
   document.onkeydown = function(e) {
     switch (e.keyCode) {
       case key.up:
+      case key.w:
         player.move({x:0,y:-1});
         break;
       case key.down:
+      case key.s:
         player.move({x:0,y:1});
         break;
       case key.left:
+      case key.a:
         player.move({x:-1,y:0});
         break;
       case key.right:
+      case key.d:
         player.move({x:1,y:0});
         break;
-      case key.s:
+      case key.tab:
         HUD.toggleDetailedPlayerStats(player.getDetailedStats());
         break;
       default:
