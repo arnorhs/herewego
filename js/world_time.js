@@ -13,12 +13,13 @@
       return worldTime;
     },
     formatTime: function(time) {
-      var hours = Math.floor(time / 60) % (60*24),
+      var days = Math.floor(time / 1440) % 60,
+          hours = Math.floor(time / 60) % 24,
           minutes = "" + (time % 60);
       if (minutes.length == 1) { // stupid padding
         minutes = "0" + minutes;
       }
-      return hours + ":" + minutes;
+      return (days > 0 ? ("day " + days + ", ") : "") + hours + ":" + minutes;
     },
     init: function() {
       setInterval(timeLoop, interval);
