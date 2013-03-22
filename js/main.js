@@ -102,12 +102,12 @@
   });
 
   function updatePlayerStats() {
-    HUD.updatePlayerStats({
+    HUD.updateCoords(player.entity.position);
+    HUD.updateTime(WorldTime.formatTime(WorldTime.getCurrent()));
+    HUD.updateDashboard({
       health: player.entity.attr("health"),
       maxHealth: player.entity.attr("maxHealth"),
-      exp: player.entity.attr("exp"),
-      worldTime: WorldTime.formatTime(WorldTime.getCurrent()),
-      position: player.entity.position
+      exp: player.entity.attr("exp")
     });
   }
 

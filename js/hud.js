@@ -1,38 +1,8 @@
 (function() {
 
-  var inited = false,
-      percentage,
-      attributes,
-      time,
-      coords;
-
   function formatStat(stat) {
     return Math.floor(stat);
   };
-
-  function updatePlayerStats(playerStats) {
-    // playerStats should include
-    // health, maxHealth, exp, worldTime, position
-    if (!inited) {
-      percentage = document.getElementById("health").childNodes[0];
-      attributes = document.getElementById("attributes");
-      time = document.getElementById("time");
-      coords = document.getElementById("coords");
-      inited = true;
-    }
-    // Update player health
-    percentage.style.width = (playerStats.health * 100 / playerStats.maxHealth) + "%";
-
-    // attributes,.. currently just XP - will probably eventually just be XP and other things will
-    // have their own ID
-    attributes.textContent = "xp: " + formatStat(playerStats.exp);
-
-    // Time
-    time.textContent = playerStats.worldTime;
-
-    // Coordinates.. probably will disable once this is a proper game
-    coords.textContent = playerStats.position.x + ", " + playerStats.position.y;
-  }
 
   var isShowingDetailedPlayerStats = false;
 
@@ -86,8 +56,19 @@
   }
 
   window.HUD = {
-    updatePlayerStats: updatePlayerStats,
     toggleDetailedPlayerStats: toggleDetailedPlayerStats,
+    updateDashboard: function(playerStats) {
+      // playerStats should include: health, maxHealth, exp
+      $("#health > .percent").css("width", (playerStats.health * 100 / playerStats.maxHealth) + "%");
+      $("#xp").html("xp: " + formatStat(playerStats.exp));
+    },
+    updateTime: function(newTime) {
+      $("#time").html(newTime);
+    },
+    updateCoords: function(position) {
+      // Coordinates.. probably will disable once this is a proper game
+      $("#coords").html(position.x + ", " + position.y);
+    }
   };
 
 })();
