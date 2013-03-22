@@ -150,6 +150,7 @@
   var key = {
     up: 38, down: 40, left: 37, right: 39,
     w: 87, a: 65, s: 83, d: 68,
+    k: 75, j: 74, h: 72, l: 76,
     tab: 9
   };
 
@@ -157,18 +158,22 @@
     switch (e.keyCode) {
       case key.up:
       case key.w:
+      case key.k:
         player.move({x:0,y:-1});
         break;
       case key.down:
       case key.s:
+      case key.j:
         player.move({x:0,y:1});
         break;
       case key.left:
       case key.a:
+      case key.h:
         player.move({x:-1,y:0});
         break;
       case key.right:
       case key.d:
+      case key.l:
         player.move({x:1,y:0});
         break;
       case key.tab:
