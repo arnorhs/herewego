@@ -75,6 +75,22 @@
     }, 500);
   });
 
+  Whisper.listen("time_tick", function(time) {
+    // figure out if we should spawn an alien
+    if (Math.random() > 0.7) {
+      var alienPosition = {
+        x: Math.floor(Math.random() * currentMap.getRect().width),
+        y: Math.floor(Math.random() * currentMap.getRect().height)
+      };
+      if (entities.enemyCanSpawn(alienPosition)) {
+        addEntity(ALIEN, alienPosition, {width: 1, height: 1});
+        console.log("added an alien: ", alienPosition.x + "," + alienPosition.y);
+        WorldView.redraw();
+      }
+    }
+    updatePlayerStats();
+  });
+
   function updatePlayerStats() {
     HUD.updatePlayerStats({
       health: player.entity.attr("health"),
@@ -119,21 +135,6 @@
     updatePlayerStats();
 
     WorldTime.init();
-    WorldTime.addTickHandler(function() {
-      // figure out if we should spawn an alien
-      if (Math.random() > 0.7) {
-        var alienPosition = {
-          x: Math.floor(Math.random() * currentMap.getRect().width),
-          y: Math.floor(Math.random() * currentMap.getRect().height)
-        };
-        if (entities.enemyCanSpawn(alienPosition)) {
-          addEntity(ALIEN, alienPosition, {width: 1, height: 1});
-          console.log("added an alien: ", alienPosition.x + "," + alienPosition.y);
-          WorldView.redraw();
-        }
-      }
-      updatePlayerStats();
-    });
   }
 
   var key = {

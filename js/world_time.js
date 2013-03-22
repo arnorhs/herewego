@@ -1,18 +1,11 @@
 (function() {
 
   var worldTime = 0,
-      tickHandlers = [];
+      interval = 1000;
 
   function timeLoop() {
     worldTime += 1;
-
-    tickHandlers.forEach(function(handler) {
-      handler.call(window);
-    });
-  }
-
-  function initTimeLoop() {
-    setInterval(timeLoop, 1000);
+    Whisper.say("time_tick", worldTime);
   }
 
   window.WorldTime = {
@@ -27,11 +20,8 @@
       }
       return hours + ":" + minutes;
     },
-    addTickHandler: function(handler) {
-      tickHandlers.push(handler);
-    },
     init: function() {
-      initTimeLoop();
+      setInterval(timeLoop, interval);
     }
   };
 
