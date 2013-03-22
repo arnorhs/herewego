@@ -8,7 +8,6 @@
   // player states
   i = 1;
   window.S_IDLE = i++;
-  window.S_UNKNOWN = i++;
   window.S_MOVING = i++;
   window.S_ATTACKING = i++;
 

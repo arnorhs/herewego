@@ -25,41 +25,51 @@
       return stats;
     },
     entity: null,
+    lastActionDate: 0,
+    canMove: function(targetPlayerPosition) {
+      return (new Date() - player.lastActionDate) > player.movementRate() &&
+             !player.entity.dead &&
+             currentMap.inBounds(targetPlayerPosition) &&
+             entities.canPassThroughAll(targetPlayerPosition);
+    },
     move: function(offset) {
+      var now = new Date();
+
       var targetPlayerPosition = {
         x: player.entity.position.x + offset.x,
         y: player.entity.position.y + offset.y
       };
 
-      if (!player.entity.dead && currentMap.inBounds(targetPlayerPosition) && entities.canPassThroughAll(targetPlayerPosition)) {
-        var enemy = entities.getEnemy(targetPlayerPosition);
-        if (enemy) {
-          player.state = S_ATTACKING;
+      if (!player.canMove(targetPlayerPosition)) return;
 
-          player.entity.attack(enemy);
+      var enemy = entities.getEnemy(targetPlayerPosition);
+      if (enemy) {
+        player.state = S_ATTACKING;
 
-          if (!enemy.dead) {
-            enemy.attack(player.entity);
-            if (player.entity.dead) {
-              // game over
-            }
-          }
-        } else {
-          // successful player movement
-          player.state = S_MOVING;
-          entities.move(player.entity, targetPlayerPosition);
-          WorldView.centerOnPosition(player.entity.position);
-        }
+        player.entity.attack(enemy);
 
-        // give him more health if he touches a healing house
-        var house = entities.getHouse(targetPlayerPosition);
-        if (house) {
-          if (house.type == HOUSE_HEALING) {
-            player.entity.setHealth(player.entity.attr('maxHealth'));
+        if (!enemy.dead) {
+          enemy.attack(player.entity);
+          if (player.entity.dead) {
+            // game over
           }
         }
-        updatePlayerStats();
+      } else {
+        // successful player movement
+        player.state = S_MOVING;
+        entities.move(player.entity, targetPlayerPosition);
+        WorldView.centerOnPosition(player.entity.position);
       }
+
+      // give him more health if he touches a healing house
+      var house = entities.getHouse(targetPlayerPosition);
+      if (house) {
+        if (house.type == HOUSE_HEALING) {
+          player.entity.setHealth(player.entity.attr('maxHealth'));
+        }
+      }
+      updatePlayerStats();
+      player.lastActionDate = now;
     }
   };
 
@@ -145,18 +155,8 @@
     s: 83
   };
 
-  var lastAction = new Date();
   document.onkeydown = function(e) {
-    var now = new Date(),
-        keyCode = e.keyCode;
-
-    if (now - lastAction < player.movementRate()) {
-      return false;
-    }
-
-    player.state = S_UNKNOWN;
-
-    switch (keyCode) {
+    switch (e.keyCode) {
       case key.up:
         player.move({x:0,y:-1});
         break;
@@ -175,9 +175,6 @@
       default:
         console.log("Key pressed:", e.keyCode, e.keyIdentifier);
         return true;
-    }
-    if (player.state == S_MOVING || player.state == S_ATTACKING) {
-      lastAction = now;
     }
     return false;
   };
