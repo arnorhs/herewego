@@ -155,6 +155,9 @@
   };
 
   document.onkeydown = function(e) {
+    if (e.metaKey) {
+      return true;
+    }
     switch (e.keyCode) {
       case key.up:
       case key.w:
