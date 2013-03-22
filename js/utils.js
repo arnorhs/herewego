@@ -10,5 +10,9 @@
     return Math.sqrt(a + b);
   }
 
+  window.formatStat = function(stat) {
+    return Math.floor(stat);
+  };
+
 
 })();

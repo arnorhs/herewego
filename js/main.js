@@ -180,7 +180,7 @@
         player.move({x:1,y:0});
         break;
       case key.tab:
-        HUD.toggleDetailedPlayerStats(player.getDetailedStats());
+        Modal.playerStats(player.getDetailedStats());
         break;
       default:
         console.log("Key pressed:", e.keyCode, e.keyIdentifier);
