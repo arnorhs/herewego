@@ -117,8 +117,7 @@
     return entity;
   }
 
-  window.onload = function() {
-
+  $(function() {
     // create map
     var landSize = {width: 1, height: 1};
     currentMap = WorldMap.getMap("start");
@@ -146,7 +145,7 @@
 
     WorldTime.init();
     HUD.updateTime(WorldTime.formatTime(WorldTime.getCurrent()));
-  }
+  });
 
   var key = {
     up: 38, down: 40, left: 37, right: 39,
