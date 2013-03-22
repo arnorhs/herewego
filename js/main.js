@@ -59,6 +59,7 @@
         player.state = S_MOVING;
         entities.move(player.entity, targetPlayerPosition);
         WorldView.centerOnPosition(player.entity.position);
+        HUD.updateCoords(player.entity.position);
       }
 
       // give him more health if he touches a healing house
@@ -68,8 +69,8 @@
           player.entity.setHealth(player.entity.attr('maxHealth'));
         }
       }
-      updatePlayerStats();
       player.lastActionDate = now;
+      updateDashboard();
     }
   };
 
@@ -98,12 +99,10 @@
         WorldView.redraw();
       }
     }
-    updatePlayerStats();
+    HUD.updateTime(WorldTime.formatTime(WorldTime.getCurrent()));
   });
 
-  function updatePlayerStats() {
-    HUD.updateCoords(player.entity.position);
-    HUD.updateTime(WorldTime.formatTime(WorldTime.getCurrent()));
+  function updateDashboard() {
     HUD.updateDashboard({
       health: player.entity.attr("health"),
       maxHealth: player.entity.attr("maxHealth"),
@@ -142,9 +141,11 @@
     WorldView.init();
 
     WorldView.centerOnPosition(player.entity.position);
-    updatePlayerStats();
+    updateDashboard();
+    HUD.updateCoords(player.entity.position);
 
     WorldTime.init();
+    HUD.updateTime(WorldTime.formatTime(WorldTime.getCurrent()));
   }
 
   var key = {
