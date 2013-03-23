@@ -6,14 +6,16 @@ Some weirdo old school type of game I'm having fun with.
 
 ### Next up todo:
 - Move player object into its own file
-- Make day/night pass along with time
 - Allow the player to distribute attribute points
 - Find a way to centralize attribute calculations, possibly on the entity?
+- re-render (at least lights) more often - now it's just happening when you move or
+  an alien shows up
 
 ### Features to add soonish:
 - Add a module library so I don't have to put every fucking thing on the window object
 - Save player position, time of day, experience points when you quit the tab
 - Come up with game mechanics that make the game really unique and fun (jk)
+- Come up with some sort of storyline?
 - Make aliens move and attack the player and each other
 - Allow the player to talk to cowboy guys and other people
 
