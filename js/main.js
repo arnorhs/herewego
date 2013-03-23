@@ -101,6 +101,7 @@
       }
     }
     HUD.updateTime(WorldTime.formatTime(WorldTime.getCurrent()));
+    Light.setLuminosity(WorldTime.getLuminosity());
   });
 
   function updateDashboard() {
@@ -136,6 +137,7 @@
     currentMap.getEntities(function(position, type) {
       addEntity(type, position, {width: 1, height: 1});
     });
+    Light.setLuminosity(WorldTime.getLuminosity());
 
     // initializing the world view basically adds all the stuff to the main div
     WorldView.init();

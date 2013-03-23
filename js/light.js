@@ -5,13 +5,14 @@
   var ctx, canvas,
       // last shadows drawn, if they need to be redrawn - obviously should be wrapped
       // in some class of some sorts
-      lastShadowCollection, lastLightSource;
+      lastShadowCollection, lastLightSource,
+      luminosity = 0;
 
   function addGradient(position) {
     var gradient = ctx.createRadialGradient(position.x, position.y, 0, position.x, position.y, 400);
     gradient.addColorStop(0, 'rgba(0,0,0,0)');
     gradient.addColorStop(0.1, 'rgba(0,0,0,0)');
-    gradient.addColorStop(1, 'rgba(0,0,0,1)');
+    gradient.addColorStop(1, 'rgba(0,0,0,' + luminosity.toFixed(2) + ')');
     ctx.fillStyle = gradient;
     ctx.rect(0,0,window.innerWidth, window.innerHeight);
     ctx.fill();
@@ -21,12 +22,16 @@
   // and draws a shape from the edges of it to further away with a black
   // shadow, towards the angle away from the player
   function drawShadows(shadowCollection, ls) {
+    if (luminosity == 0) {
+      return;
+    }
     // remember.. this is ugly. TODO
     lastShadowCollection = shadowCollection;
     lastLightSource = ls;
     // figure out what the maximum distance to a shadow is
     ctx.clearRect(0,0, window.innerWidth, window.innerHeight);
-    ctx.fillStyle = "rgba(0,0,0,0.3)";
+    // TODO turn off this shadow if it's at 0 opacity.. requires some refactoring of these draw things
+    ctx.fillStyle = "rgba(0,0,0," + (0.3 * (luminosity > 0.5 ? (luminosity - 0.5)*2 : 0)) + ")";
     var leftBounds = 0,
         rightBounds = window.innerWidth;
     // we create 3 copies of the same light with a slight offset
@@ -120,6 +125,9 @@
     init: function() {
       canvas = document.getElementById("light_canvas");
       ctx = canvas.getContext('2d');
+    },
+    setLuminosity: function(lum) {
+      luminosity = 1 - lum;
     },
     setCanvasSize: function(size) {
       canvas.width = size.width;
