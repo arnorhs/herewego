@@ -1,4 +1,5 @@
 (function() {
+  "use strict";
 
   window.dimension = function(dimension) {
     return (dimension * UNIT) + "px";

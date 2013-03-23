@@ -1,4 +1,5 @@
 (function() {
+  "use strict";
   var i;
 
   window.UNIT = 48;

@@ -1,4 +1,5 @@
 (function() {
+  "use strict";
 
   // main lighting canvas context
   var ctx, canvas,

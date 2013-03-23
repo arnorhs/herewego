@@ -1,4 +1,5 @@
 (function() {
+  "use strict";
 
   // Hash that works as a reverse lookup for game objects at a specific square
   //

@@ -1,4 +1,5 @@
 (function() {
+  "use strict";
 
   var worldTime = 0,
       interval = 1000;

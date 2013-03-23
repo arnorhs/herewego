@@ -1,4 +1,5 @@
 (function() {
+  "use strict";
 
   window.HUD = {
     updateDashboard: function(playerStats) {

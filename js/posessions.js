@@ -1,8 +1,11 @@
+(function() {
+  "use strict";
 
-function Weapon(damage) {
-  this.damage = damage;
-}
+  window.Weapon = function(damage) {
+    this.damage = damage;
+  }
 
-function Armor(strength) {
-  this.strength = strength;
-}
+  window.Armor = function(strength) {
+    this.strength = strength;
+  }
+})();

@@ -1,4 +1,5 @@
 (function() {
+  "use strict";
 
   window.defaultAttributesForType = function(type) {
     switch (type) {
