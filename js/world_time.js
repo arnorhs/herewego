@@ -8,7 +8,7 @@
       DAYLIGHT_STARTS = 7 * HOUR,
       DAYLIGHT_ENDS = 19 * HOUR,
       TRANSITION = 2 * HOUR,
-      worldTime = 18.8 * HOUR; // let's start at 10 o clock
+      worldTime = 10 * HOUR; // let's start at 10 o clock
 
   function timeLoop() {
     worldTime += 1;
