@@ -44,8 +44,9 @@
       if (isInViewport(view.position)) {
         view.element.style.left = dimension(view.position.x - viewportOffset.x);
         view.element.style.top = dimension(view.position.y - viewportOffset.y);
-        if (!rootView.contains(view.element)) {
+        if (!view.element.isPlaced) {
           rootView.appendChild(view.element);
+          view.isPlaced = true;
         }
         if ([TREE, MOUNTAIN].indexOf(view.type) >= 0) {
           // shadow collection needs the lightsource currently, because it uses it to pick a side
@@ -56,8 +57,9 @@
         }
         viewsToShow.push(view);
       } else {
-        if (rootView.contains(view.element)) {
+        if (view.isPlaced) {
           rootView.removeChild(view.element);
+          view.isPlaced = false;
         }
       }
     }

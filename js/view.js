@@ -22,6 +22,7 @@
     this.size = size;
     this.type = type;
     this.createElement();
+    this.isPlaced = false;
   }
   View.prototype.move = function(position) {
     this.position = position;
