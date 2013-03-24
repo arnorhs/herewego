@@ -166,3 +166,11 @@ body {
   width: 30%;
   text-align: right;
 }
+
+
+#map_canvas {
+  display: none;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}

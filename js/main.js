@@ -154,7 +154,8 @@
     up: 38, down: 40, left: 37, right: 39,
     w: 87, a: 65, s: 83, d: 68,
     k: 75, j: 74, h: 72, l: 76,
-    tab: 9
+    tab: 9,
+    m: 77
   };
 
   document.onkeydown = function(e) {
@@ -185,6 +186,9 @@
       case key.tab:
         Modal.playerStats(player.getDetailedStats());
         break;
+      case key.m:
+        HUD.showMap(currentMap);
+        break;
       default:
         console.log("Key pressed:", e.keyCode, e.keyIdentifier);
         return true;
@@ -192,5 +196,16 @@
     return false;
   };
 
+  document.onkeyup = function(e) {
+    if (e.metaKey) return true;
+    switch (e.keyCode) {
+      case key.m:
+        HUD.hideMap();
+        break;
+      default:
+        return true;
+    }
+    return false;
+  };
 
 })();
