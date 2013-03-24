@@ -115,20 +115,18 @@
   // game engine - especially if it will become mutable
   function WorldMap(name) {
     this.name = name;
-    this.size = {};
+    this.size = {
+      width: mapDefinitions[this.name].map[0].length, // assuming each row is equally long for now
+      height: mapDefinitions[this.name].map.length
+    };
   }
 
   WorldMap.prototype.getViews = function(callback) {
     var worldMap = mapDefinitions[this.name].map;
-    var yl = worldMap.length;
-    var xl = worldMap[0].length; // assuming each row is equally long for now
-
-    // grab size of map from height and first column width
-    this.size = {x: xl, y: yl};
 
     // loop through each tile
-    for (var y = 0; y < yl; y++) {
-      for (var x = 0; x < xl; x++) {
+    for (var y = 0; y < this.size.height; y++) {
+      for (var x = 0; x < this.size.width; x++) {
         callback({x: x, y: y}, squareToType(worldMap[y][x]));
       }
     }
@@ -149,13 +147,13 @@
     return {
       x: 0,
       y: 0,
-      width: this.size.x,
-      height: this.size.y
+      width: this.size.width,
+      height: this.size.height
     };
   };
 
   WorldMap.prototype.inBounds = function(position) {
-    return position.x >= 0 && position.x < this.size.x && position.y >= 0 && position.y < this.size.y;
+    return position.x >= 0 && position.x < this.size.width && position.y >= 0 && position.y < this.size.height;
   };
 
   // note: WorldMap on window is not the same as the WorldMap function class
