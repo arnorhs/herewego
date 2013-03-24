@@ -161,9 +161,6 @@
     // expects a callback
     getMap: function(name) {
       return new WorldMap(name);
-    },
-    create: function(callback) {
-      readMapDefinition(worldMap, callback);
     }
   }
 })();
