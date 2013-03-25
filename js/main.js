@@ -160,6 +160,10 @@
 
   document.onkeydown = function(e) {
     if (e.metaKey) {
+      // work around for the hold down map thing -- we'll eventually have to do something
+      // to support holding down cursor keys better, so this is definitely an
+      // intermediate solution
+      HUD.hideMap();
       return true;
     }
     switch (e.keyCode) {
