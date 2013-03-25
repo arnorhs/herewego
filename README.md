@@ -12,7 +12,7 @@ Some weirdo old school type of game I'm having fun with.
   an alien shows up
 
 ### Features to add soonish:
-- Add a module library so I don't have to put every fucking thing on the window object
+- Add a module library. Should probably be easy to drop in browserify or something.
 - Save player position, time of day, experience points when you quit the tab
 - Come up with game mechanics that make the game really unique and fun (jk)
 - Come up with some sort of storyline?
@@ -24,12 +24,10 @@ Some weirdo old school type of game I'm having fun with.
 - Add more houses
 - And more types of people
 - More types of enemies.. possibly red aliens etc
-- Make the dead sprite for an alien
 
 ### Features to add one day, probably by somebody smarter than me:
 - Make the lighting better, smarter - right now it's barely enough to make
   night time a bit more interesting.
-- Make player movement be more flexible.. possibly able to move at an angle
 
 ### Installation:
 
