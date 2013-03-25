@@ -10,7 +10,7 @@
         case S_ATTACKING:
           return 800;
         case S_MOVING:
-          return 140;
+          return 200;
       }
       return 0;
     },
@@ -104,6 +104,18 @@
     Light.setLuminosity(WorldTime.getLuminosity());
   });
 
+  Whisper.listen("command_player_stats", function(time) {
+    Modal.playerStats(player.getDetailedStats());
+  });
+
+  Whisper.listen("command_show_map", function(time) {
+    HUD.showMap(currentMap);
+  });
+
+  Whisper.listen("command_hide_map", function(time) {
+    HUD.hideMap();
+  });
+
   function updateDashboard() {
     HUD.updateDashboard({
       health: player.entity.attr("health"),
@@ -148,68 +160,10 @@
 
     WorldTime.init();
     HUD.updateTime(WorldTime.formatTime(WorldTime.getCurrent()));
+
+    Commands.init(function(offset) {
+      player.move(offset);
+    });
   });
-
-  var key = {
-    up: 38, down: 40, left: 37, right: 39,
-    w: 87, a: 65, s: 83, d: 68,
-    k: 75, j: 74, h: 72, l: 76,
-    tab: 9,
-    m: 77
-  };
-
-  document.onkeydown = function(e) {
-    if (e.metaKey) {
-      // work around for the hold down map thing -- we'll eventually have to do something
-      // to support holding down cursor keys better, so this is definitely an
-      // intermediate solution
-      HUD.hideMap();
-      return true;
-    }
-    switch (e.keyCode) {
-      case key.up:
-      case key.w:
-      case key.k:
-        player.move({x:0,y:-1});
-        break;
-      case key.down:
-      case key.s:
-      case key.j:
-        player.move({x:0,y:1});
-        break;
-      case key.left:
-      case key.a:
-      case key.h:
-        player.move({x:-1,y:0});
-        break;
-      case key.right:
-      case key.d:
-      case key.l:
-        player.move({x:1,y:0});
-        break;
-      case key.tab:
-        Modal.playerStats(player.getDetailedStats());
-        break;
-      case key.m:
-        HUD.showMap(currentMap);
-        break;
-      default:
-        console.log("Key pressed:", e.keyCode, e.keyIdentifier);
-        return true;
-    }
-    return false;
-  };
-
-  document.onkeyup = function(e) {
-    if (e.metaKey) return true;
-    switch (e.keyCode) {
-      case key.m:
-        HUD.hideMap();
-        break;
-      default:
-        return true;
-    }
-    return false;
-  };
 
 })();
