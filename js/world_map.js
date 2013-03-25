@@ -133,8 +133,8 @@
   };
 
   WorldMap.prototype.getEntities = function(callback) {
-    var buildings = mapDefinitions[this.name].buildings;
-    var people = mapDefinitions[this.name].people;
+    var buildings = mapDefinitions[this.name].buildings,
+        people = mapDefinitions[this.name].people;
     buildings.forEach(function(building) {
       callback(building, building.type ? building.type : HOUSE_HEALING);
     });
