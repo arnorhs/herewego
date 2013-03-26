@@ -60,6 +60,12 @@ body {
 .house_spaceship {
   background: transparent url(img/house_spaceship.png) no-repeat;
 }
+.house_tower {
+  background: transparent url(img/house_tower.png) no-repeat;
+}
+.house_fortress {
+  background: transparent url(img/house_fortress.png) no-repeat;
+}
 
 #player_stats {
   background: rgba(0,0,0, 0.3);

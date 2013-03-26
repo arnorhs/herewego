@@ -41,9 +41,9 @@
                   "wwwwwwwwwwwwwwwwww.....rr......................................tt...........r.....ww...............tttttt..........t.tttt...........rr....ww..r..r....rt..t.",
                   "wwwwwwwwwttttttt.......rrrrrrrrrrrrrrrrr........................ww.www......rrrrrrBBrrrrrrrrr...ttttttttt........t....t....t........r.....ww.....r....rtt.t.",
                   "tttttttttttttttttt.....................r..............wwwwwww.wwwwwwwwwwww..r.....ww........r......tttt..rrrrrrrrrrrrrrrrrrrrrrrrrrrr.................rtttt.",
-                  "ttttttttttttttttttttttttt..............r......wwwwwwwwwwwwwwwwwwwwwwwww.w...r...wwww........r............r.........t.....ttt.t......r.r...............rtttt.",
-                  "ttttttttttttttttttttttttttt............r....wwwwwwwwwwww.www.wwttwwww.......r...wwwww.......r............r.......t..tttttt..........rrrrrrr...........rt.t..",
-                  "tttttttttttttttttttttttttttt.tt........r....wwwwwwwwwwwww.w.....t.t.............w.wwww......r............r....tttttttt..............r.................r.....",
+                  "ttttttttttttttttttttttttt..............r......wwwwwwwwwwwwwwwwwwwwwwwww.w...r...wwww........r............r.........t.....ttt.t......r.r.r.............rtttt.",
+                  "ttttttttttttttttttttttttttt............r....wwwwwwwwwwww.www.wwttwwww.......r...wwwww.......r............r.......t..tttttt..........rrrrrrr.........r.rt.t..",
+                  "tttttttttttttttttttttttttttt.tt........r....wwwwwwwwwwwww.w.....t.t.............w.wwww......r............r....tttttttt..............r...............r.r.....",
                   "ttttttttttttttttttttttttttttttttt......r....wwwwwwwww.........tt.....tt.....mmm..wwww.......rrrrrrrrrrrrrr...ttttttttt..............rrrrrrrrrrrrrrrrrrr.....",
                   "ttttttttttttttttttttttttttttttttttttt..r.....wwwwwwwwwwwwww..tt...........m.mmm..wwwm...mm...............r..tttttttttt...................wtttwwwttt.........",
                   "tttttttttttttttttttttttttttttttttt.....r.......wwwwwwwww............t......mmmmmmwwwmmmmmmm..............r..tttttttttttttttttttttt......wwwwwwwwww..........",
@@ -87,6 +87,7 @@
           // town above maze
           {x: 134, y: 26, type: HOUSE_RESTING}, {x: 134, y: 28}, {x: 139, y: 30},
           {x: 145, y: 28, type: HOUSE_RESTING}, {x: 142, y: 27, type: HOUSE_RESTING}, {x: 148, y: 26},
+          {x: 136, y: 28, type: HOUSE_TOWER}, {x: 148, y: 29, type: HOUSE_FORTRESS},
           // space ships
           {x: 2, y: 57, type: HOUSE_SPACESHIP}, {x: 71, y: 57, type: HOUSE_SPACESHIP}, {x: 101, y: 46, type: HOUSE_SPACESHIP},
           {x: 122, y: 19, type: HOUSE_SPACESHIP}, {x: 44, y: 18, type: HOUSE_SPACESHIP}, {x: 17, y: 3, type: HOUSE_SPACESHIP}

@@ -16,6 +16,8 @@
   classes[HOUSE_HEALING] = 'house_healing';
   classes[HOUSE_RESTING] = 'house_resting';
   classes[HOUSE_SPACESHIP] = 'house_spaceship';
+  classes[HOUSE_TOWER] = 'house_tower';
+  classes[HOUSE_FORTRESS] = 'house_fortress';
 
   function View(position, size, type) {
     this.position = position;

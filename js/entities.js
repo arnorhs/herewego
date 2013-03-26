@@ -133,6 +133,8 @@
       case HOUSE_HEALING:
       case HOUSE_RESTING:
       case HOUSE_SPACESHIP:
+      case HOUSE_TOWER:
+      case HOUSE_FORTRESS:
         return false;
       case PERSON_COWBOY:
       case PLAYER:
@@ -147,6 +149,8 @@
       case HOUSE_HEALING:
       case HOUSE_RESTING:
       case HOUSE_SPACESHIP:
+      case HOUSE_TOWER:
+      case HOUSE_FORTRESS:
         return true;
     }
     return false;

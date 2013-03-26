@@ -21,6 +21,8 @@
   window.HOUSE_HEALING = i++;
   window.HOUSE_RESTING = i++;
   window.HOUSE_SPACESHIP = i++;
+  window.HOUSE_TOWER = i++;
+  window.HOUSE_FORTRESS = i++;
   window.GRASS = i++;
   window.TREE = i++;
   window.WATER = i++;
