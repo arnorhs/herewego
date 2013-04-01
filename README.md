@@ -2,7 +2,8 @@
 
 Some weirdo old school type of game I'm having fun with.
 
-![Demo](https://dl.dropbox.com/u/647738/demos/herewego/index.html)
+[Try demo](https://dl.dropbox.com/u/647738/demos/herewego/index.html)
+
 ![Screenshot](http://f.cl.ly/items/083a2J3c0l3o3n0w1D29/Screen%20Shot%202013-03-17%20at%2010.47.46%20PM.png)
 
 ### Next up todo:
