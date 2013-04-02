@@ -12,72 +12,6 @@
   // r: road
   var mapDefinitions = {
     start: {
-      map:       ["wwttttmmmmwwwwwwwwwwwwwwwtttttttttttttttttttttttttttttmmmmmmmmmmmmmmmmmmmmmwwwwwwwwwwwwwwwwwwwwwwwwwwmmmmmmmmmmmwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-                  "wwtttttmmmwwww....wwwwwwwwwwwwwtttt.......ttttttttttttttt.mmmmmmmmmmm............wwwwwwwwwwwwwwwwww..mmmmmmmm...wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-                  "wwwtttttt......ttttttttttttwww....................ttttt......mmmm....................wwwwwwwwwwww..mmmmmmm......wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-                  "w.tttt............tttttttwwww................................mm........................wwwwwwww....mmmmmmmmmm...wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-                  "w................ttttttwww............tttt......................mmm.................wwwwwwwwwwwww...tttmmmmm....wwwwwwww...wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-                  "w.....................................tttt.....................mmmmm.m...............wwwwwwwwwwwwww......mmmmm..wwwwwwwwww...wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-                  "w.....r.........................................................mmmmmmm...............wwwwwwwwww.....rrrrttmmmm..wwwwwwwwww.wwwwwwwww...wwwwwwwwwwwwwwwwwwww",
-                  "www...r............................................................mmmmm.............wwwwwwwwwwww....rt.rttmmmm...wwwwwwwwwwwwwwwwww.....wwwwwwwwwwwwwwwwwww",
-                  "wwww..r.....tttttttttt..............................................mmmmm..........rrrBBBBBBBBBBBrrrrrt.rtt.rrrrrrrBBBBBBBBBBBBBBBBrrr...wwwwwwwww.wwwwwwwww",
-                  "wwww..r....tttttttttttt.............................................m..mmm............wwwwwwwwwww.....t.r.t.r.....wwwwwwwwwwwwwwwwww.....wwwwwwww.wwwwwwwwww",
-                  "wwwwwwbwwwwtttttttttttt...t..................tttttt....................mmmm...........wwwwwwwwwwwtt..tttr.ttr...wwwwwwwwwwwwwwwwwwwww...wwwwwwwwwwwwwwwwwwww",
-                  "mww...r..wwtttttttttttttttt.................tttttttwwwwwwwwwww..........mmm..........wwwwwwwwwwwww...tttr.ttr...wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-                  "mmww..r.....tttttttttttttttt................ttttttwwwwwwwww.............mm...........wwwwwwwwwwwww.....tr.t.r...wwwwwwwwwwwwwwww.wwwwwwwwwwwwwwwwwwwwwwwwwww",
-                  "mmm.m.rrrrrrrr......tttttttt................ttttttwwwwww................m..............wwwwwww.www.....trrrrr......wwwwwwwwwwww....wwwwwwwwwwwww..wwwwwwww..",
-                  "t.m.mm...m...r......ttttttt...................wwwwwwwwwwwwww...............rrr.........wwwww...www.....tt..........wwwwwwwwwwwww.w.wwwwwwwwwwwww.wwwwwwwww..",
-                  "t...mmmmmmmm.r...m..........................wwwwwwwwwwwwww.................rrr.........wwwww...www....ttttt.......mmwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww...",
-                  "tt...mm.mmm..r..mmmm......................wwww.............................rrr........wwwwww..wwww..ttttt......m.mmwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww...",
-                  "tttt.....m...r..mmmm....................wwwwww..............................r.........w..wwwwwwww.ttttt..m.mmmmmmmmwwww...wwwwwwwwwww.w.wwwwwwwwwwwwwwww....",
-                  "tttttt.......r.m.m.m...mmm.........ttttwwwww....tttttt......................r........ww..wwwwww.mmmmmmmmmmmmmmmmmm........wwwwwwwwww.....wwwwwwwwww...ww....",
-                  "ttttttttt....r.mmm....mmm..........ttttwww....ttttt.........................r.....wwwwwwww.....mmmmmm..mmmmm.m.mm..........................wwwwwwww...w.....",
-                  "tttttttttttt.r......................wwwwww...tttt...........................r....wwwwwww........tttttttt..m.....m...........................................",
-                  "tttttttt.....rrrrrrrrrrrr......wwwwwwww..tttttt.............................r...wwww............tttttttttt..................................rrrrr...........",
-                  "tttttt.................rr....wwwwwwww...tttttt..............................r....wwww.............tttttttt....................................r.............",
-                  "ttttttttt.........www.trr.wwwwwww.......tttttt...................tt.........r....www.................tttttt...................................r....ttt......",
-                  "ttttttt........wwwwwwwwbbwwwww..........tttttt.................tttt.........r....wwww................tttttt.........tttt............rrrrrrrrrrrrrrrrrrr.....",
-                  "ttttwwwwwwwwwwwwwwwwwwwbbw.....................................tttt.........r.....ww.................ttttttt.......tttt..t..........r.........r..r..r.r.....",
-                  "wwwwwwwwwwwwwwwwww.....rr......................................tt...........r.....ww...............tttttt..........t.tttt...........rr....ww..r..r....rt..t.",
-                  "wwwwwwwwwttttttt.......rrrrrrrrrrrrrrrrr........................ww.www......rrrrrrBBrrrrrrrrr...ttttttttt........t....t....t........r.....ww.....r....rtt.t.",
-                  "tttttttttttttttttt.....................r..............wwwwwww.wwwwwwwwwwww..r.....ww........r......tttt..rrrrrrrrrrrrrrrrrrrrrrrrrrrr.................rtttt.",
-                  "ttttttttttttttttttttttttt..............r......wwwwwwwwwwwwwwwwwwwwwwwww.w...r...wwww........r............r.........t.....ttt.t......r.r.r.............rtttt.",
-                  "ttttttttttttttttttttttttttt............r....wwwwwwwwwwww.www.wwttwwww.......r...wwwww.......r............r.......t..tttttt..........rrrrrrr.........r.rt.t..",
-                  "tttttttttttttttttttttttttttt.tt........r....wwwwwwwwwwwww.w.....t.t.............w.wwww......r............r....tttttttt..............r...............r.r.....",
-                  "ttttttttttttttttttttttttttttttttt......r....wwwwwwwww.........tt.....tt.....mmm..wwww.......rrrrrrrrrrrrrr...ttttttttt..............rrrrrrrrrrrrrrrrrrr.....",
-                  "ttttttttttttttttttttttttttttttttttttt..r.....wwwwwwwwwwwwww..tt...........m.mmm..wwwm...mm...............r..tttttttttt...................wtttwwwttt.........",
-                  "tttttttttttttttttttttttttttttttttt.....r.......wwwwwwwww............t......mmmmmmwwwmmmmmmm..............r..tttttttttttttttttttttt......wwwwwwwwww..........",
-                  "ttttttttttttt....ttttttttttttttttt.....r...........................r..t..m.mmmmmmwwwmmmmmmm..............r..tttttttttttttttttttttt.....wwwwwwwwwwwwwwww.....",
-                  "tttttttttttt.....tttttttttttttttttttt..rrrrrrrrrrrrrrrrrrrrrrrrrrrrtrrrr.m.mmmmmwwwwmmmmmmmmmm...........r..tttttttttttttttttttttt....wwwwwwwwwwwwww........",
-                  "ttttttttttttt....ttttttttttttttt...tt..r...........................tttt..mmmmmmwwwwwmmmmmmmmmmm..........r..tttttttttttttttttttttt........wwwwwww...........",
-                  "tttttttttttttttttttttttttttttttt...tt..r..........................t.ttttmmmmmmmwwwwwmmmmmmmmmm...........r..ttttttttttttttttttttt...........................",
-                  "tttttttttttttttttttttttttttttttt...t...r..........................tmttttmmmmmmmwwwwwmmmmmmmmmmmmmmm.m....rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr.........",
-                  "tttttttttttttttttttttt....ttttttttttt..r........................mttmmmmmmmmmmmwwwwwwmmmmmmmmmmmmm.m.mm......tttttttttttttttttt....................r.........",
-                  "ttttttttttttttttttttt.....tttttttttt...rr......................tmmtmmmmmmmmmmwwwwwmmmmmmmmmmmmmmmmmm.m.......ttttttttttttttttt.t............................",
-                  "ttttttttttttttttttttt.....ttttttttttt..r........t.........t....ttt.mmmmmmmmmmwwwwwmmmmmmmmmmmmmmmmmmmmm.......tttttttttttttttt.......ttttttttttttt.ttttttt..",
-                  "ttttttttttttttttttttt....ttttt....ttt..r...............t........mmtm.mmmmmmmmwwwwmmmmmmm.mmmmmmmmmmmmmm.........ttttttttttttttt......t...t.....t.t.......t..",
-                  "ttttt..........ttt.tt..t..........t.t..r.........................tt...mmmmmwwwwwwmmmmm......mmmmmmmmmmm....r....tttttttttttttt.......t.t.t.t.t.t.ttttt.t.t..",
-                  "m........ttt.......ttttt...............r....t..t................t.........mwwwwwwmmmm........mmmmmmmmmmmm..r....ttttttttttttttt......t.t.t.t.t.t.....t.t.t..",
-                  "m..........tttttttt....................r.....t............t............m..wwwwwmmmmmmm.........mmmm...mmm..r....tttttttttttttttttt...t.t.t.t.t.ttttt.t.t.t..",
-                  "m......................................r.................................mwwwww..mmm....rrr...........mm...r.......ttttttttttttt.....t.t...t.t.........t.t..",
-                  "mm.........wwww...............................tt.t.........t..............www.............r.......mmmmmm..............tttttt.........t.t.ttttttttttttttt.t..",
-                  "mm......t....wwww...............................t..................t......www.............r......mmmmmmm.............................t.t.t...............t..",
-                  "mmm.m....mmmm.................www................t................t.....wwww......ttttt...rrrrrrrr.mmm.....r..w............ttttttttttt.t.ttttttttttttttt.t..",
-                  "mmm.mm.mtm..m.m...t...........wwwwwwwww...........rrrrrrr...............wtww.....tttttt..........r.........r..w............t...........t.t...............t..",
-                  "mmmmmmmm.m..m................wwwwwwwww............rrrrrrr.......tt..ttt.wtwww....ttttttt.........r.........r..ww...........tttttttttttttttttttttt.tttttttt..",
-                  "m.mmmmm..m..m..............t.wwwwwwwww...tt.......rrrrrrr.........t.ttt.wtwww...tttttttt.........rrrrrrrrrrr.www...........t.............................t..",
-                  "m..m..mmmmm....t.........ttttwwwwwwwwwtttttt......rrrrrrr........t..ttt.wtww....tttttttt.........r...........www.........ttt.ttttttttttttttttttttttttttttt..",
-                  "m.....m.....t.............ttttwwwwwwwwttttt..........r....t.......ttttt.twwww....ttttttt.........r..........wwww.........t.t.t.................t.t.......t..",
-                  "mm..m.m.mmmmmmm.t........ttttwwwwwwwwwtttttt......t..rtt..........tttt..twwwww....tttttt.........r..........wwww.........t.t.t.t..tttttttttt.t.t.t.......t..",
-                  "mm..m.m.m.mmmm........tttttttttwwwtwwtttttttt........r............ttt...tt.wwww...ttttt..........r..........wwww.........t.t.t.t..t....t.t...t.t.t.ttttt.t..",
-                  "mmmm..m....mmmm.......ttttttttttwtttttttttt......t...r................tttt.wwwww..ttttm...m......r.........wwww..........t.t.ttttttttt.t.t...t.........t.t..",
-                  "mmm.....mm..m........t.....ttttttttttttttttt.........r................tttttwwwwtttttttt.mm.......r.........wwww..........t.t.......t...t.tttttttt.tttt.t.t..",
-                  "mmmmmmmmmm...m......t..tt.......ttt.....tttt.........rt........t...........wwwwww.....m.mmmm.....r.........ww......tt....t.tttttt.tttt.t.....t.......t.t.t..",
-                  "mmmmmmmmmmmmm.........t...t.....tt..............rrrrrrrrrrrrrrrrrrrrrrrrrrrBBBrrrrrrr..mmmmmm....r.........ww.....tttt...t.t...t.........ttt.t.ttttt.t.t.t..",
-                  "mmmmmmmmmmmmmmmmm...........t...tt..............r........................wwwww......r.m.mmmmm.m..r........www....tttt....t.t.t.t.ttttttttt.ttt.t.....t.t.t..",
-                  "mmmmmmmmmmm...mm.........t.t..t.......rrrrrrrrrrr...t...ttt.........tttttwwwwwwww...r....mmm...m.r.....wwwwww..tttttt....t.t.t.t.............t.t.ttttt.t.t..",
-                  "mmmmmmmmmmmmmmmmm....tttttt...tt.t..tttt.....ttt......t...ttttttt..tttttwwwwwwwwwww.rrrrrrrrrrrrrr.wwwwwwwww..tttttt.....t...t....tttttttttt...t.......t.t..",
-                  "mmmmmmmmmmmmmmmmmmttttttttttttttttttttttttttttttttttttttttttttttttttttwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwtttttttttttttttttttttttt........ttttttttttttt...."],
         buildings: [
           {x: 6, y: 5}, {x: 63, y: 31}, {x: 88, y: 46}, {x: 76, y: 15},
           // house on the side of the road
@@ -116,19 +50,32 @@
   // game engine - especially if it will become mutable
   function WorldMap(name) {
     this.name = name;
-    this.size = {
-      width: mapDefinitions[this.name].map[0].length, // assuming each row is equally long for now
-      height: mapDefinitions[this.name].map.length
-    };
+    this.raw = null;
+    this.size = {width: 0, height: 0};
   }
 
-  WorldMap.prototype.getViews = function(callback) {
-    var worldMap = mapDefinitions[this.name].map;
+  WorldMap.prototype.download = function(callback) {
+    var map = this;
+    $.ajax({
+      url: "maps/" + this.name + ".map",
+      dataType: "text",
+      success: function(data) {
+        map.raw = data.split("\n");
+        map.size.width = map.raw[0].length;
+        map.size.height = map.raw.length;
+        callback.call(map);
+      },
+      error: function(xhr, type) {
+        // TODO handle error?
+      }
+    });
+  };
 
+  WorldMap.prototype.getViews = function(callback) {
     // loop through each tile
     for (var y = 0; y < this.size.height; y++) {
       for (var x = 0; x < this.size.width; x++) {
-        callback({x: x, y: y}, squareToType(worldMap[y][x]));
+        callback({x: x, y: y}, squareToType(this.raw[y][x]));
       }
     }
   };
@@ -165,4 +112,3 @@
     }
   }
 })();
-

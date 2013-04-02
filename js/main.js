@@ -133,36 +133,38 @@
 
   $(function() {
     // create map
-    var landSize = {width: 1, height: 1};
     currentMap = WorldMap.getMap("start");
-    currentMap.getViews(function(position, type) {
-      addEntity(type, position, landSize);
-    });
+    currentMap.download(function() {
+      var landSize = {width: 1, height: 1};
+      currentMap.getViews(function(position, type) {
+        addEntity(type, position, landSize);
+      });
 
-    // makes it so the viewport can't be scrolled past these limits
-    WorldView.setViewportOffsetLimits(currentMap.getRect());
+      // makes it so the viewport can't be scrolled past these limits
+      WorldView.setViewportOffsetLimits(currentMap.getRect());
 
-    // create the player
-    player.entity = addEntity(PLAYER, INITIAL_PLAYER_POSITION, {width: 1, height: 1});
+      // create the player
+      player.entity = addEntity(PLAYER, INITIAL_PLAYER_POSITION, {width: 1, height: 1});
 
-    // make all buildings
-    currentMap.getEntities(function(position, type) {
-      addEntity(type, position, {width: 1, height: 1});
-    });
-    Light.setLuminosity(WorldTime.getLuminosity());
+      // make all buildings
+      currentMap.getEntities(function(position, type) {
+        addEntity(type, position, {width: 1, height: 1});
+      });
+      Light.setLuminosity(WorldTime.getLuminosity());
 
-    // initializing the world view basically adds all the stuff to the main div
-    WorldView.init();
+      // initializing the world view basically adds all the stuff to the main div
+      WorldView.init();
 
-    WorldView.centerOnPosition(player.entity.position);
-    updateDashboard();
-    HUD.updateCoords(player.entity.position);
+      WorldView.centerOnPosition(player.entity.position);
+      updateDashboard();
+      HUD.updateCoords(player.entity.position);
 
-    WorldTime.init();
-    HUD.updateTime(WorldTime.formatTime(WorldTime.getCurrent()));
+      WorldTime.init();
+      HUD.updateTime(WorldTime.formatTime(WorldTime.getCurrent()));
 
-    Commands.init(function(offset) {
-      player.move(offset);
+      Commands.init(function(offset) {
+        player.move(offset);
+      });
     });
   });
 
