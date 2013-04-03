@@ -1,0 +1,36 @@
+.person_cowboy,
+.land_grass,
+.land_tree,
+.land_water,
+.land_bridge_v,
+.land_bridge_h,
+.land_mountain,
+.land_road,
+.house_healing,
+.house_resting,
+.house_spaceship,
+.house_tower,
+.house_fortress,
+.enemy_alien_dead,
+.enemy_alien {
+  background-size: 12px 12px;
+}
+
+#canvas, #canvas:hover, #canvas:active, #canvas:focus {
+  cursor: cross !important;
+}
+
+body {
+  background: #000;
+  padding-top: 40px;
+}
+.tools {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  background: rgba(0,0,0, 0.2);
+}

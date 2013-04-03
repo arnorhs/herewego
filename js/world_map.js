@@ -107,11 +107,18 @@
     return position.x >= 0 && position.x < this.size.width && position.y >= 0 && position.y < this.size.height;
   };
 
+  WorldMap.prototype.export = function() {
+    return this.raw.join("\n");
+  };
+
   // note: WorldMap on window is not the same as the WorldMap function class
   window.WorldMap = {
     // expects a callback
     getMap: function(name) {
       return new WorldMap(name);
+    },
+    getTypes: function() {
+      return types;
     }
   }
 })();
