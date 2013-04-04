@@ -61,6 +61,9 @@
       dataType: "text",
       success: function(data) {
         map.raw = data.split("\n");
+        // I contemplated looping through and removing each empty string, but I think
+        // it's just going to be the last one.
+        map.raw.pop();
         map.size.width = map.raw[0].length;
         map.size.height = map.raw.length;
         callback.call(map);
