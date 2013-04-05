@@ -1,15 +1,6 @@
 (function() {
   "use strict";
 
-  // Map data
-  //
-  // g: grass
-  // t: trees
-  // w: water
-  // b: vertical bridge
-  // B: horizontal bridge
-  // m: mountain
-  // r: road
   var mapDefinitions = {
     start: {
         buildings: [
