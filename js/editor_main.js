@@ -4,7 +4,7 @@
   /* This is all basically a giant hack - put some pieces from the game source together
    * to create this super basic ugly editor */
 
-  window.UNIT = 5;
+  var zoom = 12; // 0.25 zoom level compared to game
 
   var size;
   var $canvas, canvas, ctx, canvasPos;
@@ -24,8 +24,8 @@
       height: window.innerHeight
     };
     if (currentMap) {
-      canvas.width = currentMap.getRect().width * UNIT;
-      canvas.height = currentMap.getRect().height * UNIT;
+      canvas.width = currentMap.getRect().width * zoom;
+      canvas.height = currentMap.getRect().height * zoom;
     } else {
       //canvas.width = size.width;
       //canvas.height = size.height;
@@ -57,8 +57,14 @@
   function draw() {
     currentMap.getViews(function(position, type) {
       ctx.fillStyle = colors[type];
-      ctx.fillRect(position.x*UNIT, position.y*UNIT, UNIT, UNIT);
+      ctx.fillRect(position.x*zoom, position.y*zoom, zoom, zoom);
     });
+  }
+
+  function setZoom(z) {
+    zoom = z;
+    updateSizes();
+    draw();
   }
 
   var currentType = GRASS;
@@ -66,13 +72,13 @@
     if (currentMap.raw[y] && x < currentMap.raw[y].length) {
       currentMap.raw[y] = currentMap.raw[y].slice(0, x) + typeToSquare(currentType) + currentMap.raw[y].slice(x+1);
       ctx.fillStyle = colors[currentType];
-      ctx.fillRect(x*UNIT, y*UNIT, UNIT, UNIT);
+      ctx.fillRect(x*zoom, y*zoom, zoom, zoom);
     }
   }
 
   var mouseDown = false;
   function translateMousePosition(x) {
-    return (x / UNIT) << 0;
+    return (x / zoom) << 0;
   }
   document.onmousemove = function(e) {
     if (mouseDown) {
@@ -108,6 +114,10 @@
         currentType = WATER; break;
       case 66:
         currentType = e.shiftKey ? BRIDGE_H : BRIDGE_V; break;
+      case 219: // square brackets open
+        setZoom(zoom - 1); break;
+      case 221: // square brackets close
+        setZoom(zoom + 1); break;
     }
     updateCurrentType();
   };
