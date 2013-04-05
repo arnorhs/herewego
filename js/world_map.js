@@ -35,6 +35,7 @@
 
   var types = {
     ".": GRASS,
+    s: SAND,
     t: TREE,
     w: WATER,
     b: BRIDGE_V,

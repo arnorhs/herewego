@@ -4,6 +4,7 @@
   var classes = {};
   classes[PLAYER] = 'player';
   classes[GRASS] = 'land_grass';
+  classes[SAND] = 'land_sand';
   classes[TREE] = 'land_tree';
   classes[WATER] = 'land_water';
   classes[BRIDGE_V] = 'land_bridge_v';

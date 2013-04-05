@@ -32,6 +32,9 @@ body {
 .land_grass {
   background: transparent url(img/land_grass.png) no-repeat;
 }
+.land_sand {
+  background: transparent url(img/land_sand.png) no-repeat;
+}
 .land_tree {
   background: transparent url(img/land_trees.png) no-repeat;
 }

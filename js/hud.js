@@ -15,6 +15,7 @@
         element.height = rect.height;
         $mapCanvas.css({width: rect.width, height: rect.height});
         hash[TREE] = "#0a0";
+        hash[SAND] = "#f0f0c9";
         hash[GRASS] = "#6d6";
         hash[ROAD] = "#ca3";
         hash[MOUNTAIN] = "#bcd";

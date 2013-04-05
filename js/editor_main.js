@@ -36,6 +36,7 @@
   var colors = {};
   colors[TREE] = "#0a0";
   colors[GRASS] = "#6d6";
+  colors[SAND] = "#f0f0c9";
   colors[ROAD] = "#ca3";
   colors[MOUNTAIN] = "#bcd";
   colors[WATER] = "#48C";
@@ -43,6 +44,7 @@
   colors[BRIDGE_H] = "#df3";
   var square = {}
   square[GRASS] = ".";
+  square[SAND] = "s";
   square[TREE] = "t";
   square[WATER] = "w";
   square[BRIDGE_V] = "b";
@@ -96,7 +98,10 @@
       case 82:
         currentType = ROAD; break;
       case 190:
+      case 71:
         currentType = GRASS; break;
+      case 83:
+        currentType = SAND; break;
       case 77:
         currentType = MOUNTAIN; break;
       case 87:

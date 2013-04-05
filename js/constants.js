@@ -24,6 +24,7 @@
   window.HOUSE_TOWER = i++;
   window.HOUSE_FORTRESS = i++;
   window.GRASS = i++;
+  window.SAND = i++;
   window.TREE = i++;
   window.WATER = i++;
   window.BRIDGE_V = i++;
