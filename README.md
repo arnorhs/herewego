@@ -1,8 +1,11 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6c0d024c-6ee2-4b5d-b942-74bf0b9d3e24/deploy-status)](https://app.netlify.com/sites/here-we-go/deploys)
+
 # Here we go
 
-Some weirdo old school type of game I'm having fun with.
+I made this little structure of a game.. many moons ago. I just recently updated it
+since my girls got really interested. This will probably not go anywhere.
 
-[Try demo](https://dl.dropbox.com/u/647738/demos/herewego/index.html)
+[Try demo](https://here-we-go.netlify.app)
 
 ![Screenshot](http://f.cl.ly/items/083a2J3c0l3o3n0w1D29/Screen%20Shot%202013-03-17%20at%2010.47.46%20PM.png)
 
@@ -33,11 +36,19 @@ Some weirdo old school type of game I'm having fun with.
 
 ### Installation:
 
-It's actually just plain html + js so far, so you can just run it from the file
-system. http server not even required.
+```sh
+yarn
+```
 
-However: currently the game is 100% chrome only. There are plans to support
-firefox as well, but that will probably not be very soon
+run dev:
+```sh
+yarn dev
+```
+
+build into dist/ folder
+```sh
+yarn build
+```
 
 ---
 
