@@ -1,4 +1,4 @@
-import { EntityType } from '../constants'
+import { EntityType } from '../util/constants'
 import { defaultAttributesForType, EntityAttr } from './entityAttributes'
 import { Position, Size } from '../types'
 import { View } from '../view'

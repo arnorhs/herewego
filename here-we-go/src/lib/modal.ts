@@ -1,5 +1,5 @@
 import { Size } from './types'
-import { dqs, formatStat, makeEl, px } from './utils'
+import { dqs, formatStat, makeEl, px } from './util/utils'
 
 let activeModal: string | null = null
 

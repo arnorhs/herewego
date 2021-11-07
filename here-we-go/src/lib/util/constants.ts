@@ -1,4 +1,4 @@
-import { Position } from './types'
+import { Position } from '../types'
 
 export const UNIT = 48
 
@@ -31,3 +31,14 @@ export enum EntityType {
   MOUNTAIN = 16,
   ROAD = 17,
 }
+
+export const PLAYER_STATS = [
+  'level',
+  'exp',
+  'strength',
+  'dexterity',
+  'constitution',
+  'intelligence',
+  'wisdom',
+  'charisma',
+]

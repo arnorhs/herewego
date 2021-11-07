@@ -1,4 +1,4 @@
-import { EntityType } from './constants'
+import { EntityType } from './util/constants'
 import { Position, Rect, Size } from './types'
 
 interface PositionWithEntity extends Position {

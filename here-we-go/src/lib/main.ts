@@ -1,14 +1,14 @@
-import { EntityType, INITIAL_PLAYER_POSITION, PlayerState } from './constants'
+import { EntityType, INITIAL_PLAYER_POSITION, PlayerState, PLAYER_STATS } from './util'
 import { EntityHash, GameEntity } from './entities'
 import { Position, Size } from './types'
 import { WorldMap } from './world_map'
 import { WorldView } from './world_view'
 import { HUD } from './hud'
 import { Whisper } from './whisper'
-import { dqs } from './utils'
+import { dqs } from './util/utils'
 import { Light } from './light'
 import { formatTime, getCurrentWorldTime, initTime, luminosity } from './world_time'
-import { Commands } from './commands'
+import { initCommands } from './commands'
 import { Modal } from './modal'
 
 class Player {
@@ -31,18 +31,7 @@ class Player {
   }
 
   getDetailedStats() {
-    const keys = [
-      'level',
-      'exp',
-      'strength',
-      'dexterity',
-      'constitution',
-      'intelligence',
-      'wisdom',
-      'charisma',
-    ]
-
-    return keys.reduce((acc, key) => {
+    return PLAYER_STATS.reduce((acc, key) => {
       acc[key] = (this.entity.attr?.key as number) ?? 0
 
       if (!acc[key]) {
@@ -157,7 +146,7 @@ export const startGame = async () => {
   initTime()
   HUD.updateTime(formatTime(getCurrentWorldTime()))
 
-  Commands.init(function (offset) {
+  initCommands(function (offset) {
     player.move(offset, entities, worldView, worldMap)
   })
 

@@ -45,21 +45,21 @@ const right: KeyCommand = (pos) => {
   pos.x += 1
 }
 
-var key = {
-  up: 38,
-  down: 40,
-  left: 37,
-  right: 39,
-  w: 87,
-  a: 65,
-  s: 83,
-  d: 68,
-  k: 75,
-  j: 74,
-  h: 72,
-  l: 76,
-  tab: 9,
-  m: 77,
+enum KeyCode {
+  up = 38,
+  down = 40,
+  left = 37,
+  right = 39,
+  w = 87,
+  a = 65,
+  s = 83,
+  d = 68,
+  k = 75,
+  j = 74,
+  h = 72,
+  l = 76,
+  tab = 9,
+  m = 77,
 }
 
 // It's pretty stupid to define these like this, should probably be using addEventListener
@@ -72,61 +72,62 @@ document.onkeydown = function (e) {
     return true
   }
   switch (e.keyCode) {
-    case key.up:
-    case key.w:
-    case key.k:
+    case KeyCode.up:
+    case KeyCode.w:
+    case KeyCode.k:
       keysDown.add(up)
       break
-    case key.down:
-    case key.s:
-    case key.j:
+    case KeyCode.down:
+    case KeyCode.s:
+    case KeyCode.j:
       keysDown.add(down)
       break
-    case key.left:
-    case key.a:
-    case key.h:
+    case KeyCode.left:
+    case KeyCode.a:
+    case KeyCode.h:
       keysDown.add(left)
       break
-    case key.right:
-    case key.d:
-    case key.l:
+    case KeyCode.right:
+    case KeyCode.d:
+    case KeyCode.l:
       keysDown.add(right)
       break
-    case key.tab:
+    case KeyCode.tab:
       Whisper.say('command_player_stats')
       break
-    case key.m:
+    case KeyCode.m:
       Whisper.say('command_show_map')
       break
     default:
       return true
   }
+
   return false
 }
 
 document.onkeyup = function (e) {
   switch (e.keyCode) {
-    case key.up:
-    case key.w:
-    case key.k:
+    case KeyCode.up:
+    case KeyCode.w:
+    case KeyCode.k:
       keysDown.delete(up)
       break
-    case key.down:
-    case key.s:
-    case key.j:
+    case KeyCode.down:
+    case KeyCode.s:
+    case KeyCode.j:
       keysDown.delete(down)
       break
-    case key.left:
-    case key.a:
-    case key.h:
+    case KeyCode.left:
+    case KeyCode.a:
+    case KeyCode.h:
       keysDown.delete(left)
       break
-    case key.right:
-    case key.d:
-    case key.l:
+    case KeyCode.right:
+    case KeyCode.d:
+    case KeyCode.l:
       keysDown.delete(right)
       break
-    case key.m:
+    case KeyCode.m:
       Whisper.say('command_hide_map')
       break
     default:
@@ -135,9 +136,7 @@ document.onkeyup = function (e) {
   return false
 }
 
-export const Commands = {
-  init: function (callback: Handler) {
-    handler = callback
-    startLoop()
-  },
+export const initCommands = function (callback: Handler) {
+  handler = callback
+  startLoop()
 }

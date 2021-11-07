@@ -1,7 +1,7 @@
-import { EntityType } from './constants'
+import { EntityType } from './util/constants'
 import { EntityAttr } from './entities/entityAttributes'
 import { Position } from './types'
-import { dqs, formatStat, getValidCanvas, px } from './utils'
+import { dqs, formatStat, getValidCanvas, px } from './util/utils'
 import { WorldMap } from './world_map'
 
 let mapShown = false

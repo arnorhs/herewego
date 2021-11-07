@@ -1,5 +1,5 @@
 import { UNIT } from './constants'
-import { Position } from './types'
+import { Position } from '../types'
 
 export const dimension = function (dimension: number): string {
   return px(dimension * UNIT)

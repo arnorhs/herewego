@@ -1,7 +1,7 @@
 import { LightSource } from './LightSource'
 import { Position, Size } from '../types'
-import { UNIT } from '../constants'
-import { distanceBetweenPoints } from '../utils'
+import { UNIT } from '../util/constants'
+import { distanceBetweenPoints } from '../util/utils'
 
 // used to store an object that can cast shadows
 export class ShadowCaster {

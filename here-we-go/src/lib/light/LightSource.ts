@@ -1,4 +1,4 @@
-import { UNIT } from '../constants'
+import { UNIT } from '../util/constants'
 import { Position } from '../types'
 
 // TODO: This is a useless class.. pls remove

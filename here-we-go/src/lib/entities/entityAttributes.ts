@@ -1,4 +1,4 @@
-import { EntityType } from '../constants'
+import { EntityType } from '../util/constants'
 import { Armor, Weapon } from '../posessions'
 
 export interface EntityAttr extends Record<string, unknown> {
