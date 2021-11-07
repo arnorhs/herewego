@@ -37,7 +37,7 @@ export class PlayerModal implements Modal {
             {
               tag: div,
               class: 'value',
-              kids: '' + formatStat(this.stats[key] as number),
+              kids: formatStat(this.stats[key] as number),
             },
           ],
         }

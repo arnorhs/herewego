@@ -16,8 +16,8 @@ export const distanceBetweenPoints = function (position1: Position, position2: P
   return Math.sqrt(a + b)
 }
 
-export const formatStat = function (stat: number): number {
-  return Math.floor(stat)
+export const formatStat = function (stat: number): string {
+  return `${Math.floor(stat)}`
 }
 
 export interface ValidCanvas {
