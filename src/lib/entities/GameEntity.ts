@@ -4,25 +4,13 @@ import { Position, Size } from '../util/geometry'
 import { View } from '../view'
 import { Whisper } from '../util/Whisper'
 
-function requireOwnAttr(target: GameEntity, propertyKey: string | symbol, parameterIndex: number) {
-  console.log('requireOwnAttr', { target, propertyKey, parameterIndex })
-
-  if (!target.attr) {
-    throw new Error(`entity with attr called for required: ${propertyKey.toString()}`)
-  }
-}
-
-function requireAttr(target: Object, propertyKey: string | symbol, parameterIndex: number) {
-  console.log('requireAttr', { target, propertyKey, parameterIndex })
-}
-
 export class GameEntity {
   type: EntityType
   position: Position
   size: Size
   view: View
   dead: boolean
-  attr?: EntityAttr
+  public attr?: EntityAttr
 
   constructor(type: EntityType, position: Position, size: Size) {
     this.type = type
@@ -154,7 +142,7 @@ export class GameEntity {
       this.setDead()
     }
 
-    Whisper.say('entity_health_change', this, newHealth - oldHealth)
+    Whisper.say('entity_health_change', [this, newHealth - oldHealth])
   }
 
   addExp(exp: number) {
