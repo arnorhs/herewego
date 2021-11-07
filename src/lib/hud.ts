@@ -2,7 +2,6 @@ import { EntityType, Position, dqs, formatStat, getValidCanvas, px } from './uti
 import { EntityAttr } from './entities/entityAttributes'
 import { WorldMap } from './world_map'
 
-let mapShown = false
 let $mapCanvas: HTMLCanvasElement
 
 const initMapCanvas = (map: WorldMap) => {
@@ -34,12 +33,10 @@ function showMap(currentMap: WorldMap) {
     initMapCanvas(currentMap)
   }
   $mapCanvas.style.display = 'block'
-  mapShown = true
 }
 
 function hideMap() {
   $mapCanvas.style.display = 'none'
-  mapShown = false
 }
 
 export const HUD = {
