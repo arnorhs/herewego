@@ -7,7 +7,7 @@ since my girls got really interested. This will probably not go anywhere.
 
 [Try demo](https://here-we-go.netlify.app)
 
-![Screenshot](http://f.cl.ly/items/083a2J3c0l3o3n0w1D29/Screen%20Shot%202013-03-17%20at%2010.47.46%20PM.png)
+![screenshot](https://user-images.githubusercontent.com/61151/140666445-a39cae09-1031-48e9-a8c4-a927dfe88042.png)
 
 ### Next up todo:
 - Move player object into its own file
