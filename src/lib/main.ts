@@ -160,7 +160,7 @@ export const startGame = async () => {
   const modal = new ModalContainer('#modal')
   const playerModal = new PlayerModal()
 
-  Whisper.listen('entity_health_change', function (entity: GameEntity, healthChange: number) {
+  Whisper.listen<[GameEntity, number]>('entity_health_change', ([entity, healthChange]) => {
     var formatted = (healthChange < 0 ? '-' : '+') + healthChange.toFixed(1)
     worldView.animateTextPop(entity.view, healthChange < 0 ? '#f44' : '#4f4', formatted)
   })
