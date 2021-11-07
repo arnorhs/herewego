@@ -1,5 +1,5 @@
 import { GameEntity } from './GameEntity'
-import { Position } from '../types'
+import { Position } from '../util/geometry'
 
 // Hash that works as a reverse lookup for game objects at a specific square
 //

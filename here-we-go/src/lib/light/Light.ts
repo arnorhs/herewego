@@ -1,4 +1,4 @@
-import { Position, Size } from '../types'
+import { Position, Size } from '../util/geometry'
 import { LightSource } from './LightSource'
 import { ShadowCaster } from './ShadowCaster'
 

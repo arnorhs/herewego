@@ -1,5 +1,5 @@
 import { LightSource } from './LightSource'
-import { Position, Size } from '../types'
+import { Position, Size } from '../util/geometry'
 import { UNIT } from '../util/constants'
 import { distanceBetweenPoints } from '../util/utils'
 

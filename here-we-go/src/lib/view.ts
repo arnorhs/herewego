@@ -1,6 +1,4 @@
-import { EntityType } from './util/constants'
-import { Position, Size } from './types'
-import { dimension, makeEl } from './util/utils'
+import { EntityType, Position, Size, dimension, makeEl } from './util'
 
 const classes: Record<EntityType, string> = {
   [EntityType.PLAYER]: 'player',

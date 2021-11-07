@@ -1,5 +1,5 @@
 import { UNIT } from './constants'
-import { Position } from '../types'
+import { Position } from './geometry'
 
 export const dimension = function (dimension: number): string {
   return px(dimension * UNIT)
@@ -52,8 +52,10 @@ type StyleKeys = keyof Omit<CSSStyleDeclaration, 'length' | 'parentRule'>
 type Styles = {
   [key in StyleKeys]?: string
 }
+
+export type ElTag = keyof HTMLElementTagNameMap
 export interface ElDescriptor {
-  tag: keyof HTMLElementTagNameMap
+  tag: ElTag
   class?: string
   kids?: ElDescriptor[] | string
   style?: Styles

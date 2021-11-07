@@ -1,5 +1,5 @@
 import { UNIT } from '../util/constants'
-import { Position } from '../types'
+import { Position } from '../util/geometry'
 
 // TODO: This is a useless class.. pls remove
 export class LightSource implements Position {

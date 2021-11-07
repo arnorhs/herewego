@@ -1,8 +1,8 @@
 import { EntityType } from '../util/constants'
 import { defaultAttributesForType, EntityAttr } from './entityAttributes'
-import { Position, Size } from '../types'
+import { Position, Size } from '../util/geometry'
 import { View } from '../view'
-import { Whisper } from '../whisper'
+import { Whisper } from '../util/Whisper'
 
 function requireOwnAttr(target: GameEntity, propertyKey: string | symbol, parameterIndex: number) {
   console.log('requireOwnAttr', { target, propertyKey, parameterIndex })

@@ -1,4 +1,4 @@
-import { Position } from '../types'
+import { Position } from './geometry'
 
 export const UNIT = 48
 

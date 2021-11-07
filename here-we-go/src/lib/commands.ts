@@ -9,8 +9,7 @@
 // Eventually this might become tied with a game cycle and it would be queried
 // instead of emitting events, but for now this will probably do
 
-import { Position } from './types'
-import { Whisper } from './whisper'
+import { Position, Whisper } from './util'
 
 type Handler = (movementOffset: Position) => void
 

@@ -1,4 +1,4 @@
-import { Whisper } from './whisper'
+import { Whisper } from './util'
 
 const HOUR = 60,
   DAY = 1440,

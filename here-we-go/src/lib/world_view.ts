@@ -1,7 +1,5 @@
-import { EntityType, UNIT } from './util/constants'
+import { dimension, dqs, EntityType, Position, Size, UNIT } from './util'
 import { Light, LightSource, ShadowCaster } from './light'
-import { Position, Size } from './types'
-import { dimension, dqs } from './util/utils'
 import { View } from './view'
 
 type Rect = Size & Position

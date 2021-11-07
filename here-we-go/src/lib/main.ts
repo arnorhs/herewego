@@ -1,15 +1,22 @@
-import { EntityType, INITIAL_PLAYER_POSITION, PlayerState, PLAYER_STATS } from './util'
+import {
+  dqs,
+  EntityType,
+  INITIAL_PLAYER_POSITION,
+  PlayerState,
+  PLAYER_STATS,
+  Position,
+  Size,
+  Whisper,
+} from './util'
 import { EntityHash, GameEntity } from './entities'
-import { Position, Size } from './types'
 import { WorldMap } from './world_map'
 import { WorldView } from './world_view'
 import { HUD } from './hud'
-import { Whisper } from './whisper'
-import { dqs } from './util/utils'
 import { Light } from './light'
 import { formatTime, getCurrentWorldTime, initTime, luminosity } from './world_time'
 import { initCommands } from './commands'
-import { Modal } from './modal'
+import { PlayerModal } from './player/playerModal'
+import { ModalContainer } from './modal'
 
 class Player {
   state: PlayerState = PlayerState.IDLE
@@ -150,6 +157,9 @@ export const startGame = async () => {
     player.move(offset, entities, worldView, worldMap)
   })
 
+  const modal = new ModalContainer('#modal')
+  const playerModal = new PlayerModal()
+
   Whisper.listen('entity_health_change', function (entity: GameEntity, healthChange: number) {
     var formatted = (healthChange < 0 ? '-' : '+') + healthChange.toFixed(1)
     worldView.animateTextPop(entity.view, healthChange < 0 ? '#f44' : '#4f4', formatted)
@@ -184,7 +194,8 @@ export const startGame = async () => {
   })
 
   Whisper.listen('command_player_stats', function () {
-    Modal.playerStats(player.getDetailedStats())
+    playerModal.updateStats(player.getDetailedStats())
+    modal.toggleModal(playerModal)
   })
 
   Whisper.listen('command_show_map', function () {
