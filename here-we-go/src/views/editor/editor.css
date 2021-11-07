@@ -1,4 +1,4 @@
-@import url('../../lib/shared.css');
+@import url('../../styles/shared.css');
 
 .person_cowboy,
 .land_grass,
@@ -18,7 +18,10 @@
   background-size: 12px 12px;
 }
 
-#canvas, #canvas:hover, #canvas:active, #canvas:focus {
+#canvas,
+#canvas:hover,
+#canvas:active,
+#canvas:focus {
   cursor: cross !important;
 }
 
@@ -34,5 +37,5 @@ body {
   height: 40px;
   line-height: 40px;
   color: #fff;
-  background: rgba(0,0,0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
