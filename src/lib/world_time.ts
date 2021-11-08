@@ -1,12 +1,13 @@
-import { Whisper } from './util'
-
-const HOUR = 60,
-  DAY = 1440,
-  HOURS_PER_DAY = 24,
-  INTERVAL = 1000,
-  DAYLIGHT_STARTS = 7 * HOUR,
-  DAYLIGHT_ENDS = 19 * HOUR,
-  TRANSITION = 2 * HOUR
+import {
+  DAY,
+  DAYLIGHT_ENDS,
+  DAYLIGHT_STARTS,
+  HOUR,
+  HOURS_PER_DAY,
+  WORLD_TIME_UPDATE_INTERVAL,
+  TRANSITION,
+  Whisper,
+} from './util'
 
 let worldTime = 10 * HOUR // let's start at 10 o clock
 
@@ -45,5 +46,5 @@ export const formatTime = function (time: number) {
 }
 
 export const initTime = function () {
-  setInterval(timeLoop, INTERVAL)
+  setInterval(timeLoop, WORLD_TIME_UPDATE_INTERVAL)
 }

@@ -42,3 +42,11 @@ export const PLAYER_STATS = [
   'wisdom',
   'charisma',
 ]
+
+export const HOUR = 60,
+  DAY = 1440,
+  HOURS_PER_DAY = 24,
+  WORLD_TIME_UPDATE_INTERVAL = 1000,
+  DAYLIGHT_STARTS = 7 * HOUR,
+  DAYLIGHT_ENDS = 19 * HOUR,
+  TRANSITION = 2 * HOUR
