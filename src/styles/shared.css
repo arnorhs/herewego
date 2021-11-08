@@ -211,6 +211,7 @@ body {
 }
 
 #player_stats {
+  z-index: 100;
   background: rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   color: #fff;
@@ -224,6 +225,7 @@ body {
   line-height: 1.5em;
 }
 #health {
+  z-index: 100;
   float: left;
   width: 100px;
   margin-right: 10px;
@@ -249,6 +251,7 @@ body {
 }
 
 #light_canvas {
+  z-index: 100;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -256,6 +259,7 @@ body {
 
 #coords,
 #time {
+  z-index: 100;
   position: absolute;
   top: 10px;
   width: auto;
@@ -272,6 +276,7 @@ body {
 }
 
 .text_pop {
+  z-index: 100;
   color: #fff;
   font-weight: bold;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.8);
@@ -297,6 +302,7 @@ body {
 }
 
 #modal {
+  z-index: 1000;
   position: absolute;
   display: none;
   left: 50%;
@@ -324,6 +330,7 @@ body {
 }
 
 #map_canvas {
+  z-index: 70;
   display: none;
   position: absolute;
   left: 10px;

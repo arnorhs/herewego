@@ -24,6 +24,8 @@ export class ModalContainer {
       return
     }
 
+    this.innerEl.appendChild(this.activeModal.getContent())
+
     const size = this.activeModal.getSize()
 
     this.el.style.width = px(size.width)
