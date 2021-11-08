@@ -110,7 +110,9 @@ class Player {
 
 export const startGame = async () => {
   const entities = new EntityHash()
-  const worldView = new WorldView(dqs('#world_view'), INITIAL_PLAYER_POSITION)
+  const light = new Light(dqs('#light_canvas'))
+
+  const worldView = new WorldView(dqs('#world_view'), INITIAL_PLAYER_POSITION, light)
 
   function addEntity(type: EntityType, position: Position, size: Size) {
     const entity = new GameEntity(type, position, size)
@@ -141,8 +143,6 @@ export const startGame = async () => {
   worldMap.getEntities(function (position, type) {
     addEntity(type, position, { width: 1, height: 1 })
   })
-
-  const light = new Light(dqs('#light_canvas'))
 
   light.setLuminosity(luminosity())
 

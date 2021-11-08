@@ -279,24 +279,23 @@ body {
   z-index: 100;
   color: #fff;
   font-weight: bold;
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.8);
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4);
   position: absolute;
   text-align: center;
   margin-left: -24px;
   width: 96px;
   height: 48px;
-  -webkit-animation-duration: 1.5s;
-  -webkit-animation-name: damage;
-  -webkit-animation-fill-mode: forwards;
-  z-index: 2;
+  animation-duration: 1.5s;
+  animation-name: damage;
+  animation-fill-mode: forwards;
 }
-@-webkit-keyframes damage {
+@keyframes damage {
   from {
-    margin-top: 0px;
+    transform: translateY(0);
     opacity: 1;
   }
   to {
-    margin-top: -48px;
+    transform: translateY(-48px);
     opacity: 0;
   }
 }

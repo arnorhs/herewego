@@ -81,7 +81,7 @@ export const makeEl = <T extends HTMLElement>(d: ElDescriptor): T => {
         el.appendChild(makeEl(descriptor))
       })
     } else {
-      el.append(d.kids)
+      el.innerHTML = d.kids
     }
   }
 

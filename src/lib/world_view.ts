@@ -1,4 +1,4 @@
-import { dimension, dqs, EntityType, Position, Size, UNIT } from './util'
+import { dimension, dqs, EntityType, makeEl, Position, Size, UNIT } from './util'
 import { Light, LightSource, ShadowCaster } from './light'
 import { View } from './view'
 
@@ -13,13 +13,12 @@ export class WorldView {
   currentMapRect?: Rect
   viewportOffset: Position = { x: 0, y: 0 }
 
-  constructor(el: HTMLElement, centerPosition: Position) {
+  constructor(el: HTMLElement, centerPosition: Position, light: Light) {
     this.rootView = el
-    const canvas = dqs<HTMLCanvasElement>('#light_canvas')
     this.centerPosition = centerPosition
     this.views = []
 
-    this.light = new Light(canvas)
+    this.light = light
     this.recalculateViewportSize()
     this.redrawViews()
 
@@ -135,15 +134,23 @@ export class WorldView {
   }
 
   animateTextPop(view: View, color: CSSStyleDeclaration['color'], text: string) {
-    var position = view.position,
-      elem = document.createElement('div')
-    elem.className = 'text_pop'
-    elem.style.left = dimension(position.x - this.viewportOffset.x)
-    elem.style.top = dimension(position.y - this.viewportOffset.y)
-    elem.style.color = color
-    elem.textContent = text
+    const position = view.position
+
+    const el = makeEl({
+      tag: 'div',
+      class: 'text_pop',
+      style: {
+        left: dimension(position.x - this.viewportOffset.x),
+        top: dimension(position.y - this.viewportOffset.y),
+        color,
+        display: 'block',
+      },
+      kids: text,
+    })
+
     // TODO it would probably be nicer to add this to some other view, but for now this is ok
-    this.rootView.appendChild(elem)
-    setTimeout(() => this.rootView.removeChild(elem), 3000)
+    this.rootView.appendChild(el)
+
+    setTimeout(() => this.rootView.removeChild(el), 3000)
   }
 }
