@@ -7,7 +7,7 @@ type Rect = Size & Position
 export class WorldView {
   rootView: HTMLElement
   viewportSize?: Size
-  views: View[]
+  private readonly views: View[]
   light: Light
   centerPosition: Position
   currentMapRect?: Rect
@@ -70,8 +70,8 @@ export class WorldView {
         view.element.style.top = dimension(view.position.y - this.viewportOffset.y)
 
         if (!view.isPlaced) {
-          this.rootView.appendChild(view.element)
           view.isPlaced = true
+          viewsToShow.push(view)
         }
 
         if ([EntityType.TREE, EntityType.MOUNTAIN].indexOf(view.type) >= 0) {
@@ -87,20 +87,10 @@ export class WorldView {
             ),
           )
         }
-        viewsToShow.push(view)
       } else if (view.isPlaced) {
         this.rootView.removeChild(view.element)
         view.isPlaced = false
       }
-    })
-
-    // sort the views based on type
-    viewsToShow.sort(function ({ type: a }, { type: b }) {
-      if (a === b) {
-        return 0
-      }
-
-      return b - a
     })
 
     viewsToShow.forEach((viewToShow) => {
