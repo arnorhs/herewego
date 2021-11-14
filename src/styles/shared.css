@@ -139,75 +139,75 @@ body {
 }
 .player {
   z-index: 10;
-  background: transparent url(img/player.png) no-repeat;
+  background: transparent url(/img/player.png) no-repeat;
 }
 
 .enemy_alien {
   z-index: 9;
-  background: transparent url(img/alien.png) no-repeat;
+  background: transparent url(/img/alien.png) no-repeat;
 }
 .enemy_alien_dead {
   z-index: 9;
-  background: transparent url(img/alien_dead.png) no-repeat;
+  background: transparent url(/img/alien_dead.png) no-repeat;
 }
 
 .person_cowboy {
   z-index: 9;
-  background: transparent url(img/person_cowboy.png) no-repeat;
+  background: transparent url(/img/person_cowboy.png) no-repeat;
 }
 
 .land_grass {
   z-index: 3;
-  background: transparent url(img/land_grass.png) no-repeat;
+  background: transparent url(/img/land_grass.png) no-repeat;
 }
 .land_sand {
   z-index: 3;
-  background: transparent url(img/land_sand.png) no-repeat;
+  background: transparent url(/img/land_sand.png) no-repeat;
 }
 .land_tree {
   z-index: 3;
-  background: transparent url(img/land_trees.png) no-repeat;
+  background: transparent url(/img/land_trees.png) no-repeat;
 }
 .land_water {
   z-index: 3;
-  background: transparent url(img/land_water.png) no-repeat;
+  background: transparent url(/img/land_water.png) no-repeat;
 }
 .land_bridge_v {
   z-index: 3;
-  background: transparent url(img/land_bridge_vertical.png) no-repeat;
+  background: transparent url(/img/land_bridge_vertical.png) no-repeat;
 }
 .land_bridge_h {
   z-index: 3;
-  background: transparent url(img/land_bridge_horizontal.png) no-repeat;
+  background: transparent url(/img/land_bridge_horizontal.png) no-repeat;
 }
 .land_mountain {
   z-index: 3;
-  background: transparent url(img/land_mountain.png) no-repeat;
+  background: transparent url(/img/land_mountain.png) no-repeat;
 }
 .land_road {
   z-index: 3;
-  background: transparent url(img/land_road.png) no-repeat;
+  background: transparent url(/img/land_road.png) no-repeat;
 }
 
 .house_healing {
   z-index: 8;
-  background: transparent url(img/house_healing.png) no-repeat;
+  background: transparent url(/img/house_healing.png) no-repeat;
 }
 .house_resting {
   z-index: 8;
-  background: transparent url(img/house_resting.png) no-repeat;
+  background: transparent url(/img/house_resting.png) no-repeat;
 }
 .house_spaceship {
   z-index: 8;
-  background: transparent url(img/house_spaceship.png) no-repeat;
+  background: transparent url(/img/house_spaceship.png) no-repeat;
 }
 .house_tower {
   z-index: 8;
-  background: transparent url(img/house_tower.png) no-repeat;
+  background: transparent url(/img/house_tower.png) no-repeat;
 }
 .house_fortress {
   z-index: 8;
-  background: transparent url(img/house_fortress.png) no-repeat;
+  background: transparent url(/img/house_fortress.png) no-repeat;
 }
 
 #player_stats {

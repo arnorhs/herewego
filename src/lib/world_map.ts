@@ -83,7 +83,7 @@ export class WorldMap {
   }
 
   static async download(name: string) {
-    const url = `maps/${name}.map`
+    const url = `/maps/${name}.map`
 
     const response = await fetch(url, {
       headers: {
