@@ -1,4 +1,4 @@
-import { dimension, dqs, EntityType, makeEl, Position, Size, UNIT } from './util'
+import { dimension, EntityType, makeEl, Position, Size, UNIT } from './util'
 import { Light, LightSource, ShadowCaster } from './light'
 import { View } from './view'
 
