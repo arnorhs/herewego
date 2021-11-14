@@ -15,7 +15,7 @@ import { HUD } from './hud'
 import { Light } from './light'
 import { formatTime, getCurrentWorldTime, initTime, luminosity } from './world_time'
 import { initCommands } from './commands'
-import { PlayerModal } from './player/playerModal'
+import { PlayerModal } from './player/PlayerModal'
 import { ModalContainer } from './modal'
 
 class Player {
