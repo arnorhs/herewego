@@ -13,7 +13,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "rootDir": "./src"
   },
-  "include": ["./src"]
+  "include": ["./src/**/*"]
 }
